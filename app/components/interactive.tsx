@@ -31,32 +31,28 @@ export function MobileNav() {
 }
 
 export function CompanySearch() {
-  const [query, setQuery] = useState("");
-  const [message, setMessage] = useState("");
-
-  function submit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    if (!query.trim()) {
-      setMessage("Enter the company name you have in mind.");
-      return;
-    }
-    setMessage(`“${query.trim()}” is ready for an expert availability check.`);
-  }
-
   return (
-    <form className="company-search" onSubmit={submit}>
-      <label htmlFor="company-name">Find your company name</label>
+    <form
+      className="company-search"
+      action="https://find-and-update.company-information.service.gov.uk/search/companies"
+      method="get"
+      target="_blank"
+    >
+      <label htmlFor="company-name">Search Companies House</label>
       <div className="search-row">
         <input
           id="company-name"
-          value={query}
-          onChange={(event) => setQuery(event.target.value)}
-          placeholder="e.g. Northstar Studio"
+          name="q"
+          placeholder="Enter a company name"
           autoComplete="organization"
+          aria-describedby="company-search-note"
+          required
         />
-        <button type="submit" aria-label="Check company name">Check name <span>→</span></button>
+        <button type="submit" aria-label="Search Companies House">Search <span>→</span></button>
       </div>
-      <p className="form-note" aria-live="polite">{message || "Companies House authorised formation support"}</p>
+      <p className="form-note" id="company-search-note">
+        Find an existing company or check a name to register. <a href="/ltd">Ready to register? Start here →</a>
+      </p>
     </form>
   );
 }

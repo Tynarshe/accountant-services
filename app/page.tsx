@@ -21,6 +21,7 @@ export default function Home() {
             <div className="eyebrow light"><span /> Expert-backed. Human-hearted.</div>
             <h1>Business, made<br /><em>brilliantly simple.</em></h1>
             <p className="hero-lede">Start, run and grow your UK business with calm, capable support—online when you want it, human when you need it.</p>
+            <CompanySearch />
             <div className="hero-buttons">
               <a className="button button-accent" href="/#services">Find your service <span>↓</span></a>
               <a className="text-link light-link" href="/contact">Talk to a specialist <span>↗</span></a>
@@ -59,7 +60,6 @@ export default function Home() {
             <div className="floating-badge badge-two"><span>24h</span><p><strong>Fast turnaround</strong><small>On formation services</small></p></div>
           </div>
         </div>
-        <div className="page-shell search-wrap reveal-up delay-two"><CompanySearch /></div>
       </section>
 
       <section className="credibility-strip">
