@@ -34,15 +34,14 @@ export function CompanySearch() {
   return (
     <form
       className="company-search"
-      action="https://find-and-update.company-information.service.gov.uk/search/companies"
+      action="/company/search"
       method="get"
-      target="_blank"
     >
       <label htmlFor="company-name">Search Companies House</label>
       <div className="search-row">
         <input
           id="company-name"
-          name="q"
+          name="company"
           placeholder="Enter a company name"
           autoComplete="organization"
           aria-describedby="company-search-note"
