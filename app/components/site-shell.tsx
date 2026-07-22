@@ -1,4 +1,4 @@
-import { MobileNav, Newsletter } from "./interactive";
+import { MobileNav, Newsletter, ServicesMenu } from "./interactive";
 
 export function Logo() {
   return (
@@ -15,8 +15,7 @@ export function Header() {
       <div className="header-inner">
         <Logo />
         <nav className="desktop-nav" aria-label="Main navigation">
-          <a href="/#services">Services</a>
-          <a href="/additional-services">For growing businesses</a>
+          <ServicesMenu />
           <a href="/blog">Insights</a>
           <a href="/contact">Contact</a>
         </nav>

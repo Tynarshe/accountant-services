@@ -1,6 +1,59 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import { categories, services } from "../lib/services";
+
+export function ServicesMenu() {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <div
+      className="services-menu"
+      onMouseEnter={() => setOpen(true)}
+      onMouseLeave={() => setOpen(false)}
+      onBlur={(event) => {
+        if (!event.currentTarget.contains(event.relatedTarget)) setOpen(false);
+      }}
+      onKeyDown={(event) => {
+        if (event.key === "Escape") setOpen(false);
+      }}
+    >
+      <button
+        className="services-trigger"
+        type="button"
+        aria-expanded={open}
+        aria-controls="services-mega-menu"
+        onClick={() => setOpen((value) => !value)}
+      >
+        Services <span aria-hidden="true">⌄</span>
+      </button>
+      {open && (
+        <div className="services-mega-menu" id="services-mega-menu">
+          <div className="mega-menu-head">
+            <div>
+              <p>Everything in one place</p>
+              <h2>What does your business need?</h2>
+            </div>
+            <a href="/additional-services" onClick={() => setOpen(false)}>View all services <span>→</span></a>
+          </div>
+          <div className="mega-menu-grid">
+            {categories.map((category, index) => (
+              <section className="mega-menu-category" key={category.name}>
+                <div className="mega-category-title"><span>0{index + 1}</span><h3>{category.name === "Start" ? "Create" : category.name}</h3></div>
+                <p>{category.description}</p>
+                <div className="mega-service-links">
+                  {services.filter((service) => service.category === category.name).map((service) => (
+                    <a href={`/${service.slug}`} key={service.slug} onClick={() => setOpen(false)}>{service.title}<span>↗</span></a>
+                  ))}
+                </div>
+              </section>
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
 
 export function MobileNav() {
   const [open, setOpen] = useState(false);
@@ -19,8 +72,20 @@ export function MobileNav() {
       </button>
       {open && (
         <div className="mobile-panel">
-          <a href="/#services" onClick={() => setOpen(false)}>Services</a>
-          <a href="/additional-services" onClick={() => setOpen(false)}>For growing businesses</a>
+          <details className="mobile-services">
+            <summary>Services <span aria-hidden="true">+</span></summary>
+            <div className="mobile-service-groups">
+              {categories.map((category) => (
+                <section key={category.name}>
+                  <h3>{category.name === "Start" ? "Create" : category.name}</h3>
+                  {services.filter((service) => service.category === category.name).map((service) => (
+                    <a href={`/${service.slug}`} key={service.slug} onClick={() => setOpen(false)}>{service.title}<span>↗</span></a>
+                  ))}
+                </section>
+              ))}
+              <a className="mobile-all-services" href="/additional-services" onClick={() => setOpen(false)}>View all services <span>→</span></a>
+            </div>
+          </details>
           <a href="/blog" onClick={() => setOpen(false)}>Insights</a>
           <a href="/contact" onClick={() => setOpen(false)}>Contact</a>
           <a className="button button-primary" href="/ltd" onClick={() => setOpen(false)}>Start a company <span>↗</span></a>
