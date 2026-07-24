@@ -102,10 +102,28 @@ const shopProducts = [
     description: "A practical monthly planner for tracking income, spending and the numbers that matter.",
     price: 4.99,
     previousPrice: 9.99,
-    href: "https://accountantservices.org.uk/products/monthly-budget/",
+    href: "/shop/monthly-budget",
     date: 1,
   },
 ];
+
+export function BudgetProductArt({ sale = true }: { sale?: boolean }) {
+  return (
+    <div className="product-art" aria-hidden="true">
+      {sale && <span className="sale-pill">Sale</span>}
+      <div className="spreadsheet-window">
+        <div className="sheet-top"><span /><span /><span /></div>
+        <div className="sheet-title">MONTHLY BUDGET</div>
+        <div className="sheet-content">
+          <span /><span /><span /><span />
+          <i /><i /><i />
+        </div>
+        <div className="sheet-total"><span>TOTAL</span><strong>£</strong></div>
+      </div>
+      <div className="product-orbit" />
+    </div>
+  );
+}
 
 export function ShopCatalogue() {
   const [query, setQuery] = useState("");
@@ -153,19 +171,7 @@ export function ShopCatalogue() {
         <div className="shop-grid">
           {products.map((product) => (
             <a className="shop-product" href={product.href} key={product.title}>
-              <div className="product-art" aria-hidden="true">
-                <span className="sale-pill">Sale</span>
-                <div className="spreadsheet-window">
-                  <div className="sheet-top"><span /><span /><span /></div>
-                  <div className="sheet-title">MONTHLY BUDGET</div>
-                  <div className="sheet-content">
-                    <span /><span /><span /><span />
-                    <i /><i /><i />
-                  </div>
-                  <div className="sheet-total"><span>TOTAL</span><strong>£</strong></div>
-                </div>
-                <div className="product-orbit" />
-              </div>
+              <BudgetProductArt />
               <div className="product-copy">
                 <p>Digital download</p>
                 <h2>{product.title}</h2>
@@ -185,7 +191,26 @@ export function ShopCatalogue() {
           <p>Try a different search term.</p>
         </div>
       )}
-      <p className="shop-checkout-note">Product details and secure checkout open on the existing Accountant Services shop.</p>
+      <p className="shop-checkout-note">Product details, payment and order confirmation all stay within this website.</p>
+    </div>
+  );
+}
+
+export function ProductPurchase() {
+  const [quantity, setQuantity] = useState(1);
+
+  return (
+    <div className="product-purchase">
+      <div className="purchase-quantity">
+        <span>Quantity</span>
+        <div>
+          <button type="button" onClick={() => setQuantity((value) => Math.max(1, value - 1))} disabled={quantity === 1} aria-label="Decrease quantity">−</button>
+          <output aria-live="polite" aria-label="Quantity">{quantity}</output>
+          <button type="button" onClick={() => setQuantity((value) => Math.min(10, value + 1))} disabled={quantity === 10} aria-label="Increase quantity">+</button>
+        </div>
+      </div>
+      <a className="button button-primary full-button" href={`/shop/checkout?quantity=${quantity}`}>Buy now securely <span>→</span></a>
+      <p><span>✓</span> Secure payment <span>✓</span> Instant digital delivery</p>
     </div>
   );
 }

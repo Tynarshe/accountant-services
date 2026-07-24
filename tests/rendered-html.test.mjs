@@ -56,5 +56,25 @@ test("server-renders the shop catalogue", async () => {
   assert.match(html, /Monthly Budgeting Spreadsheet/i);
   assert.match(html, /4\.99/i);
   assert.match(html, /Search the shop/i);
-  assert.match(html, /accountantservices\.org\.uk\/products\/monthly-budget/i);
+  assert.match(html, /href="\/shop\/monthly-budget"/i);
+});
+
+test("server-renders the internal product page", async () => {
+  const response = await render("/shop/monthly-budget");
+  assert.equal(response.status, 200);
+
+  const html = await response.text();
+  assert.match(html, /Monthly Budgeting Spreadsheet/i);
+  assert.match(html, /Buy now securely/i);
+  assert.match(html, /href="\/shop\/checkout\?quantity=1"/i);
+});
+
+test("server-renders the embedded SureCart checkout", async () => {
+  const response = await render("/shop/checkout?quantity=2");
+  assert.equal(response.status, 200);
+
+  const html = await response.text();
+  assert.match(html, /Accountant Services secure payment checkout/i);
+  assert.match(html, /e6360f96-0e5d-446e-bbcb-c99fcaa8b18e/i);
+  assert.match(html, /9\.98/i);
 });
