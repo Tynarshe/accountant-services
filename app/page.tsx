@@ -148,9 +148,9 @@ export default function Home() {
 
       <section className="insights-section section-space">
         <div className="page-shell">
-          <div className="section-heading split-heading compact"><div><div className="eyebrow light"><span /> Useful, not overwhelming</div><h2>Fresh thinking for<br />people building businesses.</h2></div><a className="text-link light-link" href="/blog">Browse all insights <span>→</span></a></div>
+          <div className="section-heading split-heading compact"><div><div className="eyebrow light"><span /> Latest articles</div><h2>Three useful reads.<br />The rest are in the Blog.</h2></div><a className="text-link light-link" href="/blog">Visit the Blog <span>→</span></a></div>
           <div className="article-grid">
-            {articles.map((article, index) => (
+            {articles.slice(0, 3).map((article, index) => (
               <a href={`/${article.slug}`} className="article-card" key={article.slug}>
                 <div className={`article-art article-art-${index + 1}`}><span>{index === 0 ? "31" : index === 1 ? "↗" : "£"}</span></div>
                 <div className="article-meta"><span>{article.category}</span><time>{article.date}</time></div>

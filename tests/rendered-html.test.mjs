@@ -39,6 +39,8 @@ test("server-renders the Accountant Services homepage", async () => {
   assert.match(html, />Blog<\/a>/i);
   assert.match(html, />Additional Services/i);
   assert.match(html, />Contact Us<\/a>/i);
+  assert.match(html, /Three useful reads/i);
+  assert.doesNotMatch(html, /What is a Confirmation Statement\?/i);
 });
 
 test("server-renders the company formation journey", async () => {
