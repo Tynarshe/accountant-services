@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { ContactForm } from "../components/interactive";
+import { ContactForm, ShopCatalogue } from "../components/interactive";
 import { SiteShell } from "../components/site-shell";
 import { articles, categories, serviceBySlug, services } from "../lib/services";
 
@@ -20,8 +20,8 @@ const utilityPages: Record<string, { title: string; description: string }> = {
     description: "Plain-English guides, timely reminders and practical ideas for starting and running a UK business.",
   },
   shop: {
-    title: "Choose a service and get moving",
-    description: "The most popular filings and registrations, with clear scope and expert support included.",
+    title: "Shop",
+    description: "Practical financial tools designed to make everyday money management clearer and easier.",
   },
   "privacy-policy": {
     title: "Privacy policy",
@@ -137,6 +137,33 @@ function ServicesPage() {
   );
 }
 
+function ShopPage() {
+  return (
+    <>
+      <section className="inner-hero shop-hero">
+        <div className="inner-orb" />
+        <div className="page-shell">
+          <Breadcrumb current="Shop" />
+          <div className="inner-hero-copy narrow reveal-up">
+            <div className="eyebrow light"><span /> Useful tools, thoughtfully made</div>
+            <h1>Small tools.<br />Clearer finances.</h1>
+            <p>Practical downloads for keeping your numbers organised, your plans visible and your next decision easier.</p>
+          </div>
+        </div>
+      </section>
+      <section className="shop-section section-space">
+        <div className="page-shell">
+          <div className="section-heading split-heading compact">
+            <div><div className="eyebrow"><span /> The shop</div><h2>Built for the numbers<br />you use every day.</h2></div>
+            <p>Simple, useful resources from the Accountant Services team—ready to download and put to work.</p>
+          </div>
+          <ShopCatalogue />
+        </div>
+      </section>
+    </>
+  );
+}
+
 function ContactPage() {
   return (
     <>
@@ -170,7 +197,8 @@ export default async function DynamicPage({ params }: PageProps) {
 
   if (serviceBySlug[slug]) content = <ServicePage slug={slug} />;
   else if (articles.some((item) => item.slug === slug)) content = <ArticlePage slug={slug} />;
-  else if (slug === "additional-services" || slug === "shop") content = <ServicesPage />;
+  else if (slug === "additional-services") content = <ServicesPage />;
+  else if (slug === "shop") content = <ShopPage />;
   else if (slug === "contact") content = <ContactPage />;
   else if (slug === "blog") content = <BlogPage />;
   else if (slug === "privacy-policy" || slug === "terms-conditions") content = <LegalPage slug={slug} />;

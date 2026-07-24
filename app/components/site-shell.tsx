@@ -17,6 +17,7 @@ export function Header() {
         <nav className="desktop-nav" aria-label="Main navigation">
           <ServicesMenu />
           <a href="/blog">Insights</a>
+          <a href="/shop">Shop</a>
           <a href="/contact">Contact</a>
         </nav>
         <div className="header-actions">
@@ -51,6 +52,7 @@ export function Footer() {
             <h3>Company</h3>
             <a href="/additional-services">All services</a>
             <a href="/blog">Insights</a>
+            <a href="/shop">Shop</a>
             <a href="/contact">Contact</a>
             <a href="/privacy-policy">Privacy</a>
           </div>

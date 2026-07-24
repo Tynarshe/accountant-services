@@ -87,10 +87,105 @@ export function MobileNav() {
             </div>
           </details>
           <a href="/blog" onClick={() => setOpen(false)}>Insights</a>
+          <a href="/shop" onClick={() => setOpen(false)}>Shop</a>
           <a href="/contact" onClick={() => setOpen(false)}>Contact</a>
           <a className="button button-primary" href="/ltd" onClick={() => setOpen(false)}>Start a company <span>↗</span></a>
         </div>
       )}
+    </div>
+  );
+}
+
+const shopProducts = [
+  {
+    title: "Monthly Budgeting Spreadsheet",
+    description: "A practical monthly planner for tracking income, spending and the numbers that matter.",
+    price: 4.99,
+    previousPrice: 9.99,
+    href: "https://accountantservices.org.uk/products/monthly-budget/",
+    date: 1,
+  },
+];
+
+export function ShopCatalogue() {
+  const [query, setQuery] = useState("");
+  const [sort, setSort] = useState("latest");
+
+  const products = shopProducts
+    .filter((product) => product.title.toLowerCase().includes(query.trim().toLowerCase()))
+    .sort((a, b) => {
+      if (sort === "oldest") return a.date - b.date;
+      if (sort === "az") return a.title.localeCompare(b.title);
+      if (sort === "za") return b.title.localeCompare(a.title);
+      if (sort === "price-low") return a.price - b.price;
+      if (sort === "price-high") return b.price - a.price;
+      return b.date - a.date;
+    });
+
+  return (
+    <div className="shop-catalogue">
+      <div className="shop-toolbar">
+        <label className="shop-search">
+          <span className="sr-only">Search shop</span>
+          <input
+            type="search"
+            value={query}
+            onChange={(event) => setQuery(event.target.value)}
+            placeholder="Search the shop"
+          />
+          <i aria-hidden="true">⌕</i>
+        </label>
+        <label className="shop-sort">
+          <span>Sort by</span>
+          <select value={sort} onChange={(event) => setSort(event.target.value)} aria-label="Sort products">
+            <option value="latest">Latest</option>
+            <option value="oldest">Oldest</option>
+            <option value="az">Alphabetical, A–Z</option>
+            <option value="za">Alphabetical, Z–A</option>
+            <option value="price-low">Price, low to high</option>
+            <option value="price-high">Price, high to low</option>
+          </select>
+        </label>
+      </div>
+
+      <p className="shop-count">{products.length} {products.length === 1 ? "product" : "products"}</p>
+      {products.length > 0 ? (
+        <div className="shop-grid">
+          {products.map((product) => (
+            <a className="shop-product" href={product.href} key={product.title}>
+              <div className="product-art" aria-hidden="true">
+                <span className="sale-pill">Sale</span>
+                <div className="spreadsheet-window">
+                  <div className="sheet-top"><span /><span /><span /></div>
+                  <div className="sheet-title">MONTHLY BUDGET</div>
+                  <div className="sheet-content">
+                    <span /><span /><span /><span />
+                    <i /><i /><i />
+                  </div>
+                  <div className="sheet-total"><span>TOTAL</span><strong>£</strong></div>
+                </div>
+                <div className="product-orbit" />
+              </div>
+              <div className="product-copy">
+                <p>Digital download</p>
+                <h2>{product.title}</h2>
+                <span>{product.description}</span>
+                <div>
+                  <p><del>£{product.previousPrice.toFixed(2)}</del><strong>£{product.price.toFixed(2)}</strong></p>
+                  <b>View product <i>↗</i></b>
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+      ) : (
+        <div className="shop-empty">
+          <span>⌕</span>
+          <h2>No products found</h2>
+          <p>Try a different search term.</p>
+        </div>
+      )}
+      <p className="shop-checkout-note">Product details and secure checkout open on the existing Accountant Services shop.</p>
     </div>
   );
 }
