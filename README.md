@@ -47,3 +47,11 @@ pnpm lint
 
 Create a production build with `pnpm build`. The generated Cloudflare-compatible
 output is written to `dist/`.
+
+For the client-facing GitHub Pages version, run `pnpm build:pages`. This writes
+the static presentation site to `docs/`, which is published at:
+
+https://tynarshe.github.io/accountant-services/
+
+GitHub Pages is static hosting, so the live Companies House lookup remains a
+presentation-only journey on this version.
