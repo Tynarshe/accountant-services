@@ -36,6 +36,9 @@ test("server-renders the Accountant Services homepage", async () => {
   assert.match(html, /One expert team/i);
   assert.match(html, /href="\/ltd"/i);
   assert.match(html, /href="\/contact"/i);
+  assert.match(html, />Blog<\/a>/i);
+  assert.match(html, />Additional Services/i);
+  assert.match(html, />Contact Us<\/a>/i);
 });
 
 test("server-renders the company formation journey", async () => {
@@ -77,4 +80,15 @@ test("server-renders the embedded SureCart checkout", async () => {
   assert.match(html, /Accountant Services secure payment checkout/i);
   assert.match(html, /e6360f96-0e5d-446e-bbcb-c99fcaa8b18e/i);
   assert.match(html, /9\.98/i);
+});
+
+test("server-renders the full blog destination", async () => {
+  const response = await render("/blog");
+  assert.equal(response.status, 200);
+
+  const html = await response.text();
+  assert.match(html, /Clear thinking for busy business owners/i);
+  assert.match(html, /What is a Confirmation Statement/i);
+  assert.match(html, /Making Tax Digital for VAT/i);
+  assert.match(html, /href="\/wrapping-up-your-year-end-accounts"/i);
 });

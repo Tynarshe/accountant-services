@@ -1,4 +1,4 @@
-import { MobileNav, Newsletter, ServicesMenu } from "./interactive";
+import { HeaderDropdown, MobileNav, Newsletter } from "./interactive";
 
 export function Logo() {
   return (
@@ -11,22 +11,36 @@ export function Logo() {
 
 export function Header() {
   return (
-    <header className="site-header">
-      <div className="header-inner">
-        <Logo />
-        <nav className="desktop-nav" aria-label="Main navigation">
-          <ServicesMenu />
-          <a href="/blog">Insights</a>
-          <a href="/shop">Shop</a>
-          <a href="/contact">Contact</a>
-        </nav>
-        <div className="header-actions">
-          <a className="phone-link" href="tel:01182077207">0118 207 7207</a>
-          <a className="button button-small button-primary" href="/ltd">Start a company <span>↗</span></a>
+    <>
+      <div className="utility-bar">
+        <div className="utility-inner">
+          <div className="utility-contact">
+            <a href="tel:01182077207">0118 207 7207</a>
+            <a href="mailto:office@accountantservices.org.uk">office@accountantservices.org.uk</a>
+          </div>
+          <div className="utility-social" aria-label="Social media">
+            <a href="https://www.instagram.com/accountantservices_/" target="_blank" rel="noreferrer">Instagram</a>
+            <a href="https://www.youtube.com/channel/UCahMS5YdXwK6caq8oL1s8Cw" target="_blank" rel="noreferrer">YouTube</a>
+            <a href="https://www.tiktok.com/@accountantservices" target="_blank" rel="noreferrer">TikTok</a>
+          </div>
         </div>
-        <MobileNav />
       </div>
-    </header>
+      <header className="site-header">
+        <div className="header-inner">
+          <Logo />
+          <nav className="desktop-nav" aria-label="Main navigation">
+            <HeaderDropdown label="Create" href="/additional-services#create" slugs={["ltd", "registeredoffice", "dormantcompany", "soletrader", "selfassessmentregistration"]} />
+            <HeaderDropdown label="Compliance" href="/additional-services#compliance" slugs={["confirmationstatement", "vatregistration", "payeregistration", "selfassessmentfiling"]} />
+            <HeaderDropdown label="Change" href="/additional-services#change" slugs={["changecompanyname", "changecompanyaddress", "changedirectordetails", "changecapitalshareholders", "changecompanyactivities", "changepscdetails"]} />
+            <a href="/blog">Blog</a>
+            <HeaderDropdown label="Additional Services" href="/additional-services#additional-services" slugs={["virtual-finance-director", "invoice-monitoring-and-tracking", "business-plan", "corporation-tax-filing", "book-keeping"]} />
+            <a href="/shop">Shop</a>
+            <a href="/contact">Contact Us</a>
+          </nav>
+          <MobileNav />
+        </div>
+      </header>
+    </>
   );
 }
 
@@ -51,7 +65,7 @@ export function Footer() {
           <div>
             <h3>Company</h3>
             <a href="/additional-services">All services</a>
-            <a href="/blog">Insights</a>
+            <a href="/blog">Blog</a>
             <a href="/shop">Shop</a>
             <a href="/contact">Contact</a>
             <a href="/privacy-policy">Privacy</a>
