@@ -3,44 +3,12 @@
 import { FormEvent, useState } from "react";
 import { categories, services } from "../lib/services";
 
-const navigationGroups = [
-  {
-    label: "Create",
-    href: "/additional-services#create",
-    slugs: ["ltd", "registeredoffice", "dormantcompany", "soletrader", "selfassessmentregistration"],
-  },
-  {
-    label: "Compliance",
-    href: "/additional-services#compliance",
-    slugs: ["confirmationstatement", "vatregistration", "payeregistration", "selfassessmentfiling"],
-  },
-  {
-    label: "Change",
-    href: "/additional-services#change",
-    slugs: ["changecompanyname", "changecompanyaddress", "changedirectordetails", "changecapitalshareholders", "changecompanyactivities", "changepscdetails"],
-  },
-  {
-    label: "Additional Services",
-    href: "/additional-services#additional-services",
-    slugs: ["virtual-finance-director", "invoice-monitoring-and-tracking", "business-plan", "corporation-tax-filing", "book-keeping"],
-  },
-] as const;
-
-export function HeaderDropdown({
-  label,
-  href,
-  slugs,
-}: {
-  label: string;
-  href: string;
-  slugs: readonly string[];
-}) {
+export function ServicesMenu() {
   const [open, setOpen] = useState(false);
-  const links = slugs.map((slug) => services.find((service) => service.slug === slug)).filter(Boolean);
 
   return (
     <div
-      className="header-dropdown"
+      className="header-dropdown services-dropdown"
       onMouseEnter={() => setOpen(true)}
       onMouseLeave={() => setOpen(false)}
       onBlur={(event) => {
@@ -56,21 +24,37 @@ export function HeaderDropdown({
         aria-expanded={open}
         onClick={() => setOpen((value) => !value)}
       >
-        {label} <span aria-hidden="true">⌄</span>
+        Services <span aria-hidden="true">⌄</span>
       </button>
       {open && (
-        <div className="header-dropdown-panel">
-          <div className="header-dropdown-heading">{label}</div>
-          <div className="header-dropdown-links">
-            {links.map((service) => service && (
-              <a href={`/${service.slug}`} key={service.slug} onClick={() => setOpen(false)}>
-                {service.title}<span>↗</span>
-              </a>
+        <div className="services-mega-menu">
+          <div className="mega-menu-head">
+            <div>
+              <p>Everything in one place</p>
+              <h2>How can we help your business?</h2>
+            </div>
+            <a href="/additional-services" onClick={() => setOpen(false)}>
+              View all services <span>→</span>
+            </a>
+          </div>
+          <div className="mega-menu-grid">
+            {categories.map((category, index) => (
+              <section className="mega-menu-category" key={category.name}>
+                <div className="mega-category-title">
+                  <span>0{index + 1}</span>
+                  <h3>{category.name}</h3>
+                </div>
+                <p>{category.description}</p>
+                <div className="mega-service-links">
+                  {services.filter((service) => service.category === category.name).map((service) => (
+                    <a href={`/${service.slug}`} key={service.slug} onClick={() => setOpen(false)}>
+                      {service.title}<span>↗</span>
+                    </a>
+                  ))}
+                </div>
+              </section>
             ))}
           </div>
-          <a className="header-dropdown-all" href={href} onClick={() => setOpen(false)}>
-            View {label.toLowerCase()} services <span>→</span>
-          </a>
         </div>
       )}
     </div>
@@ -94,31 +78,25 @@ export function MobileNav() {
       </button>
       {open && (
         <div className="mobile-panel">
-          {navigationGroups.slice(0, 3).map((group) => (
-            <details className="mobile-services" key={group.label}>
-              <summary>{group.label} <span aria-hidden="true">+</span></summary>
-              <div className="mobile-service-groups">
-                <section>
-                  {group.slugs.map((slug) => services.find((service) => service.slug === slug)).filter(Boolean).map((service) => service && (
-                    <a href={`/${service.slug}`} key={service.slug} onClick={() => setOpen(false)}>{service.title}<span>↗</span></a>
+          <details className="mobile-services">
+            <summary>Services <span aria-hidden="true">+</span></summary>
+            <div className="mobile-service-groups">
+              {categories.map((category) => (
+                <section key={category.name}>
+                  <h3>{category.name}</h3>
+                  {services.filter((service) => service.category === category.name).map((service) => (
+                    <a href={`/${service.slug}`} key={service.slug} onClick={() => setOpen(false)}>
+                      {service.title}<span>↗</span>
+                    </a>
                   ))}
                 </section>
-                <a className="mobile-all-services" href={group.href} onClick={() => setOpen(false)}>View {group.label.toLowerCase()} services <span>→</span></a>
-              </div>
-            </details>
-          ))}
-          <a href="/blog" onClick={() => setOpen(false)}>Blog</a>
-          <details className="mobile-services">
-            <summary>Additional Services <span aria-hidden="true">+</span></summary>
-            <div className="mobile-service-groups">
-              <section>
-                {navigationGroups[3].slugs.map((slug) => services.find((service) => service.slug === slug)).filter(Boolean).map((service) => service && (
-                  <a href={`/${service.slug}`} key={service.slug} onClick={() => setOpen(false)}>{service.title}<span>↗</span></a>
-                ))}
-              </section>
-              <a className="mobile-all-services" href="/additional-services" onClick={() => setOpen(false)}>View all additional services <span>→</span></a>
+              ))}
+              <a className="mobile-all-services" href="/additional-services" onClick={() => setOpen(false)}>
+                View all services <span>→</span>
+              </a>
             </div>
           </details>
+          <a href="/blog" onClick={() => setOpen(false)}>Blog</a>
           <a href="/shop" onClick={() => setOpen(false)}>Shop</a>
           <a href="/contact" onClick={() => setOpen(false)}>Contact Us</a>
           <a className="button button-primary" href="/ltd" onClick={() => setOpen(false)}>Start a company <span>↗</span></a>

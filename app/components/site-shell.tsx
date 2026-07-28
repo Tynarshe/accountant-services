@@ -1,4 +1,4 @@
-import { HeaderDropdown, MobileNav, Newsletter } from "./interactive";
+import { MobileNav, Newsletter, ServicesMenu } from "./interactive";
 
 export function Logo() {
   return (
@@ -29,11 +29,8 @@ export function Header() {
         <div className="header-inner">
           <Logo />
           <nav className="desktop-nav" aria-label="Main navigation">
-            <HeaderDropdown label="Create" href="/additional-services#create" slugs={["ltd", "registeredoffice", "dormantcompany", "soletrader", "selfassessmentregistration"]} />
-            <HeaderDropdown label="Compliance" href="/additional-services#compliance" slugs={["confirmationstatement", "vatregistration", "payeregistration", "selfassessmentfiling"]} />
-            <HeaderDropdown label="Change" href="/additional-services#change" slugs={["changecompanyname", "changecompanyaddress", "changedirectordetails", "changecapitalshareholders", "changecompanyactivities", "changepscdetails"]} />
+            <ServicesMenu />
             <a href="/blog">Blog</a>
-            <HeaderDropdown label="Additional Services" href="/additional-services#additional-services" slugs={["virtual-finance-director", "invoice-monitoring-and-tracking", "business-plan", "corporation-tax-filing", "book-keeping"]} />
             <a href="/shop">Shop</a>
             <a href="/contact">Contact Us</a>
           </nav>

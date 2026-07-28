@@ -37,7 +37,7 @@ test("server-renders the Accountant Services homepage", async () => {
   assert.match(html, /href="\/ltd"/i);
   assert.match(html, /href="\/contact"/i);
   assert.match(html, />Blog<\/a>/i);
-  assert.match(html, />Additional Services/i);
+  assert.match(html, />Services/i);
   assert.match(html, />Contact Us<\/a>/i);
   assert.match(html, /Three useful reads/i);
   assert.doesNotMatch(html, /What is a Confirmation Statement\?/i);

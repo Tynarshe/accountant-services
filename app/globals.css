@@ -48,6 +48,7 @@ button { color: inherit; }
 .desktop-nav > a::after { content: ""; position: absolute; left: 0; right: 100%; bottom: -7px; height: 2px; background: var(--coral); transition: right .25s ease; }
 .desktop-nav > a:hover::after { right: 0; }
 .header-dropdown { position: relative; }
+.services-dropdown { position: static; }
 .header-dropdown-trigger { position: relative; padding: 28px 0; display: inline-flex; align-items: center; gap: 6px; background: transparent; border: 0; font-size: 14px; font-weight: 650; white-space: nowrap; cursor: pointer; }
 .header-dropdown-trigger::after { content: ""; position: absolute; left: 0; right: 100%; bottom: 20px; height: 2px; background: var(--coral); transition: right .25s ease; }
 .header-dropdown-trigger:hover::after, .header-dropdown-trigger[aria-expanded="true"]::after { right: 0; }
