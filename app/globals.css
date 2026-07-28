@@ -281,7 +281,7 @@ button { color: inherit; }
 .final-cta-inner > div:last-child > p { margin: 0 0 28px; color: rgba(255,255,255,.67); font-size: 17px; }
 .final-cta-inner > div:last-child > div { display: flex; align-items: center; gap: 28px; }
 
-.site-footer { color: rgba(255,255,255,.72); background: #082628; }
+.site-footer { color: rgba(255,255,255,.72); background: var(--forest-deep); }
 .site-footer .logo { color: var(--white); }
 .site-footer .logo-mark { color: var(--forest); background: var(--mint); }
 .footer-top { padding: 84px 0 66px; display: grid; grid-template-columns: 1fr 1.35fr; gap: 90px; }
