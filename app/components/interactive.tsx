@@ -244,7 +244,7 @@ export function CompanySearch() {
         <button type="submit" aria-label="Search Companies House">Search <span>→</span></button>
       </div>
       <p className="form-note" id="company-search-note">
-        Find an existing company or check a name to register. <a href="/ltd">Ready to register? Start here →</a>
+        Search the public Companies House register or check whether a company name is already in use.
       </p>
     </form>
   );

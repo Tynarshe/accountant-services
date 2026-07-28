@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { CompanySearch } from "./components/interactive";
 import { SiteShell } from "./components/site-shell";
 import { articles, visibleCategories, visibleServices } from "./lib/services";
 
@@ -20,6 +21,7 @@ export default function Home() {
             <div className="eyebrow light"><span /> Expert-backed. Human-hearted.</div>
             <h1>Business, made<br /><em>brilliantly simple.</em></h1>
             <p className="hero-lede">Change and grow your UK business with calm, capable support—online when you want it, human when you need it.</p>
+            <CompanySearch />
             <div className="hero-buttons">
               <a className="button button-accent" href="/#services">Find your service <span>↓</span></a>
               <a className="text-link light-link" href="/contact">Talk to a specialist <span>↗</span></a>

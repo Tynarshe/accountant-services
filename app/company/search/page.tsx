@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
 import { CompanySearch } from "../../components/interactive";
 import { SiteShell } from "../../components/site-shell";
 import { lookupCompany } from "../../lib/company-lookup";
@@ -13,23 +12,7 @@ type PageProps = {
   searchParams: Promise<{ company?: string | string[] }>;
 };
 
-function Progress({ active }: { active: 1 | 2 }) {
-  const steps = ["Search name", "Select formation package", "Submit order", "Company details"];
-
-  return (
-    <ol className="flow-progress" aria-label="Company formation progress">
-      {steps.map((step, index) => (
-        <li className={index + 1 <= active ? "is-active" : ""} key={step}>
-          <span>{index + 1 < active ? "✓" : index + 1}</span>
-          <small>{step}</small>
-        </li>
-      ))}
-    </ol>
-  );
-}
-
 export default async function CompanySearchPage({ searchParams }: PageProps) {
-  notFound();
   const params = await searchParams;
   const rawCompany = Array.isArray(params.company) ? params.company[0] : params.company || "";
   const result = await lookupCompany(rawCompany);
@@ -51,8 +34,6 @@ export default async function CompanySearchPage({ searchParams }: PageProps) {
 
       <section className="company-result-page section-space">
         <div className="page-shell result-shell reveal-up delay-one">
-          <Progress active={1} />
-
           {result.state === "empty" && (
             <div className="result-panel result-empty">
               <span className="result-icon">⌕</span>
@@ -69,8 +50,7 @@ export default async function CompanySearchPage({ searchParams }: PageProps) {
               <h2>{result.query.toUpperCase()}</h2>
               <p className="result-lede">This name appears to be available to register today.</p>
               <div className="result-action-row">
-                <a className="button button-primary" href={`/ltd/ltd-pricing?company=${encodeURIComponent(result.query)}`}>Register now <span>↗</span></a>
-                <a className="text-link" href="/">Search again <span>→</span></a>
+                <a className="button button-primary" href="/">Search another name <span>→</span></a>
               </div>
               <small>Availability is based on the current Companies House search and remains subject to its final approval.</small>
             </div>
@@ -99,7 +79,7 @@ export default async function CompanySearchPage({ searchParams }: PageProps) {
                 </dl>
                 <div className="company-card-actions">
                   <a className="button button-primary" href={`https://find-and-update.company-information.service.gov.uk/company/${encodeURIComponent(result.company.number)}`}>View full profile <span>↗</span></a>
-                  <a className="text-link" href="/ltd">Form a new company <span>→</span></a>
+                  <a className="text-link" href="/">Search another company <span>→</span></a>
                 </div>
               </article>
             </>

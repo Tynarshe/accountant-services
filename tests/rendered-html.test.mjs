@@ -32,6 +32,7 @@ test("server-renders the Accountant Services homepage", async () => {
     html,
     /<title>Business, made brilliantly simple \| Accountant Services<\/title>/i,
   );
+  assert.match(html, /Search Companies House/i);
   assert.match(html, /One expert team/i);
   assert.match(html, /href="\/contact"/i);
   assert.match(html, />Blog<\/a>/i);
@@ -53,11 +54,19 @@ test("hides the company formation journey", async () => {
 test("hides create and compliance service pages", async () => {
   const createResponse = await render("/registeredoffice");
   const complianceResponse = await render("/confirmationstatement");
-  const searchResponse = await render("/company/search?company=Example");
 
   assert.equal(createResponse.status, 404);
   assert.equal(complianceResponse.status, 404);
-  assert.equal(searchResponse.status, 404);
+});
+
+test("keeps Companies House search available without formation links", async () => {
+  const response = await render("/company/search?company=Example");
+  assert.equal(response.status, 200);
+
+  const html = await response.text();
+  assert.match(html, /Companies House search/i);
+  assert.doesNotMatch(html, /href="\/ltd/i);
+  assert.doesNotMatch(html, /Register now/i);
 });
 
 test("hides the shop catalogue", async () => {
