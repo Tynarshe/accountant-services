@@ -240,6 +240,9 @@ export const categories = [
 ] as const;
 
 export const serviceBySlug = Object.fromEntries(services.map((service) => [service.slug, service]));
+export const visibleCategories = categories.filter((category) => category.name === "Change" || category.name === "Grow");
+export const visibleServices = services.filter((service) => service.category === "Change" || service.category === "Grow");
+export const visibleServiceBySlug = Object.fromEntries(visibleServices.map((service) => [service.slug, service]));
 
 export const articles = [
   {

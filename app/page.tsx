@@ -1,14 +1,13 @@
 import type { Metadata } from "next";
-import { CompanySearch } from "./components/interactive";
 import { SiteShell } from "./components/site-shell";
-import { articles, categories, services } from "./lib/services";
+import { articles, visibleCategories, visibleServices } from "./lib/services";
 
 export const metadata: Metadata = {
   title: "Business, made brilliantly simple",
-  description: "Start, run and grow your UK business with expert-backed online filings and human support.",
+  description: "Change and grow your UK business with expert-backed online support and human guidance.",
 };
 
-const featured = ["ltd", "confirmationstatement", "vatregistration", "book-keeping"];
+const featured = ["changecompanyname", "book-keeping", "virtual-finance-director", "business-plan"];
 
 export default function Home() {
   return (
@@ -20,8 +19,7 @@ export default function Home() {
           <div className="hero-copy reveal-up">
             <div className="eyebrow light"><span /> Expert-backed. Human-hearted.</div>
             <h1>Business, made<br /><em>brilliantly simple.</em></h1>
-            <p className="hero-lede">Start, run and grow your UK business with calm, capable support—online when you want it, human when you need it.</p>
-            <CompanySearch />
+            <p className="hero-lede">Change and grow your UK business with calm, capable support—online when you want it, human when you need it.</p>
             <div className="hero-buttons">
               <a className="button button-accent" href="/#services">Find your service <span>↓</span></a>
               <a className="text-link light-link" href="/contact">Talk to a specialist <span>↗</span></a>
@@ -41,15 +39,15 @@ export default function Home() {
                 <button aria-label="Open dashboard options">•••</button>
               </div>
               <div className="dashboard-heading">
-                <span>Next filing</span>
-                <strong>Confirmation statement</strong>
-                <small>Due in 28 days</small>
+                <span>Your finance view</span>
+                <strong>Monthly business overview</strong>
+                <small>Updated today</small>
               </div>
               <div className="progress-track"><span /></div>
               <div className="dashboard-list">
-                <div><span className="list-icon done">✓</span><p><strong>Company formed</strong><small>Complete</small></p><span>↗</span></div>
-                <div><span className="list-icon active">02</span><p><strong>VAT registration</strong><small>Expert review</small></p><span>↗</span></div>
-                <div><span className="list-icon">03</span><p><strong>Annual accounts</strong><small>Not started</small></p><span>↗</span></div>
+                <div><span className="list-icon done">✓</span><p><strong>Records organised</strong><small>Up to date</small></p><span>↗</span></div>
+                <div><span className="list-icon active">02</span><p><strong>Cash-flow review</strong><small>Expert review</small></p><span>↗</span></div>
+                <div><span className="list-icon">03</span><p><strong>Business plan</strong><small>Next step</small></p><span>↗</span></div>
               </div>
               <div className="expert-chip">
                 <span className="avatar">AS</span>
@@ -76,8 +74,8 @@ export default function Home() {
             <p>Whether you’re forming a company, filing a return or planning what’s next, start with the outcome you need.</p>
           </div>
           <div className="category-grid">
-            {categories.map((category, index) => {
-              const categoryServices = services.filter((service) => service.category === category.name).slice(0, 4);
+            {visibleCategories.map((category, index) => {
+              const categoryServices = visibleServices.filter((service) => service.category === category.name).slice(0, 4);
               return (
                 <article className={`category-card category-${index + 1}`} key={category.name}>
                   <div className="category-number">0{index + 1}</div>
@@ -125,7 +123,7 @@ export default function Home() {
             <div className="process-step"><span>2</span><div className="process-icon">✎</div><h3>Tell us the essentials</h3><p>Complete a focused online form in around 15 minutes.</p></div>
             <div className="process-step"><span>3</span><div className="process-icon">✓</div><h3>We check and file</h3><p>An expert reviews the details, submits and keeps you updated.</p></div>
           </div>
-          <div className="process-cta"><a className="button button-primary" href="/ltd">Start with company formation <span>↗</span></a><p>Not sure where to begin? <a href="/contact">Ask us →</a></p></div>
+          <div className="process-cta"><a className="button button-primary" href="/contact">Talk to an expert <span>↗</span></a><p>Not sure where to begin? <a href="/contact">Ask us →</a></p></div>
         </div>
       </section>
 
@@ -133,7 +131,7 @@ export default function Home() {
         <div className="page-shell">
           <div className="section-heading split-heading compact"><div><div className="eyebrow"><span /> Popular right now</div><h2>Start with what matters today.</h2></div><a className="text-link" href="/additional-services">See every service <span>→</span></a></div>
           <div className="popular-grid">
-            {services.filter((service) => featured.includes(service.slug)).map((service, index) => (
+            {visibleServices.filter((service) => featured.includes(service.slug)).map((service, index) => (
               <a className="popular-card" href={`/${service.slug}`} key={service.slug}>
                 <span className="popular-index">0{index + 1}</span>
                 <span className={`service-glyph glyph-${index + 1}`}>{index === 0 ? "A+" : index === 1 ? "✓" : index === 2 ? "%" : "£"}</span>

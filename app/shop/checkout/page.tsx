@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import { SiteShell } from "../../components/site-shell";
 
 export const metadata: Metadata = {
@@ -13,6 +14,7 @@ type CheckoutProps = {
 const sureCartPriceId = "e6360f96-0e5d-446e-bbcb-c99fcaa8b18e";
 
 export default async function CheckoutPage({ searchParams }: CheckoutProps) {
+  notFound();
   const { quantity: requestedQuantity } = await searchParams;
   const parsedQuantity = Number.parseInt(requestedQuantity ?? "1", 10);
   const quantity = Number.isFinite(parsedQuantity) ? Math.min(10, Math.max(1, parsedQuantity)) : 1;

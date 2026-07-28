@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import { SiteShell } from "../../components/site-shell";
 
 export const metadata: Metadata = {
@@ -28,6 +29,7 @@ const packages = [
 ];
 
 export default async function PricingPage({ searchParams }: PageProps) {
+  notFound();
   const params = await searchParams;
   const rawCompany = Array.isArray(params.company) ? params.company[0] : params.company || "Your new company";
   const company = rawCompany.trim().slice(0, 160) || "Your new company";

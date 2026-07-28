@@ -32,56 +32,47 @@ test("server-renders the Accountant Services homepage", async () => {
     html,
     /<title>Business, made brilliantly simple \| Accountant Services<\/title>/i,
   );
-  assert.match(html, /Search Companies House/i);
   assert.match(html, /One expert team/i);
-  assert.match(html, /href="\/ltd"/i);
   assert.match(html, /href="\/contact"/i);
   assert.match(html, />Blog<\/a>/i);
   assert.match(html, />Services/i);
   assert.match(html, />Contact Us<\/a>/i);
+  assert.doesNotMatch(html, /href="\/shop"/i);
+  assert.doesNotMatch(html, /href="\/ltd"/i);
+  assert.doesNotMatch(html, /Confirmation statement/i);
+  assert.doesNotMatch(html, /VAT registration/i);
   assert.match(html, /Three useful reads/i);
   assert.doesNotMatch(html, /What is a Confirmation Statement\?/i);
 });
 
-test("server-renders the company formation journey", async () => {
+test("hides the company formation journey", async () => {
   const response = await render("/ltd");
-  assert.equal(response.status, 200);
-
-  const html = await response.text();
-  assert.match(html, /Limited company formation/i);
-  assert.match(html, /Companies House/i);
-  assert.match(html, /href="#get-started"/i);
+  assert.equal(response.status, 404);
 });
 
-test("server-renders the shop catalogue", async () => {
+test("hides create and compliance service pages", async () => {
+  const createResponse = await render("/registeredoffice");
+  const complianceResponse = await render("/confirmationstatement");
+  const searchResponse = await render("/company/search?company=Example");
+
+  assert.equal(createResponse.status, 404);
+  assert.equal(complianceResponse.status, 404);
+  assert.equal(searchResponse.status, 404);
+});
+
+test("hides the shop catalogue", async () => {
   const response = await render("/shop");
-  assert.equal(response.status, 200);
-
-  const html = await response.text();
-  assert.match(html, /Monthly Budgeting Spreadsheet/i);
-  assert.match(html, /4\.99/i);
-  assert.match(html, /Search the shop/i);
-  assert.match(html, /href="\/shop\/monthly-budget"/i);
+  assert.equal(response.status, 404);
 });
 
-test("server-renders the internal product page", async () => {
+test("hides the internal product page", async () => {
   const response = await render("/shop/monthly-budget");
-  assert.equal(response.status, 200);
-
-  const html = await response.text();
-  assert.match(html, /Monthly Budgeting Spreadsheet/i);
-  assert.match(html, /Buy now securely/i);
-  assert.match(html, /href="\/shop\/checkout\?quantity=1"/i);
+  assert.equal(response.status, 404);
 });
 
-test("server-renders the embedded SureCart checkout", async () => {
+test("hides the embedded checkout", async () => {
   const response = await render("/shop/checkout?quantity=2");
-  assert.equal(response.status, 200);
-
-  const html = await response.text();
-  assert.match(html, /Accountant Services secure payment checkout/i);
-  assert.match(html, /e6360f96-0e5d-446e-bbcb-c99fcaa8b18e/i);
-  assert.match(html, /9\.98/i);
+  assert.equal(response.status, 404);
 });
 
 test("server-renders the full blog destination", async () => {

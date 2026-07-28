@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import { BudgetProductArt, ProductPurchase } from "../../components/interactive";
 import { SiteShell } from "../../components/site-shell";
 
@@ -8,6 +9,7 @@ export const metadata: Metadata = {
 };
 
 export default function MonthlyBudgetPage() {
+  notFound();
   return (
     <SiteShell>
       <section className="product-detail">

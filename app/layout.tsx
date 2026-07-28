@@ -4,15 +4,15 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL("https://accountantservices.org.uk"),
   title: {
-    default: "Accountant Services | Start, run and grow with confidence",
+    default: "Accountant Services | Change and grow with confidence",
     template: "%s | Accountant Services",
   },
   description:
-    "Straightforward company formation, Companies House filings and HMRC support for ambitious UK businesses.",
+    "Straightforward company changes and ongoing finance support for ambitious UK businesses.",
   openGraph: {
     title: "Accountant Services | Business, made brilliantly simple",
     description:
-      "Start, run and grow your UK business with expert-backed online filings and human support.",
+      "Change and grow your UK business with expert-backed online support and human guidance.",
     type: "website",
     locale: "en_GB",
     siteName: "Accountant Services",
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Accountant Services | Business, made brilliantly simple",
     description:
-      "Expert-backed online filings and human support for UK businesses.",
+      "Expert-backed company changes and finance support for UK businesses.",
     images: ["/og.png"],
   },
 };

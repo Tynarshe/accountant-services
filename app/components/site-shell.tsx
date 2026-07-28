@@ -31,7 +31,6 @@ export function Header() {
           <nav className="desktop-nav" aria-label="Main navigation">
             <ServicesMenu />
             <a href="/blog">Blog</a>
-            <a href="/shop">Shop</a>
             <a href="/contact">Contact Us</a>
           </nav>
           <MobileNav />
@@ -53,17 +52,16 @@ export function Footer() {
         </div>
         <div className="footer-links">
           <div>
-            <h3>Start & run</h3>
-            <a href="/ltd">Company formation</a>
-            <a href="/confirmationstatement">Confirmation statement</a>
-            <a href="/vatregistration">VAT registration</a>
+            <h3>Services</h3>
+            <a href="/changecompanyname">Company changes</a>
+            <a href="/virtual-finance-director">Virtual finance director</a>
             <a href="/book-keeping">Bookkeeping</a>
+            <a href="/business-plan">Business planning</a>
           </div>
           <div>
             <h3>Company</h3>
             <a href="/additional-services">All services</a>
             <a href="/blog">Blog</a>
-            <a href="/shop">Shop</a>
             <a href="/contact">Contact</a>
             <a href="/privacy-policy">Privacy</a>
           </div>

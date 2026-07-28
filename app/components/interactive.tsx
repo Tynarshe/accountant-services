@@ -1,7 +1,7 @@
 "use client";
 
 import { FormEvent, useState } from "react";
-import { categories, services } from "../lib/services";
+import { visibleCategories, visibleServices } from "../lib/services";
 
 export function ServicesMenu() {
   const [open, setOpen] = useState(false);
@@ -38,7 +38,7 @@ export function ServicesMenu() {
             </a>
           </div>
           <div className="mega-menu-grid">
-            {categories.map((category, index) => (
+            {visibleCategories.map((category, index) => (
               <section className="mega-menu-category" key={category.name}>
                 <div className="mega-category-title">
                   <span>0{index + 1}</span>
@@ -46,7 +46,7 @@ export function ServicesMenu() {
                 </div>
                 <p>{category.description}</p>
                 <div className="mega-service-links">
-                  {services.filter((service) => service.category === category.name).map((service) => (
+                  {visibleServices.filter((service) => service.category === category.name).map((service) => (
                     <a href={`/${service.slug}`} key={service.slug} onClick={() => setOpen(false)}>
                       {service.title}<span>↗</span>
                     </a>
@@ -81,10 +81,10 @@ export function MobileNav() {
           <details className="mobile-services">
             <summary>Services <span aria-hidden="true">+</span></summary>
             <div className="mobile-service-groups">
-              {categories.map((category) => (
+              {visibleCategories.map((category) => (
                 <section key={category.name}>
                   <h3>{category.name}</h3>
-                  {services.filter((service) => service.category === category.name).map((service) => (
+                  {visibleServices.filter((service) => service.category === category.name).map((service) => (
                     <a href={`/${service.slug}`} key={service.slug} onClick={() => setOpen(false)}>
                       {service.title}<span>↗</span>
                     </a>
@@ -97,9 +97,8 @@ export function MobileNav() {
             </div>
           </details>
           <a href="/blog" onClick={() => setOpen(false)}>Blog</a>
-          <a href="/shop" onClick={() => setOpen(false)}>Shop</a>
           <a href="/contact" onClick={() => setOpen(false)}>Contact Us</a>
-          <a className="button button-primary" href="/ltd" onClick={() => setOpen(false)}>Start a company <span>↗</span></a>
+          <a className="button button-primary" href="/contact" onClick={() => setOpen(false)}>Talk to an expert <span>↗</span></a>
         </div>
       )}
     </div>
@@ -279,8 +278,6 @@ export function ContactForm() {
       <label>Email address<input required type="email" name="email" autoComplete="email" /></label>
       <label>How can we help?<select name="topic" defaultValue="">
         <option value="" disabled>Choose a service</option>
-        <option>Start a business</option>
-        <option>File with Companies House or HMRC</option>
         <option>Make a company change</option>
         <option>Ongoing accounting support</option>
       </select></label>

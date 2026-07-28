@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import { CompanySearch } from "../../components/interactive";
 import { SiteShell } from "../../components/site-shell";
 import { lookupCompany } from "../../lib/company-lookup";
@@ -28,6 +29,7 @@ function Progress({ active }: { active: 1 | 2 }) {
 }
 
 export default async function CompanySearchPage({ searchParams }: PageProps) {
+  notFound();
   const params = await searchParams;
   const rawCompany = Array.isArray(params.company) ? params.company[0] : params.company || "";
   const result = await lookupCompany(rawCompany);

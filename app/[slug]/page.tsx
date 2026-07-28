@@ -2,14 +2,14 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ContactForm, ShopCatalogue } from "../components/interactive";
 import { SiteShell } from "../components/site-shell";
-import { articles, categories, serviceBySlug, services } from "../lib/services";
+import { articles, visibleCategories, visibleServiceBySlug, visibleServices } from "../lib/services";
 
 type PageProps = { params: Promise<{ slug: string }> };
 
 const utilityPages: Record<string, { title: string; description: string }> = {
   "additional-services": {
-    title: "Services for every business chapter",
-    description: "Explore the complete range of company formation, filing, change and ongoing finance services.",
+    title: "Services for changing and growing businesses",
+    description: "Explore company change, planning and ongoing finance services.",
   },
   contact: {
     title: "Let’s make the next step clearer",
@@ -18,10 +18,6 @@ const utilityPages: Record<string, { title: string; description: string }> = {
   blog: {
     title: "Useful thinking for busy business owners",
     description: "Plain-English guides, timely reminders and practical ideas for starting and running a UK business.",
-  },
-  shop: {
-    title: "Shop",
-    description: "Practical financial tools designed to make everyday money management clearer and easier.",
   },
   "privacy-policy": {
     title: "Privacy policy",
@@ -35,7 +31,7 @@ const utilityPages: Record<string, { title: string; description: string }> = {
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
-  const service = serviceBySlug[slug];
+  const service = visibleServiceBySlug[slug];
   const article = articles.find((item) => item.slug === slug);
   const utility = utilityPages[slug];
 
@@ -50,8 +46,8 @@ function Breadcrumb({ current }: { current: string }) {
 }
 
 function ServicePage({ slug }: { slug: string }) {
-  const service = serviceBySlug[slug];
-  const related = services.filter((item) => item.category === service.category && item.slug !== service.slug).slice(0, 3);
+  const service = visibleServiceBySlug[slug];
+  const related = visibleServices.filter((item) => item.category === service.category && item.slug !== service.slug).slice(0, 3);
 
   return (
     <>
@@ -131,7 +127,7 @@ function ServicesPage() {
     <>
       <section className="inner-hero directory-hero"><div className="inner-orb" /><div className="page-shell"><Breadcrumb current="All services" /><div className="inner-hero-copy narrow reveal-up"><div className="eyebrow light"><span /> One team, every chapter</div><h1>Support built around the outcome you need.</h1><p>Browse by business moment, then choose the service that gets you there with less friction.</p></div></div></section>
       <section className="directory section-space"><div className="page-shell">
-        {categories.map((category, index) => <div className="directory-group" id={category.name === "Start" ? "create" : category.name === "Grow" ? "additional-services" : category.name.toLowerCase()} key={category.name}><div className="directory-heading"><span>0{index + 1}</span><div><p>{category.eyebrow}</p><h2>{category.title}</h2></div></div><div className="directory-list">{services.filter((service) => service.category === category.name).map((service) => <a href={`/${service.slug}`} key={service.slug}><div><h3>{service.title}</h3><p>{service.short}</p></div><div><span>{service.price}</span><strong>↗</strong></div></a>)}</div></div>)}
+        {visibleCategories.map((category, index) => <div className="directory-group" id={category.name === "Grow" ? "additional-services" : category.name.toLowerCase()} key={category.name}><div className="directory-heading"><span>0{index + 1}</span><div><p>{category.eyebrow}</p><h2>{category.title}</h2></div></div><div className="directory-list">{visibleServices.filter((service) => service.category === category.name).map((service) => <a href={`/${service.slug}`} key={service.slug}><div><h3>{service.title}</h3><p>{service.short}</p></div><div><span>{service.price}</span><strong>↗</strong></div></a>)}</div></div>)}
       </div></section>
     </>
   );
@@ -195,10 +191,9 @@ export default async function DynamicPage({ params }: PageProps) {
   const { slug } = await params;
   let content: React.ReactNode;
 
-  if (serviceBySlug[slug]) content = <ServicePage slug={slug} />;
+  if (visibleServiceBySlug[slug]) content = <ServicePage slug={slug} />;
   else if (articles.some((item) => item.slug === slug)) content = <ArticlePage slug={slug} />;
   else if (slug === "additional-services") content = <ServicesPage />;
-  else if (slug === "shop") content = <ShopPage />;
   else if (slug === "contact") content = <ContactPage />;
   else if (slug === "blog") content = <BlogPage />;
   else if (slug === "privacy-policy" || slug === "terms-conditions") content = <LegalPage slug={slug} />;
