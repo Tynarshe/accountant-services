@@ -4,15 +4,15 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL("https://accountantservices.org.uk"),
   title: {
-    default: "Accountant Services | Start, run and grow with confidence",
+    default: "Accountant Services | Support shaped around your business",
     template: "%s | Accountant Services",
   },
   description:
-    "Straightforward company formation, Companies House filings and HMRC support for ambitious UK businesses.",
+    "Tailored business plans, book keeping, dormant company filing and company secretarial support for UK businesses.",
   openGraph: {
-    title: "Accountant Services | Business, made brilliantly simple",
+    title: "Accountant Services | Support shaped around your business",
     description:
-      "Start, run and grow your UK business with expert-backed online filings and human support.",
+      "Focused accounting and company services, combined around what your business needs.",
     type: "website",
     locale: "en_GB",
     siteName: "Accountant Services",
@@ -21,15 +21,15 @@ export const metadata: Metadata = {
         url: "/og.png",
         width: 1728,
         height: 907,
-        alt: "Accountant Services — Business, made brilliantly simple.",
+        alt: "Accountant Services — support shaped around your business.",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Accountant Services | Business, made brilliantly simple",
+    title: "Accountant Services | Support shaped around your business",
     description:
-      "Expert-backed online filings and human support for UK businesses.",
+      "Tailored business plans, book keeping, dormant filing and company secretarial support.",
     images: ["/og.png"],
   },
 };
