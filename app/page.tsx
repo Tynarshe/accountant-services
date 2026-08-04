@@ -180,7 +180,7 @@ export default function Home() {
 
       <section className="final-cta">
         <div className="page-shell final-cta-inner">
-          <div><div className="eyebrow light"><span /> Let’s make it clearer</div><h2><span>Bring us the question.</span><span>We’ll help define the next step.</span></h2></div>
+          <div><div className="eyebrow light"><span /> Let’s make it clearer</div><h2><span>Bring us the question.</span><span>We’ll help define</span><span>the next step.</span></h2></div>
           <div><p>Whether you know exactly what you need or simply know something needs attention, start with a short request.</p><div><a className="button button-accent" href="#quotation">Request a tailored quotation <span>↗</span></a><a className="text-link light-link" href="tel:01182077207">Call 0118 207 7207 <span>→</span></a></div></div>
         </div>
       </section>
