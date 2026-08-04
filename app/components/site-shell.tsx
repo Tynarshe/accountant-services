@@ -1,10 +1,10 @@
-import { MobileNav, Newsletter, ServicesMenu } from "./interactive";
+import { MobileNav, ServicesMenu } from "./interactive";
 
 export function Logo() {
   return (
     <a className="logo" href="/" aria-label="Accountant Services home">
       <span className="logo-mark" aria-hidden="true">A<span>.</span></span>
-      <span className="logo-type">Accountant<br />Services</span>
+      <span className="logo-type">Accountant<br />Services Ltd.</span>
     </a>
   );
 }
@@ -32,6 +32,7 @@ export function Header() {
             <ServicesMenu />
             <a href="/blog">Blog</a>
             <a href="/contact">Contact Us</a>
+            <a className="header-quote-link" href="/#quotation">Get a quotation <span>↗</span></a>
           </nav>
           <MobileNav />
         </div>
@@ -47,16 +48,16 @@ export function Footer() {
         <div className="footer-intro">
           <Logo />
           <h2>Good business starts with clearer numbers.</h2>
-          <p>One useful email each month. Practical updates, deadlines and ideas for UK business owners.</p>
-          <Newsletter />
+          <p>Focused accounting and company support, tailored to what your business needs now.</p>
+          <a className="footer-quote-link" href="/#quotation">Request a tailored quotation <span>↗</span></a>
         </div>
         <div className="footer-links">
           <div>
             <h3>Services</h3>
-            <a href="/changecompanyname">Company changes</a>
-            <a href="/virtual-finance-director">Virtual finance director</a>
-            <a href="/book-keeping">Bookkeeping</a>
-            <a href="/business-plan">Business planning</a>
+            <a href="/business-plan">Business Plan</a>
+            <a href="/book-keeping">Book Keeping</a>
+            <a href="/dormantcompany">Dormant Company Filing</a>
+            <a href="/company-secretarial">Company Secretarial</a>
           </div>
           <div>
             <h3>Company</h3>

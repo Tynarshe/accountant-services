@@ -30,8 +30,8 @@ export function ServicesMenu() {
         <div className="services-mega-menu">
           <div className="mega-menu-head">
             <div>
-              <p>Everything in one place</p>
-              <h2>How can we help your business?</h2>
+              <p>Focused support, tailored to you</p>
+              <h2>Focused services. One experienced team.</h2>
             </div>
             <a href="/additional-services" onClick={() => setOpen(false)}>
               View all services <span>→</span>
@@ -98,7 +98,7 @@ export function MobileNav() {
           </details>
           <a href="/blog" onClick={() => setOpen(false)}>Blog</a>
           <a href="/contact" onClick={() => setOpen(false)}>Contact Us</a>
-          <a className="button button-primary" href="/contact" onClick={() => setOpen(false)}>Talk to an expert <span>↗</span></a>
+          <a className="button button-primary" href="/#quotation" onClick={() => setOpen(false)}>Get a tailored quotation <span>↗</span></a>
         </div>
       )}
     </div>
@@ -224,84 +224,111 @@ export function ProductPurchase() {
   );
 }
 
-export function CompanySearch() {
-  return (
-    <form
-      className="company-search"
-      action="/company/search"
-      method="get"
-    >
-      <label htmlFor="company-name">Search Companies House</label>
-      <div className="search-row">
-        <input
-          id="company-name"
-          name="company"
-          placeholder="Enter a company name"
-          autoComplete="organization"
-          aria-describedby="company-search-note"
-          required
-        />
-        <button type="submit" aria-label="Search Companies House">Search <span>→</span></button>
-      </div>
-      <p className="form-note" id="company-search-note">
-        Search the public Companies House register or check whether a company name is already in use.
-      </p>
-    </form>
-  );
-}
+const quotationServices = [
+  ...visibleServices.map((service) => service.title),
+  "Something else / not sure yet",
+];
 
-export function ContactForm() {
-  const [sent, setSent] = useState(false);
+export function QuotationForm({ compact = false }: { compact?: boolean }) {
+  const [prepared, setPrepared] = useState(false);
+  const [formError, setFormError] = useState("");
+  const [selectedServices, setSelectedServices] = useState<string[]>([]);
 
   function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    setSent(true);
-  }
+    const data = new FormData(event.currentTarget);
+    const selectedServices = data.getAll("services").map(String);
 
-  if (sent) {
-    return (
-      <div className="form-success" role="status">
-        <span>✓</span>
-        <h3>Thanks — your message is ready.</h3>
-        <p>This design demo keeps your details private. In the live build, this would connect securely to the enquiry team.</p>
-        <button className="text-link" type="button" onClick={() => setSent(false)}>Send another enquiry →</button>
-      </div>
-    );
+    if (selectedServices.length === 0) {
+      setFormError("Please choose at least one service.");
+      event.currentTarget.querySelector<HTMLDetailsElement>(".quote-service-picker")?.setAttribute("open", "");
+      return;
+    }
+
+    setFormError("");
+    const name = String(data.get("name") ?? "").trim();
+    const businessName = String(data.get("businessName") ?? "").trim();
+    const email = String(data.get("email") ?? "").trim();
+    const phone = String(data.get("phone") ?? "").trim() || "Not provided";
+    const businessStage = String(data.get("businessStage") ?? "Not specified");
+    const preferredContact = String(data.get("preferredContact") ?? "Email");
+    const details = String(data.get("details") ?? "").trim() || "No additional details provided.";
+    const subject = `Quotation request from ${businessName || name}`;
+    const body = [
+      "Hello Accountant Services,",
+      "",
+      "I would like a tailored quotation for:",
+      ...selectedServices.map((service) => `• ${service}`),
+      "",
+      `Name: ${name}`,
+      `Business: ${businessName || "Not provided"}`,
+      `Email: ${email}`,
+      `Phone: ${phone}`,
+      `Business stage: ${businessStage}`,
+      `Preferred contact: ${preferredContact}`,
+      "",
+      "What I need:",
+      details,
+    ].join("\n");
+
+    setPrepared(true);
+    window.location.href = `mailto:info@accountantservices.org.uk?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   }
 
   return (
-    <form className="contact-form" onSubmit={submit}>
-      <div className="field-grid">
-        <label>First name<input required name="firstName" autoComplete="given-name" /></label>
-        <label>Last name<input required name="lastName" autoComplete="family-name" /></label>
+    <form className={`quotation-form ${compact ? "quotation-form-compact" : ""}`} onSubmit={submit}>
+      <fieldset className="quote-services">
+        <legend>Which services do you need?</legend>
+        <details className="quote-service-picker">
+          <summary>
+            <span><small>Service selection</small><strong>{selectedServices.length === 0 ? "Choose one or more services" : `${selectedServices.length} ${selectedServices.length === 1 ? "service" : "services"} selected`}</strong></span>
+            <i aria-hidden="true">⌄</i>
+          </summary>
+          <div className="quote-service-panel">
+            <p className="quote-services-note">Choose everything that applies. If the right fit is not listed, select “Something else” and tell us below.</p>
+            <div className="quote-service-options">
+              {quotationServices.map((service) => (
+                <label key={service}>
+                  <input
+                    checked={selectedServices.includes(service)}
+                    type="checkbox"
+                    name="services"
+                    value={service}
+                    onChange={(event) => setSelectedServices((current) => event.target.checked ? [...current, service] : current.filter((item) => item !== service))}
+                  />
+                  <span><i aria-hidden="true">✓</i>{service}</span>
+                </label>
+              ))}
+            </div>
+          </div>
+        </details>
+      </fieldset>
+
+      <div className="quote-field-grid">
+        <label>Your name<input required name="name" autoComplete="name" placeholder="Your full name" /></label>
+        <label>Business name<input name="businessName" autoComplete="organization" placeholder="Business or organisation" /></label>
+        <label>Email address<input required type="email" name="email" autoComplete="email" placeholder="you@business.co.uk" /></label>
+        <label>Phone number<input type="tel" name="phone" autoComplete="tel" placeholder="Optional" /></label>
+        <label>Business stage<select name="businessStage" defaultValue="Trading business">
+          <option>New business or idea</option>
+          <option>Trading business</option>
+          <option>Growing business</option>
+          <option>Dormant company</option>
+        </select></label>
+        <label>Preferred contact<select name="preferredContact" defaultValue="Email">
+          <option>Email</option>
+          <option>Phone</option>
+          <option>Either is fine</option>
+        </select></label>
       </div>
-      <label>Email address<input required type="email" name="email" autoComplete="email" /></label>
-      <label>How can we help?<select name="topic" defaultValue="">
-        <option value="" disabled>Choose a service</option>
-        <option>Make a company change</option>
-        <option>Ongoing accounting support</option>
-      </select></label>
-      <label>Tell us a little more<textarea name="message" rows={5} /></label>
-      <button className="button button-primary" type="submit">Send enquiry <span>↗</span></button>
-      <p className="form-note">No jargon. No hard sell. Just a helpful reply from a real person.</p>
-    </form>
-  );
-}
 
-export function Newsletter() {
-  const [joined, setJoined] = useState(false);
-
-  return (
-    <form
-      className="newsletter-form"
-      onSubmit={(event) => {
-        event.preventDefault();
-        setJoined(true);
-      }}
-    >
-      <label htmlFor="newsletter-email" className="sr-only">Email address</label>
-      <input id="newsletter-email" type="email" placeholder="Work email" required />
-      <button type="submit">{joined ? "You’re on the list ✓" : "Get the good stuff →"}</button>
+      <label className="quote-details">Tell us what you need<textarea required name="details" rows={compact ? 4 : 5} maxLength={800} placeholder="Share your priorities, deadlines and anything you would like included in the quotation." /></label>
+      {formError && <p className="quote-error" role="alert">{formError}</p>}
+      {prepared && <p className="quote-ready" role="status">Your quotation request has been prepared in your email app. Review it, then press send.</p>}
+      <div className="quote-submit-row">
+        <button className="button button-accent" type="submit">Prepare quotation email <span>↗</span></button>
+        <p>Opens a pre-addressed email to <strong>info@accountantservices.org.uk</strong>. No obligation.</p>
+      </div>
     </form>
   );
 }

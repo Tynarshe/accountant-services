@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { ContactForm, ShopCatalogue } from "../components/interactive";
+import { QuotationForm, ShopCatalogue } from "../components/interactive";
 import { SiteShell } from "../components/site-shell";
 import { articles, visibleCategories, visibleServiceBySlug, visibleServices } from "../lib/services";
 
@@ -8,8 +8,8 @@ type PageProps = { params: Promise<{ slug: string }> };
 
 const utilityPages: Record<string, { title: string; description: string }> = {
   "additional-services": {
-    title: "Services for changing and growing businesses",
-    description: "Explore company change, planning and ongoing finance services.",
+    title: "Focused services, tailored to your business",
+    description: "Explore business plans, book keeping, dormant company filing and company secretarial support.",
   },
   contact: {
     title: "Let’s make the next step clearer",
@@ -57,10 +57,10 @@ function ServicePage({ slug }: { slug: string }) {
           <Breadcrumb current={service.title} />
           <div className="service-hero-grid">
             <div className="inner-hero-copy reveal-up">
-              <div className="eyebrow light"><span /> {service.category} your business</div>
+              <div className="eyebrow light"><span /> Tailored {service.category.toLowerCase()} support</div>
               <h1>{service.title}</h1>
               <p>{service.description}</p>
-              <div className="hero-buttons"><a className="button button-accent" href="#get-started">Get started <span>↗</span></a><a className="text-link light-link" href="/contact">Ask a question <span>→</span></a></div>
+              <div className="hero-buttons"><a className="button button-accent" href="/#quotation">Get a tailored quotation <span>↗</span></a><a className="text-link light-link" href="/contact">Ask a question <span>→</span></a></div>
               <div className="micro-trust"><span>✓ Expert checked</span><span>✓ Secure online process</span><span>✓ UK support team</span></div>
             </div>
             <aside className="service-summary reveal-up delay-one">
@@ -68,7 +68,7 @@ function ServicePage({ slug }: { slug: string }) {
               <div className="summary-price"><span>Service fee</span><strong>{service.price}</strong></div>
               <div className="summary-row"><span>Typical timing</span><strong>{service.time}</strong></div>
               <div className="summary-list"><span>What’s included</span>{service.includes.map((item) => <p key={item}><i>✓</i>{item}</p>)}</div>
-              <a className="button button-primary full-button" href="#get-started">Start this service <span>↗</span></a>
+              <a className="button button-primary full-button" href="/#quotation">Include in my quotation <span>↗</span></a>
               <small>No obligation until you review the details.</small>
             </aside>
           </div>
@@ -79,13 +79,13 @@ function ServicePage({ slug }: { slug: string }) {
         <div className="page-shell service-content-grid">
           <div>
             <div className="eyebrow"><span /> What to expect</div>
-            <h2>A straightforward process from start to filed.</h2>
-            <p className="large-copy">We combine a focused online journey with a real expert review, so the detail is right without making the process feel heavy.</p>
+            <h2>A straightforward process from brief to delivery.</h2>
+            <p className="large-copy">We combine a focused start with experienced review, so the scope is clear and the work fits what your business actually needs.</p>
           </div>
           <div className="service-steps">
-            <div><span>01</span><h3>Share the essentials</h3><p>Answer only the questions needed for this service. Save your progress and come back whenever you like.</p></div>
-            <div><span>02</span><h3>We review every detail</h3><p>A business specialist checks the information, spots gaps and gets in touch if anything needs clarifying.</p></div>
-            <div><span>03</span><h3>We submit and keep you posted</h3><p>Once approved, we handle the relevant filing and share your confirmation and documents digitally.</p></div>
+            <div><span>01</span><h3>Share the essentials</h3><p>Tell us what you need, where the business is now and what outcome you are working towards.</p></div>
+            <div><span>02</span><h3>We shape the scope</h3><p>A specialist reviews the information, identifies any gaps and confirms the right level of support.</p></div>
+            <div><span>03</span><h3>We deliver and keep you informed</h3><p>Once agreed, we complete the work, communicate clearly and provide the relevant documents or outputs.</p></div>
           </div>
         </div>
       </section>
@@ -111,8 +111,8 @@ function ServicePage({ slug }: { slug: string }) {
       <section className="related-section section-space" id="get-started">
         <div className="page-shell">
           <div className="start-card">
-            <div><div className="eyebrow light"><span /> Ready to move?</div><h2>Let’s get {service.title.toLowerCase()} sorted.</h2><p>Start online now, or speak to a specialist if you’d like to talk it through first.</p></div>
-            <div><a className="button button-accent" href="/contact">Start with an expert <span>↗</span></a><a href="tel:01182077207" className="text-link light-link">Call 0118 207 7207 <span>→</span></a></div>
+            <div><div className="eyebrow light"><span /> Ready to move?</div><h2>Let’s shape the right support.</h2><p>Add {service.title.toLowerCase()} to a tailored quotation, or speak to a specialist first.</p></div>
+            <div><a className="button button-accent" href="/#quotation">Request a quotation <span>↗</span></a><a href="tel:01182077207" className="text-link light-link">Call 0118 207 7207 <span>→</span></a></div>
           </div>
           <div className="related-head"><h2>You may also need</h2><a href="/additional-services">View all services →</a></div>
           <div className="related-grid">{related.map((item) => <a key={item.slug} href={`/${item.slug}`}><span>{item.category}</span><h3>{item.title}</h3><p>{item.short}</p><strong>Explore <i>↗</i></strong></a>)}</div>
@@ -125,7 +125,7 @@ function ServicePage({ slug }: { slug: string }) {
 function ServicesPage() {
   return (
     <>
-      <section className="inner-hero directory-hero"><div className="inner-orb" /><div className="page-shell"><Breadcrumb current="All services" /><div className="inner-hero-copy narrow reveal-up"><div className="eyebrow light"><span /> One team, every chapter</div><h1>Support built around the outcome you need.</h1><p>Browse by business moment, then choose the service that gets you there with less friction.</p></div></div></section>
+      <section className="inner-hero directory-hero"><div className="inner-orb" /><div className="page-shell"><Breadcrumb current="Our services" /><div className="inner-hero-copy narrow reveal-up"><div className="eyebrow light"><span /> Focused support, tailored scope</div><h1>Services built around real business needs.</h1><p>Choose one area or combine several, then request a quotation shaped around your priorities.</p></div></div></section>
       <section className="directory section-space"><div className="page-shell">
         {visibleCategories.map((category, index) => <div className="directory-group" id={category.name === "Grow" ? "additional-services" : category.name.toLowerCase()} key={category.name}><div className="directory-heading"><span>0{index + 1}</span><div><p>{category.eyebrow}</p><h2>{category.title}</h2></div></div><div className="directory-list">{visibleServices.filter((service) => service.category === category.name).map((service) => <a href={`/${service.slug}`} key={service.slug}><div><h3>{service.title}</h3><p>{service.short}</p></div><div><span>{service.price}</span><strong>↗</strong></div></a>)}</div></div>)}
       </div></section>
@@ -163,8 +163,8 @@ function ShopPage() {
 function ContactPage() {
   return (
     <>
-      <section className="inner-hero contact-hero"><div className="inner-orb" /><div className="page-shell"><Breadcrumb current="Contact" /><div className="contact-hero-grid"><div className="inner-hero-copy reveal-up"><div className="eyebrow light"><span /> A real person, right this way</div><h1>Let’s make the next step clearer.</h1><p>Tell us what you’re working through. We’ll listen, simplify the options and point you in the right direction.</p><div className="contact-options"><a href="tel:01182077207"><span>Call us</span><strong>0118 207 7207 ↗</strong><small>Mon–Fri, 9am–5pm</small></a><a href="mailto:office@accountantservices.org.uk"><span>Email us</span><strong>office@accountantservices.org.uk ↗</strong><small>We usually reply within one business day</small></a></div></div><div className="contact-card reveal-up delay-one"><h2>How can we help?</h2><p>A few details will help us get you to the right specialist.</p><ContactForm /></div></div></div></section>
-      <section className="visit-section section-space"><div className="page-shell visit-grid"><div><div className="eyebrow"><span /> Visit or write</div><h2>Wokingham based.<br />UK business focused.</h2><p>Building 220, Wharfedale Road, Wokingham, Berkshire, RG41 5TP</p><a className="text-link" href="https://maps.google.com/?q=Wharfedale+Road+Wokingham+RG41+5TP">Open in maps ↗</a></div><div className="map-card"><div className="map-road road-one" /><div className="map-road road-two" /><div className="map-pin"><span>A.</span><small>Accountant Services</small></div></div></div></section>
+      <section className="inner-hero contact-hero"><div className="inner-orb" /><div className="page-shell"><Breadcrumb current="Contact" /><div className="contact-hero-grid"><div className="inner-hero-copy reveal-up"><div className="eyebrow light"><span /> A real person, right this way</div><h1>Let’s make the next step clearer.</h1><p>Tell us what you’re working through. We’ll listen, simplify the options and shape the right support.</p><div className="contact-options"><a href="tel:01182077207"><span>Call us</span><strong>0118 207 7207 ↗</strong><small>Mon–Fri, 9am–5pm</small></a><a href="mailto:info@accountantservices.org.uk"><span>Email us</span><strong>info@accountantservices.org.uk ↗</strong><small>Quotation and service enquiries</small></a></div></div><div className="contact-card contact-quote-card reveal-up delay-one"><h2>Request a quotation</h2><p>Choose the services you need and give us the context that matters.</p><QuotationForm compact /></div></div></div></section>
+      <section className="visit-section section-space"><div className="page-shell visit-grid"><div><div className="eyebrow"><span /> Visit or write</div><h2>Wokingham based.<br />UK business focused.</h2><p>Building 220, Wharfedale Road, Wokingham, Berkshire, RG41 5TP</p><a className="text-link" href="https://maps.google.com/?q=Building+220+Wharfedale+Road+Wokingham+RG41+5TP" target="_blank" rel="noreferrer">Open in maps ↗</a></div><div className="map-card"><iframe className="location-map" title="Map showing Accountant Services in Wokingham" src="https://www.google.com/maps?q=Building+220,+Wharfedale+Road,+Wokingham,+Berkshire,+RG41+5TP&output=embed" loading="lazy" referrerPolicy="no-referrer-when-downgrade" allowFullScreen /><div className="map-live-pill"><i /> Wokingham · RG41</div><div className="map-location-card"><span>A.</span><p><strong>Accountant Services</strong><small>Building 220 · Wharfedale Road</small></p></div></div></div></section>
     </>
   );
 }

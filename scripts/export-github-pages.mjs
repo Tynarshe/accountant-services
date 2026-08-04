@@ -7,25 +7,9 @@ const outputRoot = join(projectRoot, "docs");
 const pagesBasePath = "/accountant-services";
 
 const serviceSlugs = [
-  "ltd",
-  "registeredoffice",
   "dormantcompany",
-  "soletrader",
-  "selfassessmentregistration",
-  "confirmationstatement",
-  "vatregistration",
-  "payeregistration",
-  "selfassessmentfiling",
-  "changecompanyname",
-  "changecompanyaddress",
-  "changedirectordetails",
-  "changecapitalshareholders",
-  "changecompanyactivities",
-  "changepscdetails",
-  "virtual-finance-director",
-  "invoice-monitoring-and-tracking",
+  "company-secretarial",
   "business-plan",
-  "corporation-tax-filing",
   "book-keeping",
 ];
 
@@ -44,8 +28,6 @@ const routes = [
   "/contact",
   "/privacy-policy",
   "/terms-conditions",
-  "/company/search",
-  "/ltd/ltd-pricing",
 ];
 
 function addPagesBasePath(html) {
