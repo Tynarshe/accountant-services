@@ -4,8 +4,8 @@ import { SiteShell } from "./components/site-shell";
 import { articles, visibleServices } from "./lib/services";
 
 export const metadata: Metadata = {
-  title: "Accounting support, shaped around your business",
-  description: "Tailored business plans, book keeping, dormant company filing and company secretarial support for UK businesses.",
+  title: "Clearer numbers. Stronger decisions",
+  description: "Practical accounting and company support that helps UK businesses stay organised, plan ahead and make decisions with confidence.",
 };
 
 const serviceGlyphs = ["01", "02", "03", "04"];
@@ -21,17 +21,17 @@ export default function Home() {
         <div className="hero-glow hero-glow-two" />
         <div className="page-shell hero-grid">
           <div className="hero-copy reveal-up">
-            <div className="eyebrow light"><span /> Focused support. Clear next steps.</div>
-            <h1>Accounting support,<br /><em>shaped around you.</em></h1>
-            <p className="hero-lede">Focused accounting and company services, combined around the needs of your business—not a one-size-fits-all package.</p>
+            <div className="eyebrow light"><span /> Practical support for UK businesses</div>
+            <h1>Clearer numbers.<br /><em>Stronger decisions.</em></h1>
+            <p className="hero-lede">Accounting and company support tailored to the way you work—so you can stay organised, plan ahead and move forward with confidence.</p>
             <div className="hero-buttons">
-              <a className="button button-accent" href="#quotation">Get a tailored quotation <span>↗</span></a>
-              <a className="text-link light-link" href="#services">Explore our services <span>↓</span></a>
+              <a className="button button-accent" href="#quotation">Request your quotation <span>↗</span></a>
+              <a className="text-link light-link" href="#services">See how we can help <span>↓</span></a>
             </div>
             <div className="trust-row">
               <div><strong>4.9</strong><span className="stars" aria-label="Five star rating">★★★★★</span><small>Client rating</small></div>
-              <div><strong>Clear</strong><small>Quotation before work starts</small></div>
-              <div><strong>Tailored</strong><small>Support shaped around your business</small></div>
+              <div><strong>Clear</strong><small>Scope and fees agreed first</small></div>
+              <div><strong>Tailored</strong><small>Built around your priorities</small></div>
             </div>
           </div>
 
@@ -40,33 +40,33 @@ export default function Home() {
             <div className="visual-orbit orbit-two" />
             <div className="dashboard-card quote-preview-card">
               <div className="dashboard-top">
-                <div><span className="status-dot" /> Your quotation</div>
+                <div><span className="status-dot" /> Your support plan</div>
                 <span className="quote-preview-status">Tailored</span>
               </div>
               <div className="dashboard-heading">
-                <span>Selected support</span>
-                <strong>Built around your priorities</strong>
-                <small>Choose one service or combine several</small>
+                <span>A clear scope</span>
+                <strong>Built for your business</strong>
+                <small>Select only the support you need</small>
               </div>
               <div className="dashboard-list">
-                <div><span className="list-icon done">✓</span><p><strong>Book Keeping</strong><small>Monthly clarity</small></p><span>01</span></div>
-                <div><span className="list-icon active">✓</span><p><strong>Business Plan</strong><small>Numbers-backed direction</small></p><span>02</span></div>
-                <div><span className="list-icon">+</span><p><strong>Add another service</strong><small>Make the scope your own</small></p><span>↗</span></div>
+                <div><span className="list-icon done">✓</span><p><strong>Book Keeping</strong><small>Reliable monthly records</small></p><span>01</span></div>
+                <div><span className="list-icon active">✓</span><p><strong>Business Plan</strong><small>Direction backed by numbers</small></p><span>02</span></div>
+                <div><span className="list-icon">+</span><p><strong>Add another service</strong><small>Build a joined-up package</small></p><span>↗</span></div>
               </div>
               <div className="expert-chip">
                 <span className="avatar">AS</span>
-                <p><strong>Reviewed by our team</strong><small>A clear response, without the hard sell</small></p>
+                <p><strong>Reviewed by our team</strong><small>Practical advice, clearly explained</small></p>
               </div>
             </div>
-            <div className="floating-badge badge-one"><span>+</span><p><strong>Flexible support</strong><small>A growing service range</small></p></div>
-            <div className="floating-badge badge-two"><span>✓</span><p><strong>No obligation</strong><small>Start with a quotation</small></p></div>
+            <div className="floating-badge badge-one"><span>+</span><p><strong>Room to grow</strong><small>Support that scales with you</small></p></div>
+            <div className="floating-badge badge-two"><span>✓</span><p><strong>Clear from day one</strong><small>No-obligation quotation</small></p></div>
           </div>
         </div>
       </section>
 
       <section className="credibility-strip">
         <div className="page-shell credibility-inner">
-          <p>Professional support for UK businesses</p>
+          <p>Built for the way UK businesses work</p>
           <div className="credibility-marquee" aria-label="Professional business support credentials">
             <div className="credibility-track">
               <div className="credibility-group">
@@ -83,8 +83,8 @@ export default function Home() {
       <section className="services-section section-space" id="services">
         <div className="page-shell">
           <div className="section-heading split-heading">
-            <div><div className="eyebrow"><span /> Our focused services</div><h2>Exactly what you need.<br />Nothing you don’t.</h2></div>
-            <p>Choose a single service or combine several. We’ll shape the scope and quotation around your business, deadlines and priorities.</p>
+            <div><div className="eyebrow"><span /> Featured services</div><h2>The right support,<br />at the right stage.</h2></div>
+            <p>Start with one priority or combine services into a joined-up package. We’ll agree the scope, timing and fee before work begins.</p>
           </div>
           <div className="service-showcase-grid">
             {homepageServices.map((service, index) => (
@@ -100,11 +100,11 @@ export default function Home() {
           <a className="service-discovery" href="/additional-services" aria-label="Explore more Accountant Services">
             <span className="service-discovery-mark">+</span>
             <span className="service-discovery-copy">
-              <small>A growing range of support</small>
-              <strong>There’s more behind the shortlist.</strong>
-              <em>Explore every service currently available—and check back as we grow.</em>
+              <small>More ways to support your business</small>
+              <strong>Your needs may not fit into two boxes.</strong>
+              <em>Explore our current services, or tell us what you need and we’ll point you in the right direction.</em>
             </span>
-            <span className="service-discovery-action">Explore more services <i>↗</i></span>
+            <span className="service-discovery-action">See all services <i>↗</i></span>
           </a>
         </div>
       </section>
@@ -112,17 +112,17 @@ export default function Home() {
       <section className="quotation-section section-space" id="quotation">
         <div className="page-shell quotation-layout">
           <div className="quotation-intro">
-            <div className="eyebrow light"><span /> Your tailored quotation</div>
-            <h2>Tell us what would make business feel easier.</h2>
-            <p>Choose the services that fit, add the context that matters and prepare a clear request for our team.</p>
+            <div className="eyebrow light"><span /> A quotation built around you</div>
+            <h2>Start with what your business needs now.</h2>
+            <p>Tell us where you are, what needs attention and when. We’ll come back with a practical scope—clear, relevant and without obligation.</p>
             <ol>
-              <li><span>01</span><div><strong>Select your support</strong><p>Choose one service or build a combined package.</p></div></li>
-              <li><span>02</span><div><strong>Share the essentials</strong><p>Tell us about your business, priorities and timing.</p></div></li>
-              <li><span>03</span><div><strong>Receive a clear response</strong><p>We’ll review the request and respond with the right next step.</p></div></li>
+              <li><span>01</span><div><strong>Choose what applies</strong><p>Select one service, several, or “not sure yet”.</p></div></li>
+              <li><span>02</span><div><strong>Give us the useful detail</strong><p>Share your goals, deadlines and current position.</p></div></li>
+              <li><span>03</span><div><strong>Get a considered response</strong><p>Our team reviews your request and explains the next step.</p></div></li>
             </ol>
           </div>
           <div className="quotation-card">
-            <div className="quotation-card-head"><span>Quotation request</span><strong>No obligation</strong></div>
+            <div className="quotation-card-head"><span>Tell us what you need</span><strong>No obligation</strong></div>
             <QuotationForm />
           </div>
         </div>
@@ -136,34 +136,34 @@ export default function Home() {
             <div className="quote-author"><span>ND</span><p><strong>Natalie D.</strong><small>Founder, Reading</small></p></div>
           </div>
           <div className="difference-copy">
-            <div className="eyebrow"><span /> Why Accountant Services</div>
-            <h2>Professional rigour.<br /><em>Personal scope.</em></h2>
-            <p className="large-copy">You get the structure of a professional service with the flexibility to choose what your business actually needs.</p>
+            <div className="eyebrow"><span /> Why businesses choose us</div>
+            <h2>Serious about detail.<br /><em>Easy to work with.</em></h2>
+            <p className="large-copy">Good accounting support should bring clarity, not more complexity. We keep the process straightforward and the advice grounded in your business.</p>
             <div className="benefit-list">
-              <div><span>01</span><div><h3>A focused starting point</h3><p>Clearly defined services make it easier to understand where we can add value.</p></div></div>
-              <div><span>02</span><div><h3>A quotation built around you</h3><p>Scope, timing and support are shaped around your circumstances before work begins.</p></div></div>
-              <div><span>03</span><div><h3>A real person when it matters</h3><p>Talk through questions with a UK-based team that understands business responsibilities.</p></div></div>
+              <div><span>01</span><div><h3>Clear from the outset</h3><p>You know what we’ll do, what we need from you and what comes next.</p></div></div>
+              <div><span>02</span><div><h3>Built around the business</h3><p>We shape the work around your priorities, timing and preferred level of support.</p></div></div>
+              <div><span>03</span><div><h3>People, not just processes</h3><p>When a question needs judgement, you can speak to a UK-based team that understands the context.</p></div></div>
             </div>
-            <a className="button button-dark" href="#quotation">Build your quotation <span>↗</span></a>
+            <a className="button button-dark" href="#quotation">Tell us what you need <span>↗</span></a>
           </div>
         </div>
       </section>
 
       <section className="process-section section-space">
         <div className="page-shell">
-          <div className="section-heading centered-heading"><div className="eyebrow"><span /> A simple way forward</div><h2>From “What do I need?” to a clear plan.</h2><p>Start with a focused request. We’ll help shape the right scope from there.</p></div>
+          <div className="section-heading centered-heading"><div className="eyebrow"><span /> How it works</div><h2>A straightforward route to the right support.</h2><p>No jargon-heavy sales process. Just a few useful details and a clear response.</p></div>
           <div className="process-line">
-            <div className="process-step"><span>1</span><div className="process-icon">✓</div><h3>Choose your services</h3><p>Select one or more areas where your business needs support.</p></div>
-            <div className="process-step"><span>2</span><div className="process-icon">✎</div><h3>Add your context</h3><p>Share the priorities, deadlines and outcomes that matter to you.</p></div>
-            <div className="process-step"><span>3</span><div className="process-icon">→</div><h3>Receive the next step</h3><p>Our team reviews your request and responds with a tailored route forward.</p></div>
+            <div className="process-step"><span>1</span><div className="process-icon">✓</div><h3>Choose a starting point</h3><p>Pick any relevant service—or choose “not sure yet”.</p></div>
+            <div className="process-step"><span>2</span><div className="process-icon">✎</div><h3>Tell us what matters</h3><p>Share the outcome, deadline and background we should understand.</p></div>
+            <div className="process-step"><span>3</span><div className="process-icon">→</div><h3>We shape the scope</h3><p>We review the detail and come back with a clear recommendation and quotation.</p></div>
           </div>
-          <div className="process-cta"><a className="button button-primary" href="#quotation">Request a quotation <span>↗</span></a><p>Prefer to talk? <a href="tel:01182077207">Call 0118 207 7207 →</a></p></div>
+          <div className="process-cta"><a className="button button-primary" href="#quotation">Start your request <span>↗</span></a><p>Prefer to talk? <a href="tel:01182077207">Call 0118 207 7207 →</a></p></div>
         </div>
       </section>
 
       <section className="insights-section section-space">
         <div className="page-shell">
-          <div className="section-heading split-heading compact"><div><div className="eyebrow light"><span /> Useful thinking</div><h2>Clear guidance for<br />better business decisions.</h2></div><a className="text-link light-link" href="/blog">Visit the Blog <span>→</span></a></div>
+          <div className="section-heading split-heading compact"><div><div className="eyebrow light"><span /> Practical guidance</div><h2>Useful answers for<br />the decisions ahead.</h2></div><a className="text-link light-link" href="/blog">Visit the Blog <span>→</span></a></div>
           <div className="article-grid">
             {articles.slice(0, 3).map((article, index) => (
               <a href={`/${article.slug}`} className="article-card" key={article.slug}>
@@ -180,8 +180,8 @@ export default function Home() {
 
       <section className="final-cta">
         <div className="page-shell final-cta-inner">
-          <div><div className="eyebrow light"><span /> Ready when you are</div><h2>Let’s shape the right<br />support for your business.</h2></div>
-          <div><p>Choose the services you need and tell us what matters. We’ll help turn it into a clear next step.</p><div><a className="button button-accent" href="#quotation">Get a tailored quotation <span>↗</span></a><a className="text-link light-link" href="tel:01182077207">Call 0118 207 7207 <span>→</span></a></div></div>
+          <div><div className="eyebrow light"><span /> Let’s make it clearer</div><h2>Bring us the question.<br />We’ll help define the next step.</h2></div>
+          <div><p>Whether you know exactly what you need or simply know something needs attention, start with a short request.</p><div><a className="button button-accent" href="#quotation">Request a tailored quotation <span>↗</span></a><a className="text-link light-link" href="tel:01182077207">Call 0118 207 7207 <span>→</span></a></div></div>
         </div>
       </section>
     </SiteShell>
