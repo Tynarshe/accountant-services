@@ -30,10 +30,12 @@ test("server-renders the Accountant Services homepage", async () => {
   const html = await response.text();
   assert.match(
     html,
-    /<title>Accounting support, shaped around your business \| Accountant Services<\/title>/i,
+    /<title>Clearer numbers\. Stronger decisions \| Accountant Services<\/title>/i,
   );
   assert.doesNotMatch(html, /Search Companies House/i);
-  assert.match(html, /Get a tailored quotation/i);
+  assert.match(html, /Request your quotation/i);
+  assert.match(html, /Clearer numbers\./i);
+  assert.match(html, /Stronger decisions\./i);
   assert.match(html, /class="credibility-marquee"/i);
   assert.match(html, /class="credibility-track"/i);
   assert.match(html, /Business Plan/i);
@@ -41,13 +43,13 @@ test("server-renders the Accountant Services homepage", async () => {
   assert.match(html, /Dormant Company Filing/i);
   assert.match(html, /Company Secretarial/i);
   assert.equal((html.match(/class="service-showcase-card"/g) ?? []).length, 2);
-  assert.match(html, /A growing range of support/i);
-  assert.match(html, /Explore more services/i);
+  assert.match(html, /More ways to support your business/i);
+  assert.match(html, /See all services/i);
   assert.match(html, /class="service-discovery" href="\/additional-services"/i);
   assert.doesNotMatch(html, /Four focused services/i);
   assert.match(html, /4\.9/i);
   assert.match(html, /Client rating/i);
-  assert.match(html, /<strong>Tailored<\/strong><small>Support shaped around your business<\/small>/i);
+  assert.match(html, /<strong>Tailored<\/strong><small>Built around your priorities<\/small>/i);
   assert.match(html, /Natalie D\./i);
   assert.match(html, /having someone capable quietly take care of everything/i);
   assert.match(html, /info@accountantservices\.org\.uk/i);
@@ -64,7 +66,7 @@ test("server-renders the Accountant Services homepage", async () => {
   assert.doesNotMatch(html, /href="\/ltd"/i);
   assert.doesNotMatch(html, /href="\/confirmationstatement"/i);
   assert.doesNotMatch(html, /VAT registration/i);
-  assert.match(html, /Useful thinking/i);
+  assert.match(html, /Practical guidance/i);
   assert.doesNotMatch(html, /What is a Confirmation Statement\?/i);
 });
 
