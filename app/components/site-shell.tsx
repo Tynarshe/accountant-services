@@ -3,8 +3,7 @@ import { MobileNav, ServicesMenu } from "./interactive";
 export function Logo() {
   return (
     <a className="logo" href="/" aria-label="Accountant Services home">
-      <span className="logo-mark" aria-hidden="true">A<span>.</span></span>
-      <span className="logo-type">Accountant<br />Services Ltd.</span>
+      <img className="logo-image" src="/accountant-services-logo.png" alt="Accountant Services Ltd." width={723} height={198} />
     </a>
   );
 }
