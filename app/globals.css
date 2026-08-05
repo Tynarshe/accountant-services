@@ -288,41 +288,76 @@ button { color: inherit; }
 .quotation-card-head { margin-bottom: 28px; display: flex; align-items: center; justify-content: space-between; }
 .quotation-card-head > span { font-family: var(--serif); font-size: 31px; }
 .quotation-card-head > strong { padding: 6px 10px; color: var(--forest); background: var(--mint-bright); border-radius: 20px; font-size: 8px; letter-spacing: .1em; text-transform: uppercase; }
-.quotation-form { display: grid; gap: 22px; }
+.quotation-form { display: grid; gap: 24px; }
 .quotation-form fieldset { min-width: 0; margin: 0; padding: 0; border: 0; }
-.quotation-form legend, .quotation-form > label, .quote-field-grid label { display: grid; gap: 7px; color: #52636d; font-size: 9px; font-weight: 800; letter-spacing: .09em; text-transform: uppercase; }
-.quote-service-picker { margin-top: 8px; overflow: hidden; background: #f4f2eb; border: 1px solid transparent; border-radius: 4px; transition: border-color .2s ease, background .2s ease; }
-.quote-service-picker[open] { background: var(--white); border-color: var(--line); }
-.quote-service-picker summary { min-height: 60px; padding: 11px 15px; display: flex; align-items: center; justify-content: space-between; gap: 20px; cursor: pointer; list-style: none; }
+.quote-form-progress { padding: 19px 20px 17px; color: var(--white); background: var(--forest); border-radius: 7px 30px 7px 7px; }
+.quote-progress-meta { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+.quote-progress-meta span { color: var(--mint); font-size: 8px; font-weight: 850; letter-spacing: .13em; text-transform: uppercase; }
+.quote-progress-meta strong { color: rgba(255,255,255,.72); font-size: 9px; }
+.quote-progress-track { height: 3px; margin: 12px 0 14px; overflow: hidden; background: rgba(255,255,255,.14); border-radius: 10px; }
+.quote-progress-track > span { display: block; height: 100%; background: var(--mint); border-radius: inherit; transition: width .3s ease; }
+.quote-form-progress ol { margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); list-style: none; }
+.quote-form-progress li { position: relative; display: flex; align-items: center; gap: 8px; color: rgba(255,255,255,.4); font-size: 9px; font-weight: 750; }
+.quote-form-progress li + li { justify-content: center; }
+.quote-form-progress li:last-child { justify-content: flex-end; }
+.quote-form-progress li i { width: 22px; height: 22px; display: grid; place-items: center; border: 1px solid rgba(255,255,255,.2); border-radius: 50%; font-size: 8px; font-style: normal; }
+.quote-form-progress li.current { color: var(--white); }
+.quote-form-progress li.current i { color: var(--forest); background: var(--mint); border-color: var(--mint); }
+.quote-form-progress li.complete { color: rgba(255,255,255,.78); }
+.quote-form-progress li.complete i { color: var(--white); background: #369269; border-color: #369269; }
+.quote-form-block { padding: 21px; display: grid; gap: 16px; background: #fbfbf8; border: 1px solid var(--line); border-radius: 7px; }
+.quote-form-block-services { border-top: 3px solid var(--coral); }
+.quote-form-block-head { display: grid; grid-template-columns: 34px 1fr; gap: 11px; align-items: start; }
+.quote-form-block-head > span { width: 30px; height: 30px; display: grid; place-items: center; color: var(--forest); background: var(--mint-bright); border-radius: 50% 50% 15% 50%; font-family: var(--serif); font-size: 11px; }
+.quote-form-block-head > div { display: grid; line-height: 1.3; }
+.quote-form-block-head strong { font-family: var(--serif); font-size: 19px; font-weight: 500; }
+.quote-form-block-head small { margin-top: 3px; color: #718087; font-size: 9px; }
+.quote-field-grid label, .quote-details { display: grid; gap: 7px; color: #52636d; font-size: 9px; font-weight: 800; letter-spacing: .09em; text-transform: uppercase; }
+.quote-field-grid label > em { justify-self: end; margin-top: -21px; color: #8a969b; font-size: 7px; font-style: normal; font-weight: 750; }
+.quote-service-picker { overflow: hidden; background: var(--white); border: 1px solid var(--line); border-radius: 6px; transition: border-color .2s ease, box-shadow .2s ease; }
+.quote-service-picker[open] { border-color: rgba(14,73,103,.28); box-shadow: 0 10px 30px rgba(14,73,103,.08); }
+.quote-service-picker summary { min-height: 64px; padding: 12px 15px; display: flex; align-items: center; justify-content: space-between; gap: 20px; cursor: pointer; list-style: none; }
 .quote-service-picker summary::-webkit-details-marker { display: none; }
 .quote-service-picker summary > span { display: grid; line-height: 1.25; }
 .quote-service-picker summary small { color: #718087; font-size: 8px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
-.quote-service-picker summary strong { margin-top: 3px; color: var(--ink); font-size: 12px; }
-.quote-service-picker summary > i { width: 28px; height: 28px; flex: 0 0 auto; display: grid; place-items: center; color: var(--forest); background: var(--white); border-radius: 50%; font-size: 14px; font-style: normal; transition: transform .2s ease; }
+.quote-service-picker summary strong { margin-top: 3px; color: var(--ink); font-size: 13px; }
+.quote-service-picker summary > i { width: 31px; height: 31px; flex: 0 0 auto; display: grid; place-items: center; color: var(--forest); background: var(--mint-bright); border-radius: 50%; font-size: 14px; font-style: normal; transition: transform .2s ease; }
 .quote-service-picker[open] summary > i { transform: rotate(180deg); }
 .quote-service-panel { padding: 0 14px 14px; border-top: 1px solid var(--line); }
 .quote-services-note { margin: 7px 0 0; color: #718087; font-size: 10px; line-height: 1.5; }
 .quote-service-options { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 10px; }
 .quote-service-options label { cursor: pointer; }
 .quote-service-options input { position: absolute; opacity: 0; pointer-events: none; }
-.quote-service-options span { min-height: 58px; padding: 11px 13px; display: flex; align-items: center; gap: 10px; color: var(--ink); background: #f4f2eb; border: 1px solid transparent; border-radius: 4px; font-size: 11px; font-weight: 700; line-height: 1.2; text-transform: none; transition: border .2s ease, background .2s ease; }
+.quote-service-options span { min-height: 58px; padding: 11px 13px; display: flex; align-items: center; gap: 10px; color: var(--ink); background: #f4f2eb; border: 1px solid transparent; border-radius: 5px; font-size: 11px; font-weight: 700; line-height: 1.2; text-transform: none; transition: border .2s ease, background .2s ease, transform .2s ease; }
 .quote-service-options i { width: 24px; height: 24px; flex: 0 0 auto; display: grid; place-items: center; color: transparent; background: var(--white); border: 1px solid var(--line); border-radius: 50%; font-size: 10px; font-style: normal; }
 .quote-service-options input:checked + span { background: var(--mint-bright); border-color: var(--coral); }
 .quote-service-options input:checked + span i { color: var(--white); background: var(--forest); }
 .quote-service-options input:focus-visible + span { outline: 2px solid var(--forest); outline-offset: 2px; }
+.quote-selected-services { margin-top: 10px; display: flex; flex-wrap: wrap; gap: 6px; }
+.quote-selected-services > span { padding: 6px 9px; color: var(--forest); background: var(--mint-bright); border-radius: 999px; font-size: 8px; font-weight: 750; }
 .quote-field-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
-.quotation-form input, .quotation-form select, .quotation-form textarea { width: 100%; padding: 12px 13px; color: var(--ink); background: #f4f2eb; border: 1px solid transparent; border-radius: 4px; outline: 0; text-transform: none; }
-.quotation-form textarea { resize: vertical; }
+.quotation-form input, .quotation-form select, .quotation-form textarea { width: 100%; min-height: 51px; padding: 12px 13px; color: var(--ink); background: var(--white); border: 1px solid var(--line); border-radius: 5px; outline: 0; text-transform: none; }
+.quotation-form input::placeholder, .quotation-form textarea::placeholder { color: #99a2a5; }
+.quotation-form textarea { min-height: 128px; resize: vertical; }
 .quotation-form input:focus, .quotation-form select:focus, .quotation-form textarea:focus { background: var(--white); border-color: var(--forest); box-shadow: 0 0 0 3px rgba(14,73,103,.08); }
-.quote-error { margin: -10px 0 0; color: #a33b32; font-size: 11px; font-weight: 700; }
-.quote-ready { margin: -10px 0 0; padding: 11px 13px; color: var(--forest); background: var(--mint-bright); border-radius: 4px; font-size: 11px; }
+.quote-details { margin-top: 2px; }
+.quote-character-count { justify-self: end; color: #8a969b; font-size: 7px; font-weight: 700; letter-spacing: .02em; text-transform: none; }
+.quote-error { margin: -10px 0 0; padding: 11px 13px; color: #9b322b; background: #fce8e5; border-left: 3px solid #b74b43; border-radius: 4px; font-size: 11px; font-weight: 700; }
+.quote-ready { margin: -10px 0 0; padding: 11px 13px; color: var(--forest); background: var(--mint-bright); border-left: 3px solid #369269; border-radius: 4px; font-size: 11px; }
 .quote-submit-row { display: flex; align-items: center; gap: 22px; }
+.quote-submit-row .button { min-width: 290px; }
 .quote-submit-row > p { margin: 0; color: #718087; font-size: 9px; line-height: 1.45; }
 .quote-submit-row strong { color: var(--ink); }
-.quotation-form-compact { gap: 16px; }
+.quote-secure-dot { width: 6px; height: 6px; margin-right: 6px; display: inline-block; background: #369269; border-radius: 50%; box-shadow: 0 0 0 4px rgba(54,146,105,.1); }
+.quotation-form-compact { gap: 14px; }
+.quotation-form-compact .quote-form-progress { padding: 16px; }
+.quotation-form-compact .quote-form-block { padding: 16px; gap: 13px; }
+.quotation-form-compact .quote-form-block-head strong { font-size: 17px; }
+.quotation-form-compact .quote-form-block-head small { display: none; }
 .quotation-form-compact .quote-service-options { grid-template-columns: 1fr 1fr; }
 .quotation-form-compact .quote-service-options span { min-height: 52px; }
 .quotation-form-compact .quote-submit-row { align-items: stretch; flex-direction: column; }
+.quotation-form-compact .quote-submit-row .button { min-width: 0; }
 
 .difference-section { background: var(--white); }
 .difference-grid { display: grid; grid-template-columns: .9fr 1.1fr; align-items: center; gap: 100px; }
@@ -913,7 +948,13 @@ button { color: inherit; }
   .quotation-card-head { align-items: flex-start; flex-direction: column; gap: 10px; }
   .quote-service-options, .quotation-form-compact .quote-service-options, .quote-field-grid { grid-template-columns: 1fr; }
   .quote-service-picker summary { min-height: 58px; }
+  .quote-form-progress, .quotation-form-compact .quote-form-progress { padding: 16px 14px; }
+  .quote-form-progress li { gap: 5px; font-size: 8px; }
+  .quote-form-block, .quotation-form-compact .quote-form-block { padding: 16px 14px; }
+  .quote-form-block-head strong { font-size: 18px; }
+  .quote-form-block-head small { font-size: 8px; }
   .quote-submit-row { align-items: stretch; flex-direction: column; }
+  .quote-submit-row .button { width: 100%; min-width: 0; }
   .difference-visual { width: 100%; max-width: 430px; min-height: 490px; margin-inline: auto; padding: 70px 32px 50px; border-radius: 130px 8px 8px 8px; }
   .difference-visual blockquote { font-size: 27px; }
   .difference-visual::before { width: 110px; height: 110px; right: -10px; }
