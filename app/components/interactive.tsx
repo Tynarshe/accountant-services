@@ -65,41 +65,60 @@ export function MobileNav() {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="mobile-nav">
+    <div
+      className="mobile-nav"
+      onKeyDown={(event) => {
+        if (event.key === "Escape") setOpen(false);
+      }}
+    >
       <button
         className="menu-button"
         type="button"
-        aria-label="Toggle navigation"
+        aria-label={open ? "Close navigation" : "Open navigation"}
+        aria-controls="mobile-navigation"
         aria-expanded={open}
         onClick={() => setOpen((value) => !value)}
       >
-        <span />
-        <span />
+        <span className="menu-button-label">{open ? "Close" : "Menu"}</span>
+        <span className="menu-button-icon" aria-hidden="true"><i /><i /></span>
       </button>
       {open && (
-        <div className="mobile-panel">
-          <details className="mobile-services">
-            <summary>Services <span aria-hidden="true">+</span></summary>
-            <div className="mobile-service-groups">
-              {visibleCategories.map((category) => (
-                <section key={category.name}>
-                  <h3>{category.name}</h3>
-                  {visibleServices.filter((service) => service.category === category.name).map((service) => (
-                    <a href={`/${service.slug}`} key={service.slug} onClick={() => setOpen(false)}>
-                      {service.title}<span>↗</span>
-                    </a>
-                  ))}
-                </section>
-              ))}
-              <a className="mobile-all-services" href="/additional-services" onClick={() => setOpen(false)}>
-                View all services <span>→</span>
-              </a>
+        <nav className="mobile-panel" id="mobile-navigation" aria-label="Mobile navigation">
+          <div className="mobile-panel-intro">
+            <span>Navigate</span>
+            <p>Practical support, shaped around your business.</p>
+          </div>
+
+          <section className="mobile-menu-services" aria-labelledby="mobile-services-heading">
+            <div className="mobile-menu-section-head">
+              <h2 id="mobile-services-heading">Services</h2>
+              <a href="/additional-services" onClick={() => setOpen(false)}>View all <span>→</span></a>
             </div>
-          </details>
-          <a href="/blog" onClick={() => setOpen(false)}>Blog</a>
-          <a href="/contact" onClick={() => setOpen(false)}>Contact Us</a>
-          <a className="button button-primary" href="/#quotation" onClick={() => setOpen(false)}>Get a tailored quotation <span>↗</span></a>
-        </div>
+            <div className="mobile-service-cards">
+              {visibleServices.slice(0, 4).map((service, index) => (
+                <a href={`/${service.slug}`} key={service.slug} onClick={() => setOpen(false)}>
+                  <span className="mobile-service-number">0{index + 1}</span>
+                  <span><strong>{service.title}</strong><small>{service.category} support</small></span>
+                  <i aria-hidden="true">↗</i>
+                </a>
+              ))}
+            </div>
+          </section>
+
+          <div className="mobile-menu-links">
+            <a href="/blog" onClick={() => setOpen(false)}><span>Ideas &amp; guidance</span><strong>Blog</strong><i>↗</i></a>
+            <a href="/contact" onClick={() => setOpen(false)}><span>Talk to the team</span><strong>Contact</strong><i>↗</i></a>
+          </div>
+
+          <div className="mobile-menu-footer">
+            <div className="mobile-menu-contact">
+              <a href="tel:01182077207"><span>Call</span><strong>0118 207 7207</strong></a>
+              <a href="mailto:info@accountantservices.org.uk"><span>Email</span><strong>info@accountantservices.org.uk</strong></a>
+            </div>
+            <a className="button button-accent" href="/#quotation" onClick={() => setOpen(false)}>Request a tailored quotation <span>↗</span></a>
+            <small><i /> Clear scope · Secure contact</small>
+          </div>
+        </nav>
       )}
     </div>
   );
