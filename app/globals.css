@@ -271,10 +271,10 @@ button { color: inherit; }
 .service-discovery-action i { color: var(--mint); font-style: normal; transition: transform .25s ease; }
 .service-discovery:hover .service-discovery-action i { transform: translate(3px, -3px); }
 
-.quotation-section { position: relative; overflow: hidden; color: var(--white); background: var(--forest-deep); }
-.quotation-section::before { content: ""; position: absolute; width: 620px; height: 620px; left: -310px; bottom: -390px; border: 1px solid rgba(198,146,80,.2); border-radius: 50%; box-shadow: 0 0 0 80px rgba(198,146,80,.035), 0 0 0 180px rgba(198,146,80,.02); }
+.quotation-section { position: relative; overflow: clip; scroll-margin-top: 92px; color: var(--white); background: var(--forest-deep); }
+.quotation-section::before { content: ""; position: absolute; width: 620px; height: 620px; left: -310px; bottom: -390px; pointer-events: none; border: 1px solid rgba(198,146,80,.2); border-radius: 50%; box-shadow: 0 0 0 80px rgba(198,146,80,.035), 0 0 0 180px rgba(198,146,80,.02); }
 .quotation-layout { position: relative; display: grid; grid-template-columns: .75fr 1.25fr; align-items: start; gap: 90px; }
-.quotation-intro { position: sticky; top: 125px; }
+.quotation-intro { position: relative; }
 .quotation-intro h2 { margin: 22px 0; font-family: var(--serif); font-size: clamp(48px, 5vw, 68px); font-weight: 400; line-height: .98; letter-spacing: -.045em; }
 .quotation-intro > p { color: rgba(255,255,255,.64); font-size: 17px; }
 .quotation-intro ol { margin: 42px 0 0; padding: 0; list-style: none; }

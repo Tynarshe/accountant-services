@@ -1,7 +1,34 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { FormEvent, MouseEvent as ReactMouseEvent, ReactNode, useState } from "react";
 import { visibleCategories, visibleServices } from "../lib/services";
+
+type QuotationLinkProps = {
+  children: ReactNode;
+  className?: string;
+  onNavigate?: () => void;
+};
+
+export function QuotationLink({ children, className, onNavigate }: QuotationLinkProps) {
+  function navigate(event: ReactMouseEvent<HTMLAnchorElement>) {
+    onNavigate?.();
+
+    const quotation = document.getElementById("quotation");
+    if (!quotation) return;
+
+    event.preventDefault();
+    const headerHeight = document.querySelector<HTMLElement>(".site-header")?.offsetHeight ?? 0;
+    const targetTop = window.scrollY + quotation.getBoundingClientRect().top - headerHeight - 12;
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    window.requestAnimationFrame(() => {
+      window.scrollTo({ top: Math.max(0, targetTop), behavior: reduceMotion ? "auto" : "smooth" });
+      window.history.replaceState(null, "", `${window.location.pathname}${window.location.search}#quotation`);
+    });
+  }
+
+  return <a className={className} href="/#quotation" onClick={navigate}>{children}</a>;
+}
 
 export function ServicesMenu() {
   const [open, setOpen] = useState(false);
@@ -115,7 +142,7 @@ export function MobileNav() {
               <a href="tel:01182077207"><span>Call</span><strong>0118 207 7207</strong></a>
               <a href="mailto:info@accountantservices.org.uk"><span>Email</span><strong>info@accountantservices.org.uk</strong></a>
             </div>
-            <a className="button button-accent" href="/#quotation" onClick={() => setOpen(false)}>Request a tailored quotation <span>↗</span></a>
+            <QuotationLink className="button button-accent" onNavigate={() => setOpen(false)}>Request a tailored quotation <span>↗</span></QuotationLink>
             <small><i /> Clear scope · Secure contact</small>
           </div>
         </nav>
