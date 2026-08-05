@@ -252,6 +252,20 @@ export function QuotationForm({ compact = false }: { compact?: boolean }) {
   const [prepared, setPrepared] = useState(false);
   const [formError, setFormError] = useState("");
   const [selectedServices, setSelectedServices] = useState<string[]>([]);
+  const [contactReady, setContactReady] = useState(false);
+  const [detailsLength, setDetailsLength] = useState(0);
+
+  const completedSteps = Number(selectedServices.length > 0) + Number(contactReady) + Number(detailsLength >= 20);
+
+  function updateProgress(event: FormEvent<HTMLFormElement>) {
+    const data = new FormData(event.currentTarget);
+    const name = String(data.get("name") ?? "").trim();
+    const email = String(data.get("email") ?? "").trim();
+    const details = String(data.get("details") ?? "");
+
+    setContactReady(name.length > 1 && email.includes("@"));
+    setDetailsLength(details.length);
+  }
 
   function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -295,58 +309,81 @@ export function QuotationForm({ compact = false }: { compact?: boolean }) {
   }
 
   return (
-    <form className={`quotation-form ${compact ? "quotation-form-compact" : ""}`} onSubmit={submit}>
-      <fieldset className="quote-services">
-        <legend>Which services do you need?</legend>
-        <details className="quote-service-picker">
-          <summary>
-            <span><small>Service selection</small><strong>{selectedServices.length === 0 ? "Choose one or more services" : `${selectedServices.length} ${selectedServices.length === 1 ? "service" : "services"} selected`}</strong></span>
-            <i aria-hidden="true">⌄</i>
-          </summary>
-          <div className="quote-service-panel">
-            <p className="quote-services-note">Choose everything that applies. If the right fit is not listed, select “Something else” and tell us below.</p>
-            <div className="quote-service-options">
-              {quotationServices.map((service) => (
-                <label key={service}>
-                  <input
-                    checked={selectedServices.includes(service)}
-                    type="checkbox"
-                    name="services"
-                    value={service}
-                    onChange={(event) => setSelectedServices((current) => event.target.checked ? [...current, service] : current.filter((item) => item !== service))}
-                  />
-                  <span><i aria-hidden="true">✓</i>{service}</span>
-                </label>
-              ))}
-            </div>
-          </div>
-        </details>
-      </fieldset>
-
-      <div className="quote-field-grid">
-        <label>Your name<input required name="name" autoComplete="name" placeholder="Your full name" /></label>
-        <label>Business name<input name="businessName" autoComplete="organization" placeholder="Business or organisation" /></label>
-        <label>Email address<input required type="email" name="email" autoComplete="email" placeholder="you@business.co.uk" /></label>
-        <label>Phone number<input type="tel" name="phone" autoComplete="tel" placeholder="Optional" /></label>
-        <label>Business stage<select name="businessStage" defaultValue="Trading business">
-          <option>New business or idea</option>
-          <option>Trading business</option>
-          <option>Growing business</option>
-          <option>Dormant company</option>
-        </select></label>
-        <label>Preferred contact<select name="preferredContact" defaultValue="Email">
-          <option>Email</option>
-          <option>Phone</option>
-          <option>Either is fine</option>
-        </select></label>
+    <form className={`quotation-form ${compact ? "quotation-form-compact" : ""}`} onInput={updateProgress} onSubmit={submit}>
+      <div className="quote-form-progress" aria-label={`${completedSteps} of 3 sections complete`}>
+        <div className="quote-progress-meta"><span>Quick quotation request</span><strong>{completedSteps}/3 complete</strong></div>
+        <div className="quote-progress-track"><span style={{ width: `${(completedSteps / 3) * 100}%` }} /></div>
+        <ol>
+          <li className={selectedServices.length > 0 ? "complete" : "current"}><i>{selectedServices.length > 0 ? "✓" : "1"}</i><span>Services</span></li>
+          <li className={contactReady ? "complete" : selectedServices.length > 0 ? "current" : ""}><i>{contactReady ? "✓" : "2"}</i><span>Contact</span></li>
+          <li className={detailsLength >= 20 ? "complete" : contactReady ? "current" : ""}><i>{detailsLength >= 20 ? "✓" : "3"}</i><span>Your brief</span></li>
+        </ol>
       </div>
 
-      <label className="quote-details">Tell us what you need<textarea required name="details" rows={compact ? 4 : 5} maxLength={800} placeholder="Share your priorities, deadlines and anything you would like included in the quotation." /></label>
+      <section className="quote-form-block quote-form-block-services">
+        <div className="quote-form-block-head"><span>01</span><div><strong>Choose the support you need</strong><small>Select one service or build a tailored combination.</small></div></div>
+        <fieldset className="quote-services">
+          <legend className="sr-only">Which services do you need?</legend>
+          <details className="quote-service-picker">
+            <summary>
+              <span><small>Service selection</small><strong>{selectedServices.length === 0 ? "Choose one or more services" : `${selectedServices.length} ${selectedServices.length === 1 ? "service" : "services"} selected`}</strong></span>
+              <i aria-hidden="true">⌄</i>
+            </summary>
+            <div className="quote-service-panel">
+              <p className="quote-services-note">Choose everything that applies. If the right fit is not listed, select “Something else” and tell us below.</p>
+              <div className="quote-service-options">
+                {quotationServices.map((service) => (
+                  <label key={service}>
+                    <input
+                      checked={selectedServices.includes(service)}
+                      type="checkbox"
+                      name="services"
+                      value={service}
+                      onChange={(event) => setSelectedServices((current) => event.target.checked ? [...current, service] : current.filter((item) => item !== service))}
+                    />
+                    <span><i aria-hidden="true">✓</i>{service}</span>
+                  </label>
+                ))}
+              </div>
+            </div>
+          </details>
+          {selectedServices.length > 0 && <div className="quote-selected-services" aria-live="polite">{selectedServices.map((service) => <span key={service}>✓ {service}</span>)}</div>}
+        </fieldset>
+      </section>
+
+      <section className="quote-form-block">
+        <div className="quote-form-block-head"><span>02</span><div><strong>How should we reach you?</strong><small>Only the essentials—no marketing lists.</small></div></div>
+        <div className="quote-field-grid quote-contact-grid">
+          <label>Your name<input required name="name" autoComplete="name" placeholder="Your full name" /></label>
+          <label>Business name <em>Optional</em><input name="businessName" autoComplete="organization" placeholder="Business or organisation" /></label>
+          <label>Email address<input required type="email" name="email" autoComplete="email" placeholder="you@business.co.uk" /></label>
+          <label>Phone number <em>Optional</em><input type="tel" name="phone" autoComplete="tel" placeholder="Your best contact number" /></label>
+        </div>
+      </section>
+
+      <section className="quote-form-block">
+        <div className="quote-form-block-head"><span>03</span><div><strong>Give us the useful context</strong><small>A few practical details help us shape the right scope.</small></div></div>
+        <div className="quote-field-grid quote-context-grid">
+          <label>Business stage<select name="businessStage" defaultValue="Trading business">
+            <option>New business or idea</option>
+            <option>Trading business</option>
+            <option>Growing business</option>
+            <option>Dormant company</option>
+          </select></label>
+          <label>Preferred contact<select name="preferredContact" defaultValue="Email">
+            <option>Email</option>
+            <option>Phone</option>
+            <option>Either is fine</option>
+          </select></label>
+        </div>
+        <label className="quote-details">What would a good outcome look like?<textarea required name="details" rows={compact ? 4 : 5} maxLength={800} placeholder="Tell us what you need, what is happening now, and any deadline we should know about." /><span className="quote-character-count">{detailsLength}/800 · Aim for at least 20 characters</span></label>
+      </section>
+
       {formError && <p className="quote-error" role="alert">{formError}</p>}
       {prepared && <p className="quote-ready" role="status">Your quotation request has been prepared in your email app. Review it, then press send.</p>}
       <div className="quote-submit-row">
-        <button className="button button-accent" type="submit">Prepare quotation email <span>↗</span></button>
-        <p>Opens a pre-addressed email to <strong>info@accountantservices.org.uk</strong>. No obligation.</p>
+        <button className="button button-accent" type="submit">Build my quotation request <span>↗</span></button>
+        <p><span className="quote-secure-dot" /> Opens a private email to <strong>info@accountantservices.org.uk</strong>. No obligation.</p>
       </div>
     </form>
   );
