@@ -41,10 +41,8 @@ button { color: inherit; }
 .utility-social { gap: 16px; color: rgba(255,255,255,.58); }
 .site-header { position: sticky; top: 0; z-index: 50; background: rgba(255, 255, 255, .95); border-bottom: 1px solid rgba(14, 73, 103, .1); backdrop-filter: blur(18px); }
 .header-inner { width: min(1380px, calc(100% - 40px)); height: 80px; margin: 0 auto; display: flex; align-items: center; gap: 28px; }
-.logo { display: inline-flex; align-items: center; gap: 12px; flex: 0 0 auto; }
-.logo-mark { width: 44px; height: 44px; display: grid; place-items: center; color: var(--cream); background: var(--forest); border-radius: 4px 15px 4px 4px; font-family: var(--serif); font-weight: 700; font-size: 27px; line-height: 1; letter-spacing: -2px; }
-.logo-mark span { color: var(--coral); }
-.logo-type { font-size: 13px; font-weight: 800; line-height: .92; letter-spacing: -.3px; text-transform: uppercase; }
+.logo { display: inline-flex; align-items: center; flex: 0 0 auto; }
+.logo-image { width: 194px; height: auto; display: block; }
 .desktop-nav { display: flex; align-items: center; justify-content: flex-end; gap: clamp(14px, 1.45vw, 24px); margin-left: auto; }
 .desktop-nav > a { position: relative; font-size: 14px; font-weight: 650; }
 .desktop-nav > a::after { content: ""; position: absolute; left: 0; right: 100%; bottom: -7px; height: 2px; background: var(--coral); transition: right .25s ease; }
@@ -437,8 +435,8 @@ button { color: inherit; }
 .final-cta-inner > div:last-child > div { display: flex; align-items: center; gap: 28px; }
 
 .site-footer { color: rgba(255,255,255,.72); background: var(--forest-deep); }
-.site-footer .logo { color: var(--white); }
-.site-footer .logo-mark { color: var(--forest); background: var(--mint); }
+.site-footer .footer-intro .logo { width: max-content; padding: 11px 14px; background: var(--white); border-radius: 5px 26px 5px 5px; }
+.site-footer .footer-intro .logo-image { width: 190px; }
 .footer-top { padding: 84px 0 66px; display: grid; grid-template-columns: 1fr 1.35fr; gap: 90px; }
 .footer-intro h2 { margin: 38px 0 14px; color: var(--white); font-family: var(--serif); font-size: 38px; font-weight: 400; line-height: 1.05; }
 .footer-intro > p { max-width: 460px; margin: 0; color: rgba(255,255,255,.5); font-size: 13px; }
@@ -892,7 +890,7 @@ button { color: inherit; }
   .section-space { padding: 68px 0; }
   .utility-bar { display: none; }
   .header-inner { width: calc(100% - 28px); height: 70px; }
-  .site-header .logo-type { display: block; font-size: 10px; }
+  .site-header .logo-image { width: 162px; }
   .header-actions { display: none; }
   .mobile-panel { max-height: calc(100dvh - 70px); padding: 28px 16px 32px; }
   .hero { min-height: auto; padding-top: 52px; }
