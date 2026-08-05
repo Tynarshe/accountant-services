@@ -1,4 +1,4 @@
-import { MobileNav, ServicesMenu } from "./interactive";
+import { MobileNav, QuotationLink, ServicesMenu } from "./interactive";
 
 export function Logo() {
   return (
@@ -31,7 +31,7 @@ export function Header() {
             <ServicesMenu />
             <a href="/blog">Blog</a>
             <a href="/contact">Contact Us</a>
-            <a className="header-quote-link" href="/#quotation">Get a quotation <span>↗</span></a>
+            <QuotationLink className="header-quote-link">Get a quotation <span>↗</span></QuotationLink>
           </nav>
           <MobileNav />
         </div>
