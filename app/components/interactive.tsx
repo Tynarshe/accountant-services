@@ -3,6 +3,17 @@
 import { FormEvent, MouseEvent as ReactMouseEvent, ReactNode, useState } from "react";
 import { visibleCategories, visibleServices } from "../lib/services";
 
+const githubPagesBasePath = "/accountant-services";
+
+function sitePath(path: string) {
+  if (typeof window === "undefined") return path;
+
+  const isGitHubPagesBuild = window.location.pathname === githubPagesBasePath
+    || window.location.pathname.startsWith(`${githubPagesBasePath}/`);
+
+  return isGitHubPagesBuild ? `${githubPagesBasePath}${path}` : path;
+}
+
 type QuotationLinkProps = {
   children: ReactNode;
   className?: string;
@@ -14,7 +25,14 @@ export function QuotationLink({ children, className, onNavigate }: QuotationLink
     onNavigate?.();
 
     const quotation = document.getElementById("quotation");
-    if (!quotation) return;
+    if (!quotation) {
+      const destination = sitePath("/#quotation");
+      if (event.currentTarget.getAttribute("href") !== destination) {
+        event.preventDefault();
+        window.location.assign(destination);
+      }
+      return;
+    }
 
     event.preventDefault();
     const headerHeight = document.querySelector<HTMLElement>(".site-header")?.offsetHeight ?? 0;
@@ -60,7 +78,7 @@ export function ServicesMenu() {
               <p>Focused support, tailored to you</p>
               <h2>Focused services. One experienced team.</h2>
             </div>
-            <a href="/additional-services" onClick={() => setOpen(false)}>
+            <a href={sitePath("/additional-services")} onClick={() => setOpen(false)}>
               View all services <span>→</span>
             </a>
           </div>
@@ -74,7 +92,7 @@ export function ServicesMenu() {
                 <p>{category.description}</p>
                 <div className="mega-service-links">
                   {visibleServices.filter((service) => service.category === category.name).map((service) => (
-                    <a href={`/${service.slug}`} key={service.slug} onClick={() => setOpen(false)}>
+                    <a href={sitePath(`/${service.slug}`)} key={service.slug} onClick={() => setOpen(false)}>
                       {service.title}<span>↗</span>
                     </a>
                   ))}
@@ -119,11 +137,11 @@ export function MobileNav() {
           <section className="mobile-menu-services" aria-labelledby="mobile-services-heading">
             <div className="mobile-menu-section-head">
               <h2 id="mobile-services-heading">Services</h2>
-              <a href="/additional-services" onClick={() => setOpen(false)}>View all <span>→</span></a>
+              <a href={sitePath("/additional-services")} onClick={() => setOpen(false)}>View all <span>→</span></a>
             </div>
             <div className="mobile-service-cards">
               {visibleServices.slice(0, 4).map((service, index) => (
-                <a href={`/${service.slug}`} key={service.slug} onClick={() => setOpen(false)}>
+                <a href={sitePath(`/${service.slug}`)} key={service.slug} onClick={() => setOpen(false)}>
                   <span className="mobile-service-number">0{index + 1}</span>
                   <span><strong>{service.title}</strong><small>{service.category} support</small></span>
                   <i aria-hidden="true">↗</i>
@@ -133,8 +151,8 @@ export function MobileNav() {
           </section>
 
           <div className="mobile-menu-links">
-            <a href="/blog" onClick={() => setOpen(false)}><span>Ideas &amp; guidance</span><strong>Blog</strong><i>↗</i></a>
-            <a href="/contact" onClick={() => setOpen(false)}><span>Talk to the team</span><strong>Contact</strong><i>↗</i></a>
+            <a href={sitePath("/blog")} onClick={() => setOpen(false)}><span>Ideas &amp; guidance</span><strong>Blog</strong><i>↗</i></a>
+            <a href={sitePath("/contact")} onClick={() => setOpen(false)}><span>Talk to the team</span><strong>Contact</strong><i>↗</i></a>
           </div>
 
           <div className="mobile-menu-footer">
