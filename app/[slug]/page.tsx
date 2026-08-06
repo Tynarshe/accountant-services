@@ -60,7 +60,7 @@ function ServicePage({ slug }: { slug: string }) {
               <div className="eyebrow light"><span /> Tailored {service.category.toLowerCase()} support</div>
               <h1>{service.title}</h1>
               <p>{service.description}</p>
-              <div className="hero-buttons"><a className="button button-accent" href="/#quotation">Get a tailored quotation <span>↗</span></a><a className="text-link light-link" href="/contact">Ask a question <span>→</span></a></div>
+              <div className="hero-buttons"><a className="button button-accent" href="/contact#quotation">Get a tailored quotation <span>↗</span></a><a className="text-link light-link" href="/contact">Ask a question <span>→</span></a></div>
               <div className="micro-trust"><span>✓ Expert checked</span><span>✓ Secure online process</span><span>✓ UK support team</span></div>
             </div>
             <aside className="service-summary reveal-up delay-one">
@@ -68,7 +68,7 @@ function ServicePage({ slug }: { slug: string }) {
               <div className="summary-price"><span>Service fee</span><strong>{service.price}</strong></div>
               <div className="summary-row"><span>Typical timing</span><strong>{service.time}</strong></div>
               <div className="summary-list"><span>What’s included</span>{service.includes.map((item) => <p key={item}><i>✓</i>{item}</p>)}</div>
-              <a className="button button-primary full-button" href="/#quotation">Include in my quotation <span>↗</span></a>
+              <a className="button button-primary full-button" href="/contact#quotation">Include in my quotation <span>↗</span></a>
               <small>No obligation until you review the details.</small>
             </aside>
           </div>
@@ -112,7 +112,7 @@ function ServicePage({ slug }: { slug: string }) {
         <div className="page-shell">
           <div className="start-card">
             <div><div className="eyebrow light"><span /> Ready to move?</div><h2>Let’s shape the right support.</h2><p>Add {service.title.toLowerCase()} to a tailored quotation, or speak to a specialist first.</p></div>
-            <div><a className="button button-accent" href="/#quotation">Request a quotation <span>↗</span></a><a href="tel:01182077207" className="text-link light-link">Call 0118 207 7207 <span>→</span></a></div>
+            <div><a className="button button-accent" href="/contact#quotation">Request a quotation <span>↗</span></a><a href="tel:01182077207" className="text-link light-link">Call 0118 207 7207 <span>→</span></a></div>
           </div>
           <div className="related-head"><h2>You may also need</h2><a href="/additional-services">View all services →</a></div>
           <div className="related-grid">{related.map((item) => <a key={item.slug} href={`/${item.slug}`}><span>{item.category}</span><h3>{item.title}</h3><p>{item.short}</p><strong>Explore <i>↗</i></strong></a>)}</div>
@@ -163,8 +163,61 @@ function ShopPage() {
 function ContactPage() {
   return (
     <>
-      <section className="inner-hero contact-hero"><div className="inner-orb" /><div className="page-shell"><Breadcrumb current="Contact" /><div className="contact-hero-grid"><div className="inner-hero-copy reveal-up"><div className="eyebrow light"><span /> A real person, right this way</div><h1>Let’s make the next step clearer.</h1><p>Tell us what you’re working through. We’ll listen, simplify the options and shape the right support.</p><div className="contact-options"><a href="tel:01182077207"><span>Call us</span><strong>0118 207 7207 ↗</strong><small>Mon–Fri, 9am–5pm</small></a><a href="mailto:info@accountantservices.org.uk"><span>Email us</span><strong>info@accountantservices.org.uk ↗</strong><small>Quotation and service enquiries</small></a></div></div><div className="contact-card contact-quote-card reveal-up delay-one"><h2>Request a quotation</h2><p>Choose the services you need and give us the context that matters.</p><QuotationForm compact /></div></div></div></section>
-      <section className="visit-section section-space"><div className="page-shell visit-grid"><div><div className="eyebrow"><span /> Visit or write</div><h2>Wokingham based.<br />UK business focused.</h2><p>Building 220, Wharfedale Road, Wokingham, Berkshire, RG41 5TP</p><a className="text-link" href="https://maps.google.com/?q=Building+220+Wharfedale+Road+Wokingham+RG41+5TP" target="_blank" rel="noreferrer">Open in maps ↗</a></div><div className="map-card"><iframe className="location-map" title="Map showing Accountant Services in Wokingham" src="https://www.google.com/maps?q=Building+220,+Wharfedale+Road,+Wokingham,+Berkshire,+RG41+5TP&output=embed" loading="lazy" referrerPolicy="no-referrer-when-downgrade" allowFullScreen /><div className="map-live-pill"><i /> Wokingham · RG41</div><div className="map-location-card"><span>A.</span><p><strong>Accountant Services</strong><small>Building 220 · Wharfedale Road</small></p></div></div></div></section>
+      <section className="inner-hero contact-hero contact-hub-hero">
+        <div className="inner-orb" />
+        <div className="page-shell">
+          <Breadcrumb current="Contact" />
+          <div className="contact-hero-grid">
+            <div className="inner-hero-copy reveal-up">
+              <div className="eyebrow light"><span /> Contact &amp; quotations</div>
+              <h1>Let’s make the next step clearer.</h1>
+              <p>Ask a question, talk something through or give us the details for a tailored quotation—all in one place.</p>
+              <div className="contact-options">
+                <a href="tel:01182077207"><span>Call us</span><strong>0118 207 7207 ↗</strong><small>Mon–Fri, 9am–5pm</small></a>
+                <a href="mailto:info@accountantservices.org.uk"><span>Email us</span><strong>info@accountantservices.org.uk ↗</strong><small>Questions and service enquiries</small></a>
+              </div>
+            </div>
+            <aside className="contact-card contact-intro-card reveal-up delay-one">
+              <span className="contact-route-kicker">A useful place to begin</span>
+              <h2>Know what you need—or simply know something needs attention?</h2>
+              <p>Either is a perfectly good starting point. Use the quotation form below and select “not sure yet” if you would like us to help define the right scope.</p>
+              <div className="contact-intro-paths">
+                <div><span>01</span><p><strong>Ask us directly</strong><small>Call or email for a straightforward answer.</small></p></div>
+                <div><span>02</span><p><strong>Request a quotation</strong><small>Share the useful detail in your own time.</small></p></div>
+              </div>
+              <a className="button button-primary full-button" href="#quotation">Start your quotation <span>↓</span></a>
+              <small><i /> Clear scope · No obligation</small>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <section className="contact-quotation-section section-space" id="quotation">
+        <div className="page-shell contact-quotation-grid">
+          <aside className="contact-quotation-intro">
+            <div className="eyebrow"><span /> Your tailored quotation</div>
+            <h2>Tell us what would make the difference.</h2>
+            <p>Choose the support that looks relevant and give us the context that matters. A member of our team will consider the detail and explain the next step.</p>
+            <ol>
+              <li><span>01</span><div><strong>Choose what applies</strong><small>Select one service, several, or “not sure yet”.</small></div></li>
+              <li><span>02</span><div><strong>Give us the useful detail</strong><small>Share your goals, deadline and current position.</small></div></li>
+              <li><span>03</span><div><strong>Get a considered response</strong><small>We review the request and explain the route forward.</small></div></li>
+            </ol>
+            <div className="contact-quotation-assurance"><span>✓</span><p><strong>A real person reviews every request.</strong><small>No automated price, no one-size-fits-all package.</small></p></div>
+          </aside>
+          <div className="quotation-card contact-quotation-card">
+            <div className="quotation-card-head"><span>Build your request</span><strong>No obligation</strong></div>
+            <QuotationForm />
+          </div>
+        </div>
+      </section>
+
+      <section className="visit-section section-space">
+        <div className="page-shell visit-grid">
+          <div><div className="eyebrow"><span /> Visit or write</div><h2>Wokingham based.<br />UK business focused.</h2><p>Building 220, Wharfedale Road, Wokingham, Berkshire, RG41 5TP</p><a className="text-link" href="https://maps.google.com/?q=Building+220+Wharfedale+Road+Wokingham+RG41+5TP" target="_blank" rel="noreferrer">Open in maps ↗</a></div>
+          <div className="map-card"><iframe className="location-map" title="Map showing Accountant Services in Wokingham" src="https://www.google.com/maps?q=Building+220,+Wharfedale+Road,+Wokingham,+Berkshire,+RG41+5TP&output=embed" loading="lazy" referrerPolicy="no-referrer-when-downgrade" allowFullScreen /><div className="map-live-pill"><i /> Wokingham · RG41</div><div className="map-location-card"><span>A.</span><p><strong>Accountant Services</strong><small>Building 220 · Wharfedale Road</small></p></div></div>
+        </div>
+      </section>
     </>
   );
 }

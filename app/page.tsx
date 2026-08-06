@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { QuotationForm } from "./components/interactive";
 import { SiteShell } from "./components/site-shell";
 import { articles, visibleServices } from "./lib/services";
 
@@ -25,7 +24,7 @@ export default function Home() {
             <h1>Clearer numbers.<br /><em>Stronger decisions.</em></h1>
             <p className="hero-lede">Accounting and company support tailored to the way you work—so you can stay organised, plan ahead and move forward with confidence.</p>
             <div className="hero-buttons">
-              <a className="button button-accent" href="#quotation">Request your quotation <span>↗</span></a>
+              <a className="button button-accent" href="/contact#quotation">Request your quotation <span>↗</span></a>
               <a className="text-link light-link" href="#services">See how we can help <span>↓</span></a>
             </div>
             <div className="trust-row">
@@ -109,25 +108,6 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="quotation-section section-space" id="quotation">
-        <div className="page-shell quotation-layout">
-          <div className="quotation-intro">
-            <div className="eyebrow light"><span /> A quotation built around you</div>
-            <h2>Start with what your business needs now.</h2>
-            <p>Tell us where you are, what needs attention and when. We’ll come back with a practical scope—clear, relevant and without obligation.</p>
-            <ol>
-              <li><span>01</span><div><strong>Choose what applies</strong><p>Select one service, several, or “not sure yet”.</p></div></li>
-              <li><span>02</span><div><strong>Give us the useful detail</strong><p>Share your goals, deadlines and current position.</p></div></li>
-              <li><span>03</span><div><strong>Get a considered response</strong><p>Our team reviews your request and explains the next step.</p></div></li>
-            </ol>
-          </div>
-          <div className="quotation-card">
-            <div className="quotation-card-head"><span>Tell us what you need</span><strong>No obligation</strong></div>
-            <QuotationForm />
-          </div>
-        </div>
-      </section>
-
       <section className="difference-section section-space">
         <div className="page-shell difference-grid">
           <div className="difference-visual">
@@ -144,7 +124,7 @@ export default function Home() {
               <div><span>02</span><div><h3>Built around the business</h3><p>We shape the work around your priorities, timing and preferred level of support.</p></div></div>
               <div><span>03</span><div><h3>People, not just processes</h3><p>When a question needs judgement, you can speak to a UK-based team that understands the context.</p></div></div>
             </div>
-            <a className="button button-dark" href="#quotation">Tell us what you need <span>↗</span></a>
+            <a className="button button-dark" href="/contact#quotation">Tell us what you need <span>↗</span></a>
           </div>
         </div>
       </section>
@@ -157,7 +137,7 @@ export default function Home() {
             <div className="process-step"><span>2</span><div className="process-icon">✎</div><h3>Tell us what matters</h3><p>Share the outcome, deadline and background we should understand.</p></div>
             <div className="process-step"><span>3</span><div className="process-icon">→</div><h3>We shape the scope</h3><p>We review the detail and come back with a clear recommendation and quotation.</p></div>
           </div>
-          <div className="process-cta"><a className="button button-primary" href="#quotation">Start your request <span>↗</span></a><p>Prefer to talk? <a href="tel:01182077207">Call 0118 207 7207 →</a></p></div>
+          <div className="process-cta"><a className="button button-primary" href="/contact#quotation">Start your request <span>↗</span></a><p>Prefer to talk? <a href="tel:01182077207">Call 0118 207 7207 →</a></p></div>
         </div>
       </section>
 
@@ -181,7 +161,7 @@ export default function Home() {
       <section className="final-cta">
         <div className="page-shell final-cta-inner">
           <div><div className="eyebrow light"><span /> Let’s make it clearer</div><h2><span>Bring us the question.</span><span>We’ll help define</span><span>the next step.</span></h2></div>
-          <div><p>Whether you know exactly what you need or simply know something needs attention, start with a short request.</p><div><a className="button button-accent" href="#quotation">Request a tailored quotation <span>↗</span></a><a className="text-link light-link" href="tel:01182077207">Call 0118 207 7207 <span>→</span></a></div></div>
+          <div><p>Whether you know exactly what you need or simply know something needs attention, start with a short request.</p><div><a className="button button-accent" href="/contact#quotation">Request a tailored quotation <span>↗</span></a><a className="text-link light-link" href="tel:01182077207">Call 0118 207 7207 <span>→</span></a></div></div>
         </div>
       </section>
     </SiteShell>
