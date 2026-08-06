@@ -30,7 +30,7 @@ export function Header() {
           <nav className="desktop-nav" aria-label="Main navigation">
             <ServicesMenu />
             <a href="/blog">Blog</a>
-            <QuotationLink className="header-quote-link">Get a quotation <span>↗</span></QuotationLink>
+            <QuotationLink className="header-quote-link">Get a quotation <span>↗︎</span></QuotationLink>
           </nav>
           <MobileNav />
         </div>
@@ -47,7 +47,7 @@ export function Footer() {
           <Logo />
           <h2>Good business starts with clearer numbers.</h2>
           <p>Focused accounting and company support, tailored to what your business needs now.</p>
-          <a className="footer-quote-link" href="/contact#quotation">Request a tailored quotation <span>↗</span></a>
+          <a className="footer-quote-link" href="/contact#quotation">Request a tailored quotation <span>↗︎</span></a>
         </div>
         <div className="footer-links">
           <div>

@@ -108,7 +108,7 @@ export function ServicesMenu() {
                 <div className="mega-service-links">
                   {visibleServices.filter((service) => service.category === category.name).map((service) => (
                     <a href={sitePath(`/${service.slug}`)} key={service.slug} onClick={() => setOpen(false)}>
-                      {service.title}<span>↗</span>
+                      {service.title}<span>↗︎</span>
                     </a>
                   ))}
                 </div>
@@ -162,14 +162,14 @@ export function MobileNav() {
               <a href={sitePath(`/${service.slug}`)} key={service.slug} onClick={closeMenu}>
                 <span className="mobile-service-number">0{index + 1}</span>
                 <span><strong>{service.title}</strong><small>{service.category} support</small></span>
-                <i aria-hidden="true">↗</i>
+                <i aria-hidden="true">↗︎</i>
               </a>
             ))}
           </div>
         </section>
 
         <div className="mobile-menu-links mobile-menu-links-single">
-          <a href={sitePath("/blog")} onClick={closeMenu}><span>Ideas &amp; guidance</span><strong>Blog</strong><i>↗</i></a>
+          <a href={sitePath("/blog")} onClick={closeMenu}><span>Ideas &amp; guidance</span><strong>Blog</strong><i>↗︎</i></a>
         </div>
 
         <div className="mobile-menu-footer">
@@ -177,7 +177,7 @@ export function MobileNav() {
             <a href="tel:01182077207"><span>Call</span><strong>0118 207 7207</strong></a>
             <a href="mailto:info@accountantservices.org.uk"><span>Email</span><strong>info@accountantservices.org.uk</strong></a>
           </div>
-          <QuotationLink className="button button-accent" onNavigate={closeMenu}>Request a tailored quotation <span>↗</span></QuotationLink>
+          <QuotationLink className="button button-accent" onNavigate={closeMenu}>Request a tailored quotation <span>↗︎</span></QuotationLink>
           <small><i /> Clear scope · Secure contact</small>
         </div>
       </nav>
@@ -267,7 +267,7 @@ export function ShopCatalogue() {
                 <span>{product.description}</span>
                 <div>
                   <p><del>£{product.previousPrice.toFixed(2)}</del><strong>£{product.price.toFixed(2)}</strong></p>
-                  <b>View product <i>↗</i></b>
+                  <b>View product <i>↗︎</i></b>
                 </div>
               </div>
             </a>
@@ -443,7 +443,7 @@ export function QuotationForm({ compact = false }: { compact?: boolean }) {
       {formError && <p className="quote-error" role="alert">{formError}</p>}
       {prepared && <p className="quote-ready" role="status">Your quotation request has been prepared in your email app. Review it, then press send.</p>}
       <div className="quote-submit-row">
-        <button className="button button-accent" type="submit">Build my quotation request <span>↗</span></button>
+        <button className="button button-accent" type="submit">Build my quotation request <span>↗︎</span></button>
         <p><span className="quote-secure-dot" /> Opens a private email to <strong>info@accountantservices.org.uk</strong>. No obligation.</p>
       </div>
     </form>

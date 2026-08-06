@@ -65,7 +65,7 @@ export default async function PricingPage({ searchParams }: PageProps) {
                 <p className="package-description">{formationPackage.description}</p>
                 <div className="package-price"><strong>{formationPackage.price}</strong><span>+ VAT<br />one-off</span></div>
                 <ul className="package-features">{formationPackage.features.map((feature) => <li key={feature}><span>✓</span>{feature}</li>)}</ul>
-                <a className={`button full-button ${formationPackage.featured ? "button-accent" : "button-primary"}`} href={`/contact?service=${formationPackage.name.toLowerCase()}-company-formation&company=${encodeURIComponent(company)}`}>Select {formationPackage.name} <span>↗</span></a>
+                <a className={`button full-button ${formationPackage.featured ? "button-accent" : "button-primary"}`} href={`/contact?service=${formationPackage.name.toLowerCase()}-company-formation&company=${encodeURIComponent(company)}`}>Select {formationPackage.name} <span>↗︎</span></a>
               </article>
             ))}
           </div>
