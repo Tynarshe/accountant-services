@@ -17,6 +17,18 @@ const articleSlugs = [
   "wrapping-up-your-year-end-accounts",
   "accountant-services",
   "low-cost-business-accountant",
+  "what-is-a-confirmation-statement",
+  "uk-budget-6-march-2024",
+  "dormant-company-annual-filing",
+  "how-to-start-limited-company-in-the-uk",
+  "self-assessment-tax-return",
+  "autumn-statement-2023",
+  "accountant-services-in-reading",
+  "accountant",
+  "mini-budget",
+  "spring-budget-march-2023",
+  "buy-to-let-tax-changes-2023",
+  "making-tax-digital-for-vat",
 ];
 
 const routes = [

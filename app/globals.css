@@ -19,6 +19,7 @@
 }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
+section[id] { scroll-margin-top: 92px; }
 body { margin: 0; color: var(--ink); background: var(--cream); font-family: var(--sans); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
 main { min-width: 0; }
 img, iframe { max-width: 100%; }
@@ -319,6 +320,7 @@ button { color: inherit; }
 .quote-service-picker[open] { border-color: rgba(14,73,103,.28); box-shadow: 0 10px 30px rgba(14,73,103,.08); }
 .quote-service-picker summary { min-height: 64px; padding: 12px 15px; display: flex; align-items: center; justify-content: space-between; gap: 20px; cursor: pointer; list-style: none; }
 .quote-service-picker summary::-webkit-details-marker { display: none; }
+.quote-service-picker summary::marker { content: ""; }
 .quote-service-picker summary > span { display: grid; line-height: 1.25; }
 .quote-service-picker summary small { color: #718087; font-size: 8px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
 .quote-service-picker summary strong { margin-top: 3px; color: var(--ink); font-size: 13px; }
@@ -496,8 +498,9 @@ button { color: inherit; }
 .faq-block details:last-child { border-bottom: 1px solid var(--line); }
 .faq-block summary { padding: 24px 0; display: flex; justify-content: space-between; gap: 30px; font-family: var(--serif); font-size: 23px; cursor: pointer; list-style: none; }
 .faq-block summary::-webkit-details-marker { display: none; }
+.faq-block summary::marker { content: ""; }
 .faq-block summary span { width: 32px; height: 32px; flex: 0 0 32px; display: grid; place-items: center; color: var(--coral); font-family: var(--sans); line-height: 1; transform-origin: center; }
-.faq-block details[open] summary span { transform: rotate(45deg); }
+.faq-block details[open] summary span { transform: rotate(45deg) scale(.72); }
 .faq-block details p { margin: -6px 0 25px; color: var(--ink-soft); font-size: 13px; }
 .related-section { background: var(--white); }
 .start-card { padding: 56px 64px; display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 60px; color: var(--white); background: var(--forest-deep); border-radius: 6px; }
