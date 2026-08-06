@@ -101,6 +101,8 @@ test("combines contact and quotation on one professional page", async () => {
   assert.match(html, /Human reviewed/i);
   assert.match(html, /id="quotation"/i);
   assert.match(html, /class="quotation-form/i);
+  assert.match(html, /class="quote-exit-link" href="\/"/i);
+  assert.match(html, /Return home/i);
   assert.match(html, /info@accountantservices\.org\.uk/i);
   assert.match(html, /Something else \/ not sure yet/i);
   assert.match(html, /class="location-map"/i);

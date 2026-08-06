@@ -209,7 +209,10 @@ function ContactPage() {
             <div className="contact-quotation-assurance"><span>✓</span><p><strong>A real person reviews every request.</strong><small>No automated price, no one-size-fits-all package.</small></p></div>
           </aside>
           <div className="quotation-card contact-quotation-card">
-            <div className="quotation-card-head"><span>Your quotation brief</span><strong>Usually 3–5 minutes</strong></div>
+            <div className="quotation-card-head">
+              <span>Your quotation brief</span>
+              <div><strong>Usually 3–5 minutes</strong><a className="quote-exit-link" href="/">Return home <span>↗</span></a></div>
+            </div>
             <QuotationForm />
           </div>
         </div>
