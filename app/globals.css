@@ -284,7 +284,11 @@ button { color: inherit; }
 .quotation-card { padding: 42px; color: var(--ink); background: var(--white); border-radius: 8px 70px 8px 8px; box-shadow: 0 32px 90px rgba(0,0,0,.24); }
 .quotation-card-head { margin-bottom: 28px; display: flex; align-items: center; justify-content: space-between; }
 .quotation-card-head > span { font-family: var(--serif); font-size: 31px; }
-.quotation-card-head > strong { padding: 6px 10px; color: var(--forest); background: var(--mint-bright); border-radius: 20px; font-size: 8px; letter-spacing: .1em; text-transform: uppercase; }
+.quotation-card-head > div { display: flex; align-items: center; gap: 14px; }
+.quotation-card-head > div > strong { padding: 6px 10px; color: var(--forest); background: var(--mint-bright); border-radius: 20px; font-size: 8px; letter-spacing: .1em; text-transform: uppercase; }
+.quote-exit-link { color: var(--forest); font-size: 9px; font-weight: 800; letter-spacing: .03em; }
+.quote-exit-link span { color: var(--coral); }
+.quote-exit-link:hover { color: var(--coral); }
 .quotation-form { display: grid; gap: 24px; }
 .quotation-form fieldset { min-width: 0; margin: 0; padding: 0; border: 0; }
 .quote-form-progress { padding: 19px 20px 17px; color: var(--white); background: var(--forest); border-radius: 7px 30px 7px 7px; }
@@ -942,7 +946,8 @@ button { color: inherit; }
   .quotation-intro > p { max-width: 34rem; margin-inline: auto; }
   .quotation-intro ol { margin-inline: auto; text-align: left; }
   .quotation-card { width: 100%; max-width: 560px; margin-inline: auto; padding: 30px 20px; border-radius: 6px 45px 6px 6px; text-align: left; }
-  .quotation-card-head { align-items: flex-start; flex-direction: column; gap: 10px; }
+  .quotation-card-head { align-items: flex-start; flex-direction: column; gap: 12px; }
+  .quotation-card-head > div { width: 100%; justify-content: space-between; }
   .quote-service-options, .quotation-form-compact .quote-service-options, .quote-field-grid { grid-template-columns: 1fr; }
   .quote-service-picker summary { min-height: 58px; }
   .quote-form-progress, .quotation-form-compact .quote-form-progress { padding: 16px 14px; }

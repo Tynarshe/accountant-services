@@ -22,27 +22,11 @@ type QuotationLinkProps = {
 
 export function QuotationLink({ children, className, onNavigate }: QuotationLinkProps) {
   function navigate(event: ReactMouseEvent<HTMLAnchorElement>) {
+    // Keep this as a normal link so browser history, back gestures and page
+    // scrolling remain fully native. The href is corrected at click time for
+    // the GitHub Pages subdirectory build.
+    event.currentTarget.setAttribute("href", sitePath("/contact#quotation"));
     onNavigate?.();
-
-    const quotation = document.getElementById("quotation");
-    if (!quotation) {
-      const destination = sitePath("/contact#quotation");
-      if (event.currentTarget.getAttribute("href") !== destination) {
-        event.preventDefault();
-        window.location.assign(destination);
-      }
-      return;
-    }
-
-    event.preventDefault();
-    const headerHeight = document.querySelector<HTMLElement>(".site-header")?.offsetHeight ?? 0;
-    const targetTop = window.scrollY + quotation.getBoundingClientRect().top - headerHeight - 12;
-    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-    window.requestAnimationFrame(() => {
-      window.scrollTo({ top: Math.max(0, targetTop), behavior: reduceMotion ? "auto" : "smooth" });
-      window.history.replaceState(null, "", `${window.location.pathname}${window.location.search}#quotation`);
-    });
   }
 
   return <a className={className} href="/contact#quotation" onClick={navigate}>{children}</a>;
