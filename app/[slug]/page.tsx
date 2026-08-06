@@ -13,7 +13,7 @@ const utilityPages: Record<string, { title: string; description: string }> = {
   },
   contact: {
     title: "Let’s make the next step clearer",
-    description: "Tell us what you’re working through and a UK-based specialist will point you in the right direction.",
+    description: "Ask a question, speak to the team or request a tailored quotation in one clear place.",
   },
   blog: {
     title: "Useful thinking for busy business owners",
@@ -60,7 +60,7 @@ function ServicePage({ slug }: { slug: string }) {
               <div className="eyebrow light"><span /> Tailored {service.category.toLowerCase()} support</div>
               <h1>{service.title}</h1>
               <p>{service.description}</p>
-              <div className="hero-buttons"><a className="button button-accent" href="/contact#quotation">Get a tailored quotation <span>↗</span></a><a className="text-link light-link" href="/contact">Ask a question <span>→</span></a></div>
+              <div className="hero-buttons"><a className="button button-accent" href="/contact#quotation">Get a tailored quotation <span>↗</span></a></div>
               <div className="micro-trust"><span>✓ Expert checked</span><span>✓ Secure online process</span><span>✓ UK support team</span></div>
             </div>
             <aside className="service-summary reveal-up delay-one">
@@ -231,7 +231,7 @@ function BlogPage() {
 function ArticlePage({ slug }: { slug: string }) {
   const article = articles.find((item) => item.slug === slug)!;
   return (
-    <><section className="article-hero"><div className="page-shell"><Breadcrumb current="Blog" /><div className="article-title"><span className="article-pill">{article.category}</span><h1>{article.title}</h1><p>{article.excerpt}</p><div><time>{article.date}</time><span>4 minute read</span></div></div></div></section><article className="article-body page-shell"><p className="lead">Running a business is easier when you know what is coming and what good preparation looks like.</p><h2>Start with a clean picture</h2><p>Bring your records, key dates and open questions together in one place. A short, organised review now can prevent a lot of back-and-forth later.</p><blockquote>Clarity is not about doing everything at once. It is about knowing the next right thing to do.</blockquote><h2>Turn the deadline into a plan</h2><p>Work backwards from the date that matters. Leave time for missing information, review and any questions that need an expert answer. The strongest process is usually the calmest one.</p><ul><li>Confirm the period and filing deadline.</li><li>Reconcile the core financial records.</li><li>Collect explanations for anything unusual.</li><li>Ask for help early if something is unclear.</li></ul><h2>Keep the next year easier</h2><p>Once the work is complete, note what slowed the process down. Small changes to bookkeeping, document storage or monthly reviews can make next year significantly smoother.</p><div className="article-cta"><h3>Want a capable pair of hands?</h3><p>Tell us what you need to file and we’ll help make the route forward clear.</p><a className="button button-primary" href="/contact">Talk to a specialist <span>↗</span></a></div></article></>
+    <><section className="article-hero"><div className="page-shell"><Breadcrumb current="Blog" /><div className="article-title"><span className="article-pill">{article.category}</span><h1>{article.title}</h1><p>{article.excerpt}</p><div><time>{article.date}</time><span>4 minute read</span></div></div></div></section><article className="article-body page-shell"><p className="lead">Running a business is easier when you know what is coming and what good preparation looks like.</p><h2>Start with a clean picture</h2><p>Bring your records, key dates and open questions together in one place. A short, organised review now can prevent a lot of back-and-forth later.</p><blockquote>Clarity is not about doing everything at once. It is about knowing the next right thing to do.</blockquote><h2>Turn the deadline into a plan</h2><p>Work backwards from the date that matters. Leave time for missing information, review and any questions that need an expert answer. The strongest process is usually the calmest one.</p><ul><li>Confirm the period and filing deadline.</li><li>Reconcile the core financial records.</li><li>Collect explanations for anything unusual.</li><li>Ask for help early if something is unclear.</li></ul><h2>Keep the next year easier</h2><p>Once the work is complete, note what slowed the process down. Small changes to bookkeeping, document storage or monthly reviews can make next year significantly smoother.</p><div className="article-cta"><h3>Want a capable pair of hands?</h3><p>Tell us what you need to file and we’ll help make the route forward clear.</p><a className="button button-primary" href="/contact#quotation">Request a tailored quotation <span>↗</span></a></div></article></>
   );
 }
 
