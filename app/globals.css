@@ -17,7 +17,6 @@
   --serif: "Iowan Old Style", "Baskerville", "Times New Roman", serif;
   --sans: Inter, "Avenir Next", Avenir, "Segoe UI", sans-serif;
 }
-
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body { margin: 0; color: var(--ink); background: var(--cream); font-family: var(--sans); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
@@ -1093,4 +1092,264 @@ button { color: inherit; }
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
   .credibility-track { animation: none !important; }
+}
+
+/* Combined contact and quotation */
+.contact-hub-hero {
+  min-height: 720px;
+  padding-bottom: 100px;
+}
+.contact-hub-hero .contact-hero-grid {
+  grid-template-columns: minmax(0, 1fr) 470px;
+  align-items: center;
+  gap: 90px;
+}
+.contact-intro-card {
+  align-self: center;
+  padding: 38px;
+  border-radius: 7px 68px 7px 7px;
+}
+.contact-route-kicker {
+  color: var(--coral);
+  font-size: 8px;
+  font-weight: 850;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+.contact-intro-card h2 {
+  margin: 14px 0 16px;
+  font-size: 38px;
+  line-height: 1.03;
+  letter-spacing: -.025em;
+}
+.contact-intro-card > p {
+  margin-bottom: 26px;
+  font-size: 13px;
+  line-height: 1.6;
+}
+.contact-intro-paths {
+  margin-bottom: 26px;
+  border-top: 1px solid var(--line);
+}
+.contact-intro-paths > div {
+  padding: 15px 0;
+  display: grid;
+  grid-template-columns: 38px 1fr;
+  gap: 10px;
+  border-bottom: 1px solid var(--line);
+}
+.contact-intro-paths > div > span {
+  color: var(--coral);
+  font-family: var(--serif);
+  font-size: 11px;
+}
+.contact-intro-paths p {
+  margin: 0;
+  display: grid;
+  line-height: 1.35;
+}
+.contact-intro-paths strong {
+  font-size: 11px;
+}
+.contact-intro-paths small {
+  color: var(--ink-soft);
+  font-size: 9px;
+}
+.contact-intro-card > small {
+  margin-top: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: var(--ink-soft);
+  font-size: 8px;
+  font-weight: 750;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+}
+.contact-intro-card > small i {
+  width: 6px;
+  height: 6px;
+  background: #369269;
+  border-radius: 50%;
+  box-shadow: 0 0 0 4px rgba(54,146,105,.1);
+}
+
+.contact-quotation-section {
+  position: relative;
+  overflow: clip;
+  scroll-margin-top: 92px;
+  background: var(--cream);
+}
+.contact-quotation-section::before {
+  content: "";
+  position: absolute;
+  width: 620px;
+  height: 620px;
+  left: -390px;
+  bottom: -360px;
+  pointer-events: none;
+  border: 1px solid rgba(198,146,80,.2);
+  border-radius: 50%;
+  box-shadow: 0 0 0 80px rgba(198,146,80,.035), 0 0 0 180px rgba(198,146,80,.02);
+}
+.contact-quotation-grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: .68fr 1.32fr;
+  align-items: start;
+  gap: 82px;
+}
+.contact-quotation-intro {
+  position: sticky;
+  top: 122px;
+}
+.contact-quotation-intro h2 {
+  margin: 22px 0;
+  font-family: var(--serif);
+  font-size: clamp(46px, 4.5vw, 62px);
+  font-weight: 400;
+  line-height: .98;
+  letter-spacing: -.045em;
+}
+.contact-quotation-intro > p {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 14px;
+}
+.contact-quotation-intro ol {
+  margin: 36px 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--line);
+}
+.contact-quotation-intro li {
+  padding: 17px 0;
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  gap: 11px;
+  border-bottom: 1px solid var(--line);
+}
+.contact-quotation-intro li > span {
+  color: var(--coral);
+  font-family: var(--serif);
+  font-size: 12px;
+}
+.contact-quotation-intro li div {
+  display: grid;
+}
+.contact-quotation-intro li strong {
+  font-size: 12px;
+}
+.contact-quotation-intro li small {
+  margin-top: 2px;
+  color: var(--ink-soft);
+  font-size: 9px;
+}
+.contact-quotation-assurance {
+  padding: 17px;
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  color: var(--white);
+  background: var(--forest);
+  border-radius: 5px 28px 5px 5px;
+}
+.contact-quotation-assurance > span {
+  width: 34px;
+  height: 34px;
+  flex: 0 0 34px;
+  display: grid;
+  place-items: center;
+  color: var(--forest);
+  background: var(--mint);
+  border-radius: 50%;
+  font-size: 11px;
+  font-weight: 850;
+}
+.contact-quotation-assurance p {
+  margin: 0;
+  display: grid;
+  line-height: 1.35;
+}
+.contact-quotation-assurance strong {
+  font-size: 10px;
+}
+.contact-quotation-assurance small {
+  color: rgba(255,255,255,.55);
+  font-size: 8px;
+}
+.contact-quotation-card {
+  padding: 42px;
+  background: var(--white);
+  border: 1px solid rgba(14,73,103,.1);
+  border-radius: 8px 72px 8px 8px;
+  box-shadow: 0 30px 80px rgba(14,73,103,.14);
+}
+.mobile-menu-links-single {
+  grid-template-columns: 1fr;
+}
+.mobile-menu-links-single > a {
+  padding-right: 0;
+}
+
+@media (max-width: 1240px) {
+  .contact-hub-hero .contact-hero-grid {
+    grid-template-columns: minmax(0, 1fr) 450px;
+    gap: 50px;
+  }
+}
+
+@media (max-width: 980px) {
+  .contact-hub-hero .contact-hero-grid,
+  .contact-quotation-grid {
+    grid-template-columns: 1fr;
+    gap: 55px;
+  }
+  .contact-intro-card {
+    width: 100%;
+    max-width: 620px;
+  }
+  .contact-quotation-intro {
+    position: relative;
+    top: auto;
+    max-width: 680px;
+  }
+}
+
+@media (max-width: 620px) {
+  .contact-hub-hero {
+    min-height: 0;
+    padding-bottom: 68px;
+  }
+  .contact-hub-hero .contact-hero-grid {
+    gap: 44px;
+  }
+  .contact-intro-card {
+    padding: 28px 20px;
+    border-radius: 6px 45px 6px 6px;
+  }
+  .contact-intro-card h2 {
+    font-size: 32px;
+  }
+  .contact-quotation-grid {
+    gap: 42px;
+  }
+  .contact-quotation-intro {
+    text-align: center;
+  }
+  .contact-quotation-intro .eyebrow {
+    justify-content: center;
+  }
+  .contact-quotation-intro h2 {
+    font-size: 42px;
+  }
+  .contact-quotation-intro ol,
+  .contact-quotation-assurance {
+    text-align: left;
+  }
+  .contact-quotation-card {
+    padding: 28px 20px;
+    border-radius: 6px 46px 6px 6px;
+  }
 }

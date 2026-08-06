@@ -26,7 +26,7 @@ export function QuotationLink({ children, className, onNavigate }: QuotationLink
 
     const quotation = document.getElementById("quotation");
     if (!quotation) {
-      const destination = sitePath("/#quotation");
+      const destination = sitePath("/contact#quotation");
       if (event.currentTarget.getAttribute("href") !== destination) {
         event.preventDefault();
         window.location.assign(destination);
@@ -45,7 +45,7 @@ export function QuotationLink({ children, className, onNavigate }: QuotationLink
     });
   }
 
-  return <a className={className} href="/#quotation" onClick={navigate}>{children}</a>;
+  return <a className={className} href="/contact#quotation" onClick={navigate}>{children}</a>;
 }
 
 export function ServicesMenu() {
@@ -150,9 +150,8 @@ export function MobileNav() {
             </div>
           </section>
 
-          <div className="mobile-menu-links">
+          <div className="mobile-menu-links mobile-menu-links-single">
             <a href={sitePath("/blog")} onClick={() => setOpen(false)}><span>Ideas &amp; guidance</span><strong>Blog</strong><i>↗</i></a>
-            <a href={sitePath("/contact")} onClick={() => setOpen(false)}><span>Talk to the team</span><strong>Contact</strong><i>↗</i></a>
           </div>
 
           <div className="mobile-menu-footer">

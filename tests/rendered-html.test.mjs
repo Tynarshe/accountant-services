@@ -52,15 +52,12 @@ test("server-renders the Accountant Services homepage", async () => {
   assert.match(html, /<strong>Tailored<\/strong><small>Built around your priorities<\/small>/i);
   assert.match(html, /Natalie D\./i);
   assert.match(html, /having someone capable quietly take care of everything/i);
-  assert.match(html, /info@accountantservices\.org\.uk/i);
-  assert.match(html, /Something else \/ not sure yet/i);
-  assert.match(html, /If the right fit is not listed/i);
-  assert.match(html, /class="quote-service-picker"/i);
-  assert.match(html, /Choose one or more services/i);
-  assert.match(html, /href="\/contact"/i);
+  assert.doesNotMatch(html, /class="quotation-form/i);
+  assert.match(html, /href="\/contact#quotation"/i);
   assert.match(html, />Blog<\/a>/i);
   assert.match(html, />Services/i);
-  assert.match(html, />Contact Us<\/a>/i);
+  assert.doesNotMatch(html, />Contact Us<\/a>/i);
+  assert.match(html, />Get a quotation/i);
   assert.doesNotMatch(html, /newsletter/i);
   assert.doesNotMatch(html, /href="\/shop"/i);
   assert.doesNotMatch(html, /href="\/ltd"/i);
@@ -89,16 +86,24 @@ test("keeps the currently supported service pages", async () => {
   assert.equal(complianceResponse.status, 404);
 });
 
-test("renders the quotation form on the contact page", async () => {
+test("combines contact and quotation on one professional page", async () => {
   const response = await render("/contact");
   assert.equal(response.status, 200);
   const html = await response.text();
-  assert.match(html, /Request a quotation/i);
+  assert.match(html, /Contact &amp; quotations/i);
+  assert.match(html, /Tell us what would make the difference/i);
+  assert.match(html, /id="quotation"/i);
+  assert.match(html, /class="quotation-form/i);
   assert.match(html, /info@accountantservices\.org\.uk/i);
   assert.match(html, /Something else \/ not sure yet/i);
   assert.match(html, /class="location-map"/i);
   assert.match(html, /google\.com\/maps\?q=Building\+220/i);
   assert.match(html, /Map showing Accountant Services in Wokingham/i);
+});
+
+test("does not expose a separate quotation route", async () => {
+  const response = await render("/quotation");
+  assert.equal(response.status, 404);
 });
 
 test("hides the shop catalogue", async () => {
