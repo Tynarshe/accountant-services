@@ -57,6 +57,7 @@ test("server-renders the Accountant Services homepage", async () => {
   assert.match(html, />Blog<\/a>/i);
   assert.match(html, />Services/i);
   assert.doesNotMatch(html, />Contact Us<\/a>/i);
+  assert.doesNotMatch(html, /href="\/contact"/i);
   assert.match(html, />Get a quotation/i);
   assert.doesNotMatch(html, /newsletter/i);
   assert.doesNotMatch(html, /href="\/shop"/i);
@@ -77,6 +78,9 @@ test("keeps the currently supported service pages", async () => {
   for (const path of keptPaths) {
     const response = await render(path);
     assert.equal(response.status, 200);
+    const html = await response.text();
+    assert.match(html, /href="\/contact#quotation"/i);
+    assert.doesNotMatch(html, /Ask a question/i);
   }
 
   const createResponse = await render("/registeredoffice");
