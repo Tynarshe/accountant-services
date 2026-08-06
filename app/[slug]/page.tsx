@@ -178,15 +178,18 @@ function ContactPage() {
               </div>
             </div>
             <aside className="contact-card contact-intro-card reveal-up delay-one">
-              <span className="contact-route-kicker">A useful place to begin</span>
-              <h2>Know what you need—or simply know something needs attention?</h2>
-              <p>Either is a perfectly good starting point. Use the quotation form below and select “not sure yet” if you would like us to help define the right scope.</p>
+              <span className="contact-route-kicker">Contact &amp; quotation desk</span>
+              <h2>One place to ask, scope and quote.</h2>
+              <p>Start with what you know. We’ll read the detail, help define the right support and come back with a clear next step.</p>
               <div className="contact-intro-paths">
-                <div><span>01</span><p><strong>Ask us directly</strong><small>Call or email for a straightforward answer.</small></p></div>
-                <div><span>02</span><p><strong>Request a quotation</strong><small>Share the useful detail in your own time.</small></p></div>
+                <div><span>01</span><p><strong>Talk to us directly</strong><small>Call or email when a quick conversation is best.</small></p></div>
+                <div><span>02</span><p><strong>Build your quotation brief</strong><small>Choose the services and share the useful context below.</small></p></div>
               </div>
               <a className="button button-primary full-button" href="#quotation">Start your quotation <span>↓</span></a>
-              <small><i /> Clear scope · No obligation</small>
+              <div className="contact-intro-proof" aria-label="Quotation service commitments">
+                <span><strong>Direct to our team</strong><small>Sent to info@accountantservices.org.uk</small></span>
+                <span><strong>Human reviewed</strong><small>No instant generic pricing</small></span>
+              </div>
             </aside>
           </div>
         </div>
@@ -196,8 +199,8 @@ function ContactPage() {
         <div className="page-shell contact-quotation-grid">
           <aside className="contact-quotation-intro">
             <div className="eyebrow"><span /> Your tailored quotation</div>
-            <h2>Tell us what would make the difference.</h2>
-            <p>Choose the support that looks relevant and give us the context that matters. A member of our team will consider the detail and explain the next step.</p>
+            <h2>Tell us where you are. We’ll shape what comes next.</h2>
+            <p>Choose the support that looks relevant and give us the context that matters. A member of our team will consider the detail, identify any gaps and explain the next step.</p>
             <ol>
               <li><span>01</span><div><strong>Choose what applies</strong><small>Select one service, several, or “not sure yet”.</small></div></li>
               <li><span>02</span><div><strong>Give us the useful detail</strong><small>Share your goals, deadline and current position.</small></div></li>
@@ -206,7 +209,7 @@ function ContactPage() {
             <div className="contact-quotation-assurance"><span>✓</span><p><strong>A real person reviews every request.</strong><small>No automated price, no one-size-fits-all package.</small></p></div>
           </aside>
           <div className="quotation-card contact-quotation-card">
-            <div className="quotation-card-head"><span>Build your request</span><strong>No obligation</strong></div>
+            <div className="quotation-card-head"><span>Your quotation brief</span><strong>Usually 3–5 minutes</strong></div>
             <QuotationForm />
           </div>
         </div>
