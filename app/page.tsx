@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { UpRightArrow } from "./components/arrow";
 import { SectionLink } from "./components/interactive";
 import { SiteShell } from "./components/site-shell";
 import { articles, visibleServices } from "./lib/services";
@@ -25,7 +26,7 @@ export default function Home() {
             <h1>Clearer numbers.<br /><em>Stronger decisions.</em></h1>
             <p className="hero-lede">Accounting and company support tailored to the way you work—so you can stay organised, plan ahead and move forward with confidence.</p>
             <div className="hero-buttons">
-              <a className="button button-accent" href="/contact#quotation">Request your quotation <span>↗︎</span></a>
+              <a className="button button-accent" href="/contact#quotation">Request your quotation <UpRightArrow /></a>
               <SectionLink className="text-link light-link" targetId="services">See how we can help <span>↓</span></SectionLink>
             </div>
             <div className="trust-row">
@@ -51,7 +52,7 @@ export default function Home() {
               <div className="dashboard-list">
                 <div><span className="list-icon done">✓</span><p><strong>Book Keeping</strong><small>Reliable monthly records</small></p><span>01</span></div>
                 <div><span className="list-icon active">✓</span><p><strong>Business Plan</strong><small>Direction backed by numbers</small></p><span>02</span></div>
-                <div><span className="list-icon">+</span><p><strong>Add another service</strong><small>Build a joined-up package</small></p><span>↗︎</span></div>
+                <div><span className="list-icon">+</span><p><strong>Add another service</strong><small>Build a joined-up package</small></p><UpRightArrow /></div>
               </div>
               <div className="expert-chip">
                 <span className="avatar">AS</span>
@@ -93,7 +94,7 @@ export default function Home() {
                 <h3>{service.title}</h3>
                 <p>{service.short}</p>
                 <ul>{service.includes.map((item) => <li key={item}>✓ {item}</li>)}</ul>
-                <div><span>{service.price}</span><strong>View service <i>↗︎</i></strong></div>
+                <div><span>{service.price}</span><strong>View service <UpRightArrow /></strong></div>
               </a>
             ))}
           </div>
@@ -104,7 +105,7 @@ export default function Home() {
               <strong>Your needs may not fit into two boxes.</strong>
               <em>Explore our current services, or tell us what you need and we’ll point you in the right direction.</em>
             </span>
-            <span className="service-discovery-action">See all services <i>↗︎</i></span>
+            <span className="service-discovery-action">See all services <UpRightArrow /></span>
           </a>
         </div>
       </section>
@@ -125,7 +126,7 @@ export default function Home() {
               <div><span>02</span><div><h3>Built around the business</h3><p>We shape the work around your priorities, timing and preferred level of support.</p></div></div>
               <div><span>03</span><div><h3>People, not just processes</h3><p>When a question needs judgement, you can speak to a UK-based team that understands the context.</p></div></div>
             </div>
-            <a className="button button-dark" href="/contact#quotation">Tell us what you need <span>↗︎</span></a>
+            <a className="button button-dark" href="/contact#quotation">Tell us what you need <UpRightArrow /></a>
           </div>
         </div>
       </section>
@@ -138,7 +139,7 @@ export default function Home() {
             <div className="process-step"><span>2</span><div className="process-icon">✎</div><h3>Tell us what matters</h3><p>Share the outcome, deadline and background we should understand.</p></div>
             <div className="process-step"><span>3</span><div className="process-icon">→</div><h3>We shape the scope</h3><p>We review the detail and come back with a clear recommendation and quotation.</p></div>
           </div>
-          <div className="process-cta"><a className="button button-primary" href="/contact#quotation">Start your request <span>↗︎</span></a><p>Prefer to talk? <a href="tel:01182077207">Call 0118 207 7207 →</a></p></div>
+          <div className="process-cta"><a className="button button-primary" href="/contact#quotation">Start your request <UpRightArrow /></a><p>Prefer to talk? <a href="tel:01182077207">Call 0118 207 7207 →</a></p></div>
         </div>
       </section>
 
@@ -148,7 +149,7 @@ export default function Home() {
           <div className="article-grid">
             {articles.slice(0, 3).map((article, index) => (
               <a href={`/${article.slug}`} className="article-card" key={article.slug}>
-                <div className={`article-art article-art-${index + 1}`}><span>{index === 0 ? "31" : index === 1 ? "↗︎" : "£"}</span></div>
+                <div className={`article-art article-art-${index + 1}`}><span>{index === 0 ? "31" : index === 1 ? <UpRightArrow className="line-arrow-large" /> : "£"}</span></div>
                 <div className="article-meta"><span>{article.category}</span><time>{article.date}</time></div>
                 <h3>{article.title}</h3>
                 <p>{article.excerpt}</p>
@@ -162,7 +163,7 @@ export default function Home() {
       <section className="final-cta">
         <div className="page-shell final-cta-inner">
           <div><div className="eyebrow light"><span /> Let’s make it clearer</div><h2><span>Bring us the question.</span><span>We’ll help define</span><span>the next step.</span></h2></div>
-          <div><p>Whether you know exactly what you need or simply know something needs attention, start with a short request.</p><div><a className="button button-accent" href="/contact#quotation">Request a tailored quotation <span>↗︎</span></a><a className="text-link light-link" href="tel:01182077207">Call 0118 207 7207 <span>→</span></a></div></div>
+          <div><p>Whether you know exactly what you need or simply know something needs attention, start with a short request.</p><div><a className="button button-accent" href="/contact#quotation">Request a tailored quotation <UpRightArrow /></a><a className="text-link light-link" href="tel:01182077207">Call 0118 207 7207 <span>→</span></a></div></div>
         </div>
       </section>
     </SiteShell>

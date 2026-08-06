@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { UpRightArrow } from "../components/arrow";
 import { QuotationForm, SectionLink } from "../components/interactive";
 import { SiteShell } from "../components/site-shell";
 import { articles, visibleCategories, visibleServiceBySlug, visibleServices } from "../lib/services";
@@ -60,7 +61,7 @@ function ServicePage({ slug }: { slug: string }) {
               <div className="eyebrow light"><span /> Tailored {service.category.toLowerCase()} support</div>
               <h1>{service.title}</h1>
               <p>{service.description}</p>
-              <div className="hero-buttons"><a className="button button-accent" href="/contact#quotation">Get a tailored quotation <span>↗︎</span></a></div>
+              <div className="hero-buttons"><a className="button button-accent" href="/contact#quotation">Get a tailored quotation <UpRightArrow /></a></div>
               <div className="micro-trust"><span>✓ Expert checked</span><span>✓ Secure online process</span><span>✓ UK support team</span></div>
             </div>
             <aside className="service-summary reveal-up delay-one">
@@ -68,7 +69,7 @@ function ServicePage({ slug }: { slug: string }) {
               <div className="summary-price"><span>Service fee</span><strong>{service.price}</strong></div>
               <div className="summary-row"><span>Typical timing</span><strong>{service.time}</strong></div>
               <div className="summary-list"><span>What’s included</span>{service.includes.map((item) => <p key={item}><i>✓</i>{item}</p>)}</div>
-              <a className="button button-primary full-button" href="/contact#quotation">Include in my quotation <span>↗︎</span></a>
+              <a className="button button-primary full-button" href="/contact#quotation">Include in my quotation <UpRightArrow /></a>
               <small>No obligation until you review the details.</small>
             </aside>
           </div>
@@ -112,10 +113,10 @@ function ServicePage({ slug }: { slug: string }) {
         <div className="page-shell">
           <div className="start-card">
             <div><div className="eyebrow light"><span /> Ready to move?</div><h2>Let’s shape the right support.</h2><p>Add {service.title.toLowerCase()} to a tailored quotation, or speak to a specialist first.</p></div>
-            <div><a className="button button-accent" href="/contact#quotation">Request a quotation <span>↗︎</span></a><a href="tel:01182077207" className="text-link light-link">Call 0118 207 7207 <span>→</span></a></div>
+            <div><a className="button button-accent" href="/contact#quotation">Request a quotation <UpRightArrow /></a><a href="tel:01182077207" className="text-link light-link">Call 0118 207 7207 <span>→</span></a></div>
           </div>
           <div className="related-head"><h2>You may also need</h2><a href="/additional-services">View all services →</a></div>
-          <div className="related-grid">{related.map((item) => <a key={item.slug} href={`/${item.slug}`}><span>{item.category}</span><h3>{item.title}</h3><p>{item.short}</p><strong>Explore <i>↗︎</i></strong></a>)}</div>
+          <div className="related-grid">{related.map((item) => <a key={item.slug} href={`/${item.slug}`}><span>{item.category}</span><h3>{item.title}</h3><p>{item.short}</p><strong>Explore <UpRightArrow /></strong></a>)}</div>
         </div>
       </section>
     </>
@@ -127,7 +128,7 @@ function ServicesPage() {
     <>
       <section className="inner-hero directory-hero"><div className="inner-orb" /><div className="page-shell"><Breadcrumb current="Our services" /><div className="inner-hero-copy narrow reveal-up"><div className="eyebrow light"><span /> Focused support, tailored scope</div><h1>Services built around real business needs.</h1><p>Choose one area or combine several, then request a quotation shaped around your priorities.</p></div></div></section>
       <section className="directory section-space"><div className="page-shell">
-        {visibleCategories.map((category, index) => <div className="directory-group" id={category.name === "Grow" ? "additional-services" : category.name.toLowerCase()} key={category.name}><div className="directory-heading"><span>0{index + 1}</span><div><p>{category.eyebrow}</p><h2>{category.title}</h2></div></div><div className="directory-list">{visibleServices.filter((service) => service.category === category.name).map((service) => <a href={`/${service.slug}`} key={service.slug}><div><h3>{service.title}</h3><p>{service.short}</p></div><div><span>{service.price}</span><strong>↗︎</strong></div></a>)}</div></div>)}
+        {visibleCategories.map((category, index) => <div className="directory-group" id={category.name === "Grow" ? "additional-services" : category.name.toLowerCase()} key={category.name}><div className="directory-heading"><span>0{index + 1}</span><div><p>{category.eyebrow}</p><h2>{category.title}</h2></div></div><div className="directory-list">{visibleServices.filter((service) => service.category === category.name).map((service) => <a href={`/${service.slug}`} key={service.slug}><div><h3>{service.title}</h3><p>{service.short}</p></div><div><span>{service.price}</span><strong><UpRightArrow /></strong></div></a>)}</div></div>)}
       </div></section>
     </>
   );
@@ -146,8 +147,8 @@ function ContactPage() {
               <h1>Let’s make the next step clearer.</h1>
               <p>Ask a question, talk something through or give us the details for a tailored quotation—all in one place.</p>
               <div className="contact-options">
-                <a href="tel:01182077207"><span>Call us</span><strong>0118 207 7207 ↗︎</strong><small>Mon–Fri, 9am–5pm</small></a>
-                <a href="mailto:info@accountantservices.org.uk"><span>Email us</span><strong>info@accountantservices.org.uk ↗︎</strong><small>Questions and service enquiries</small></a>
+                <a href="tel:01182077207"><span>Call us</span><strong>0118 207 7207 <UpRightArrow /></strong><small>Mon–Fri, 9am–5pm</small></a>
+                <a href="mailto:info@accountantservices.org.uk"><span>Email us</span><strong>info@accountantservices.org.uk <UpRightArrow /></strong><small>Questions and service enquiries</small></a>
               </div>
             </div>
             <aside className="contact-card contact-intro-card reveal-up delay-one">
@@ -184,7 +185,7 @@ function ContactPage() {
           <div className="quotation-card contact-quotation-card">
             <div className="quotation-card-head">
               <span>Your quotation brief</span>
-              <div><strong>Usually 3–5 minutes</strong><a className="quote-exit-link" href="/">Return home <span>↗︎</span></a></div>
+              <div><strong>Usually 3–5 minutes</strong><a className="quote-exit-link" href="/">Return home <UpRightArrow /></a></div>
             </div>
             <QuotationForm />
           </div>
@@ -193,7 +194,7 @@ function ContactPage() {
 
       <section className="visit-section section-space">
         <div className="page-shell visit-grid">
-          <div><div className="eyebrow"><span /> Visit or write</div><h2>Wokingham based.<br />UK business focused.</h2><p>Building 220, Wharfedale Road, Wokingham, Berkshire, RG41 5TP</p><a className="text-link" href="https://maps.google.com/?q=Building+220+Wharfedale+Road+Wokingham+RG41+5TP" target="_blank" rel="noreferrer">Open in maps ↗︎</a></div>
+          <div><div className="eyebrow"><span /> Visit or write</div><h2>Wokingham based.<br />UK business focused.</h2><p>Building 220, Wharfedale Road, Wokingham, Berkshire, RG41 5TP</p><a className="text-link" href="https://maps.google.com/?q=Building+220+Wharfedale+Road+Wokingham+RG41+5TP" target="_blank" rel="noreferrer">Open in maps <UpRightArrow /></a></div>
           <div className="map-card"><iframe className="location-map" title="Map showing Accountant Services in Wokingham" src="https://www.google.com/maps?q=Building+220,+Wharfedale+Road,+Wokingham,+Berkshire,+RG41+5TP&output=embed" loading="lazy" referrerPolicy="no-referrer-when-downgrade" allowFullScreen /><div className="map-live-pill"><i /> Wokingham · RG41</div><div className="map-location-card"><span>A.</span><p><strong>Accountant Services</strong><small>Building 220 · Wharfedale Road</small></p></div></div>
         </div>
       </section>
@@ -203,14 +204,14 @@ function ContactPage() {
 
 function BlogPage() {
   return (
-    <><section className="inner-hero blog-hero"><div className="inner-orb" /><div className="page-shell"><Breadcrumb current="Blog" /><div className="inner-hero-copy narrow reveal-up"><div className="eyebrow light"><span /> The useful edit</div><h1>Clear thinking for busy business owners.</h1><p>Practical guides and timely reminders, written to help you decide and move—not to add to the reading pile.</p></div></div></section><section className="blog-listing section-space"><div className="page-shell"><div className="blog-feature"><div className="feature-art"><span>31</span><small>YEAR<br />END</small></div><div><span className="article-pill">Featured guide</span><h2>{articles[0].title}</h2><p>{articles[0].excerpt} A practical, plain-English guide to getting organised and keeping the process moving.</p><a className="button button-dark" href={`/${articles[0].slug}`}>Read the guide <span>↗︎</span></a></div></div><div className="article-grid light-articles">{articles.map((article, index) => <a href={`/${article.slug}`} className="article-card" key={article.slug}><div className={`article-art article-art-${(index % 3) + 1}`}><span>{index % 3 === 0 ? "31" : index % 3 === 1 ? "↗︎" : "£"}</span></div><div className="article-meta"><span>{article.category}</span><time>{article.date}</time></div><h3>{article.title}</h3><p>{article.excerpt}</p><strong>Read in 4 minutes <span>→</span></strong></a>)}</div></div></section></>
+    <><section className="inner-hero blog-hero"><div className="inner-orb" /><div className="page-shell"><Breadcrumb current="Blog" /><div className="inner-hero-copy narrow reveal-up"><div className="eyebrow light"><span /> The useful edit</div><h1>Clear thinking for busy business owners.</h1><p>Practical guides and timely reminders, written to help you decide and move—not to add to the reading pile.</p></div></div></section><section className="blog-listing section-space"><div className="page-shell"><div className="blog-feature"><div className="feature-art"><span>31</span><small>YEAR<br />END</small></div><div><span className="article-pill">Featured guide</span><h2>{articles[0].title}</h2><p>{articles[0].excerpt} A practical, plain-English guide to getting organised and keeping the process moving.</p><a className="button button-dark" href={`/${articles[0].slug}`}>Read the guide <UpRightArrow /></a></div></div><div className="article-grid light-articles">{articles.map((article, index) => <a href={`/${article.slug}`} className="article-card" key={article.slug}><div className={`article-art article-art-${(index % 3) + 1}`}><span>{index % 3 === 0 ? "31" : index % 3 === 1 ? <UpRightArrow className="line-arrow-large" /> : "£"}</span></div><div className="article-meta"><span>{article.category}</span><time>{article.date}</time></div><h3>{article.title}</h3><p>{article.excerpt}</p><strong>Read in 4 minutes <span>→</span></strong></a>)}</div></div></section></>
   );
 }
 
 function ArticlePage({ slug }: { slug: string }) {
   const article = articles.find((item) => item.slug === slug)!;
   return (
-    <><section className="article-hero"><div className="page-shell"><Breadcrumb current="Blog" /><div className="article-title"><span className="article-pill">{article.category}</span><h1>{article.title}</h1><p>{article.excerpt}</p><div><time>{article.date}</time><span>4 minute read</span></div></div></div></section><article className="article-body page-shell"><p className="lead">Running a business is easier when you know what is coming and what good preparation looks like.</p><h2>Start with a clean picture</h2><p>Bring your records, key dates and open questions together in one place. A short, organised review now can prevent a lot of back-and-forth later.</p><blockquote>Clarity is not about doing everything at once. It is about knowing the next right thing to do.</blockquote><h2>Turn the deadline into a plan</h2><p>Work backwards from the date that matters. Leave time for missing information, review and any questions that need an expert answer. The strongest process is usually the calmest one.</p><ul><li>Confirm the period and filing deadline.</li><li>Reconcile the core financial records.</li><li>Collect explanations for anything unusual.</li><li>Ask for help early if something is unclear.</li></ul><h2>Keep the next year easier</h2><p>Once the work is complete, note what slowed the process down. Small changes to bookkeeping, document storage or monthly reviews can make next year significantly smoother.</p><div className="article-cta"><h3>Want a capable pair of hands?</h3><p>Tell us what you need to file and we’ll help make the route forward clear.</p><a className="button button-primary" href="/contact#quotation">Request a tailored quotation <span>↗︎</span></a></div></article></>
+    <><section className="article-hero"><div className="page-shell"><Breadcrumb current="Blog" /><div className="article-title"><span className="article-pill">{article.category}</span><h1>{article.title}</h1><p>{article.excerpt}</p><div><time>{article.date}</time><span>4 minute read</span></div></div></div></section><article className="article-body page-shell"><p className="lead">Running a business is easier when you know what is coming and what good preparation looks like.</p><h2>Start with a clean picture</h2><p>Bring your records, key dates and open questions together in one place. A short, organised review now can prevent a lot of back-and-forth later.</p><blockquote>Clarity is not about doing everything at once. It is about knowing the next right thing to do.</blockquote><h2>Turn the deadline into a plan</h2><p>Work backwards from the date that matters. Leave time for missing information, review and any questions that need an expert answer. The strongest process is usually the calmest one.</p><ul><li>Confirm the period and filing deadline.</li><li>Reconcile the core financial records.</li><li>Collect explanations for anything unusual.</li><li>Ask for help early if something is unclear.</li></ul><h2>Keep the next year easier</h2><p>Once the work is complete, note what slowed the process down. Small changes to bookkeeping, document storage or monthly reviews can make next year significantly smoother.</p><div className="article-cta"><h3>Want a capable pair of hands?</h3><p>Tell us what you need to file and we’ll help make the route forward clear.</p><a className="button button-primary" href="/contact#quotation">Request a tailored quotation <UpRightArrow /></a></div></article></>
   );
 }
 
