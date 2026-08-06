@@ -95,7 +95,10 @@ test("combines contact and quotation on one professional page", async () => {
   assert.equal(response.status, 200);
   const html = await response.text();
   assert.match(html, /Contact &amp; quotations/i);
-  assert.match(html, /Tell us what would make the difference/i);
+  assert.match(html, /One place to ask, scope and quote/i);
+  assert.match(html, /Tell us where you are\. We’ll shape what comes next/i);
+  assert.match(html, /Direct to our team/i);
+  assert.match(html, /Human reviewed/i);
   assert.match(html, /id="quotation"/i);
   assert.match(html, /class="quotation-form/i);
   assert.match(html, /info@accountantservices\.org\.uk/i);
