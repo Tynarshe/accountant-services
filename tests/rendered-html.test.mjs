@@ -35,6 +35,9 @@ test("server-renders the Accountant Services homepage", async () => {
   assert.doesNotMatch(html, /Search Companies House/i);
   assert.match(html, /Request your quotation/i);
   assert.match(html, /href="#services"/i);
+  assert.match(html, /<details class="mobile-nav"/i);
+  assert.match(html, /<summary class="menu-button" aria-label="Toggle navigation menu"/i);
+  assert.match(html, /<nav class="mobile-panel" id="mobile-navigation"/i);
   assert.match(html, /Clearer numbers\./i);
   assert.match(html, /Stronger decisions\./i);
   assert.match(html, /class="credibility-marquee"/i);

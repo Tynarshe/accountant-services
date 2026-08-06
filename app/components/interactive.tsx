@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, MouseEvent as ReactMouseEvent, ReactNode, useState } from "react";
+import { FormEvent, MouseEvent as ReactMouseEvent, ReactNode, useRef, useState } from "react";
 import { visibleCategories, visibleServices } from "../lib/services";
 
 const githubPagesBasePath = "/accountant-services";
@@ -122,64 +122,66 @@ export function ServicesMenu() {
 }
 
 export function MobileNav() {
-  const [open, setOpen] = useState(false);
+  const menuRef = useRef<HTMLDetailsElement>(null);
+
+  function closeMenu() {
+    menuRef.current?.removeAttribute("open");
+  }
 
   return (
-    <div
+    <details
       className="mobile-nav"
+      ref={menuRef}
       onKeyDown={(event) => {
-        if (event.key === "Escape") setOpen(false);
+        if (event.key === "Escape") closeMenu();
       }}
     >
-      <button
+      <summary
         className="menu-button"
-        type="button"
-        aria-label={open ? "Close navigation" : "Open navigation"}
-        aria-controls="mobile-navigation"
-        aria-expanded={open}
-        onClick={() => setOpen((value) => !value)}
+        aria-label="Toggle navigation menu"
       >
-        <span className="menu-button-label">{open ? "Close" : "Menu"}</span>
+        <span className="menu-button-label">
+          <span className="menu-button-label-open">Menu</span>
+          <span className="menu-button-label-close">Close</span>
+        </span>
         <span className="menu-button-icon" aria-hidden="true"><i /><i /></span>
-      </button>
-      {open && (
-        <nav className="mobile-panel" id="mobile-navigation" aria-label="Mobile navigation">
-          <div className="mobile-panel-intro">
-            <span>Navigate</span>
-            <p>Practical support, shaped around your business.</p>
-          </div>
+      </summary>
+      <nav className="mobile-panel" id="mobile-navigation" aria-label="Mobile navigation">
+        <div className="mobile-panel-intro">
+          <span>Navigate</span>
+          <p>Practical support, shaped around your business.</p>
+        </div>
 
-          <section className="mobile-menu-services" aria-labelledby="mobile-services-heading">
-            <div className="mobile-menu-section-head">
-              <h2 id="mobile-services-heading">Services</h2>
-              <a href={sitePath("/additional-services")} onClick={() => setOpen(false)}>View all <span>→</span></a>
-            </div>
-            <div className="mobile-service-cards">
-              {visibleServices.slice(0, 4).map((service, index) => (
-                <a href={sitePath(`/${service.slug}`)} key={service.slug} onClick={() => setOpen(false)}>
-                  <span className="mobile-service-number">0{index + 1}</span>
-                  <span><strong>{service.title}</strong><small>{service.category} support</small></span>
-                  <i aria-hidden="true">↗</i>
-                </a>
-              ))}
-            </div>
-          </section>
-
-          <div className="mobile-menu-links mobile-menu-links-single">
-            <a href={sitePath("/blog")} onClick={() => setOpen(false)}><span>Ideas &amp; guidance</span><strong>Blog</strong><i>↗</i></a>
+        <section className="mobile-menu-services" aria-labelledby="mobile-services-heading">
+          <div className="mobile-menu-section-head">
+            <h2 id="mobile-services-heading">Services</h2>
+            <a href={sitePath("/additional-services")} onClick={closeMenu}>View all <span>→</span></a>
           </div>
-
-          <div className="mobile-menu-footer">
-            <div className="mobile-menu-contact">
-              <a href="tel:01182077207"><span>Call</span><strong>0118 207 7207</strong></a>
-              <a href="mailto:info@accountantservices.org.uk"><span>Email</span><strong>info@accountantservices.org.uk</strong></a>
-            </div>
-            <QuotationLink className="button button-accent" onNavigate={() => setOpen(false)}>Request a tailored quotation <span>↗</span></QuotationLink>
-            <small><i /> Clear scope · Secure contact</small>
+          <div className="mobile-service-cards">
+            {visibleServices.slice(0, 4).map((service, index) => (
+              <a href={sitePath(`/${service.slug}`)} key={service.slug} onClick={closeMenu}>
+                <span className="mobile-service-number">0{index + 1}</span>
+                <span><strong>{service.title}</strong><small>{service.category} support</small></span>
+                <i aria-hidden="true">↗</i>
+              </a>
+            ))}
           </div>
-        </nav>
-      )}
-    </div>
+        </section>
+
+        <div className="mobile-menu-links mobile-menu-links-single">
+          <a href={sitePath("/blog")} onClick={closeMenu}><span>Ideas &amp; guidance</span><strong>Blog</strong><i>↗</i></a>
+        </div>
+
+        <div className="mobile-menu-footer">
+          <div className="mobile-menu-contact">
+            <a href="tel:01182077207"><span>Call</span><strong>0118 207 7207</strong></a>
+            <a href="mailto:info@accountantservices.org.uk"><span>Email</span><strong>info@accountantservices.org.uk</strong></a>
+          </div>
+          <QuotationLink className="button button-accent" onNavigate={closeMenu}>Request a tailored quotation <span>↗</span></QuotationLink>
+          <small><i /> Clear scope · Secure contact</small>
+        </div>
+      </nav>
+    </details>
   );
 }
 
