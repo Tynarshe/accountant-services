@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SectionLink } from "./components/interactive";
 import { SiteShell } from "./components/site-shell";
 import { articles, visibleServices } from "./lib/services";
 
@@ -25,7 +26,7 @@ export default function Home() {
             <p className="hero-lede">Accounting and company support tailored to the way you work—so you can stay organised, plan ahead and move forward with confidence.</p>
             <div className="hero-buttons">
               <a className="button button-accent" href="/contact#quotation">Request your quotation <span>↗</span></a>
-              <a className="text-link light-link" href="#services">See how we can help <span>↓</span></a>
+              <SectionLink className="text-link light-link" targetId="services">See how we can help <span>↓</span></SectionLink>
             </div>
             <div className="trust-row">
               <div><strong>4.9</strong><span className="stars" aria-label="Five star rating">★★★★★</span><small>Client rating</small></div>

@@ -20,11 +20,42 @@ type QuotationLinkProps = {
   onNavigate?: () => void;
 };
 
+type SectionLinkProps = {
+  children: ReactNode;
+  className?: string;
+  targetId: string;
+};
+
+function scrollToSection(target: HTMLElement) {
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  target.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
+}
+
+export function SectionLink({ children, className, targetId }: SectionLinkProps) {
+  function navigate(event: ReactMouseEvent<HTMLAnchorElement>) {
+    const target = document.getElementById(targetId);
+    if (!target) return;
+
+    event.preventDefault();
+    scrollToSection(target);
+  }
+
+  return <a className={className} href={`#${targetId}`} onClick={navigate}>{children}</a>;
+}
+
 export function QuotationLink({ children, className, onNavigate }: QuotationLinkProps) {
   function navigate(event: ReactMouseEvent<HTMLAnchorElement>) {
-    // Keep this as a normal link so browser history, back gestures and page
-    // scrolling remain fully native. The href is corrected at click time for
-    // the GitHub Pages subdirectory build.
+    const quotation = document.getElementById("quotation");
+
+    if (quotation) {
+      event.preventDefault();
+      onNavigate?.();
+      window.requestAnimationFrame(() => scrollToSection(quotation));
+      return;
+    }
+
+    // Cross-page journeys remain native so back gestures and browser history
+    // work normally. Correct the destination for the GitHub Pages subdirectory.
     event.currentTarget.setAttribute("href", sitePath("/contact#quotation"));
     onNavigate?.();
   }

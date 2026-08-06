@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { QuotationForm, ShopCatalogue } from "../components/interactive";
+import { QuotationForm, SectionLink } from "../components/interactive";
 import { SiteShell } from "../components/site-shell";
 import { articles, visibleCategories, visibleServiceBySlug, visibleServices } from "../lib/services";
 
@@ -133,33 +133,6 @@ function ServicesPage() {
   );
 }
 
-function ShopPage() {
-  return (
-    <>
-      <section className="inner-hero shop-hero">
-        <div className="inner-orb" />
-        <div className="page-shell">
-          <Breadcrumb current="Shop" />
-          <div className="inner-hero-copy narrow reveal-up">
-            <div className="eyebrow light"><span /> Useful tools, thoughtfully made</div>
-            <h1>Small tools.<br />Clearer finances.</h1>
-            <p>Practical downloads for keeping your numbers organised, your plans visible and your next decision easier.</p>
-          </div>
-        </div>
-      </section>
-      <section className="shop-section section-space">
-        <div className="page-shell">
-          <div className="section-heading split-heading compact">
-            <div><div className="eyebrow"><span /> The shop</div><h2>Built for the numbers<br />you use every day.</h2></div>
-            <p>Simple, useful resources from the Accountant Services team—ready to download and put to work.</p>
-          </div>
-          <ShopCatalogue />
-        </div>
-      </section>
-    </>
-  );
-}
-
 function ContactPage() {
   return (
     <>
@@ -185,7 +158,7 @@ function ContactPage() {
                 <div><span>01</span><p><strong>Talk to us directly</strong><small>Call or email when a quick conversation is best.</small></p></div>
                 <div><span>02</span><p><strong>Build your quotation brief</strong><small>Choose the services and share the useful context below.</small></p></div>
               </div>
-              <a className="button button-primary full-button" href="#quotation">Start your quotation <span>↓</span></a>
+              <SectionLink className="button button-primary full-button" targetId="quotation">Start your quotation <span>↓</span></SectionLink>
               <div className="contact-intro-proof" aria-label="Quotation service commitments">
                 <span><strong>Direct to our team</strong><small>Sent to info@accountantservices.org.uk</small></span>
                 <span><strong>Human reviewed</strong><small>No instant generic pricing</small></span>

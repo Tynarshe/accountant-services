@@ -34,6 +34,7 @@ test("server-renders the Accountant Services homepage", async () => {
   );
   assert.doesNotMatch(html, /Search Companies House/i);
   assert.match(html, /Request your quotation/i);
+  assert.match(html, /href="#services"/i);
   assert.match(html, /Clearer numbers\./i);
   assert.match(html, /Stronger decisions\./i);
   assert.match(html, /class="credibility-marquee"/i);
@@ -100,6 +101,7 @@ test("combines contact and quotation on one professional page", async () => {
   assert.match(html, /Direct to our team/i);
   assert.match(html, /Human reviewed/i);
   assert.match(html, /id="quotation"/i);
+  assert.match(html, /href="#quotation"/i);
   assert.match(html, /class="quotation-form/i);
   assert.match(html, /class="quote-exit-link" href="\/"/i);
   assert.match(html, /Return home/i);
