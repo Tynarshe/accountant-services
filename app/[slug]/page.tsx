@@ -10,7 +10,7 @@ type PageProps = { params: Promise<{ slug: string }> };
 const utilityPages: Record<string, { title: string; description: string }> = {
   "additional-services": {
     title: "Focused services, tailored to your business",
-    description: "Explore business plans, book keeping, dormant company filing and company secretarial support.",
+    description: "Explore our main accounting services, plus virtual finance director, dormant company filing, company secretarial and VAT return support.",
   },
   contact: {
     title: "Let’s make the next step clearer",
@@ -58,10 +58,11 @@ function ServicePage({ slug }: { slug: string }) {
           <Breadcrumb current={service.title} />
           <div className="service-hero-grid">
             <div className="inner-hero-copy reveal-up">
-              <div className="eyebrow light"><span /> Tailored {service.category.toLowerCase()} support</div>
+              <div className="eyebrow light"><span /> {service.category} services</div>
               <h1>{service.title}</h1>
               <p>{service.description}</p>
-              <div className="hero-buttons"><a className="button button-accent" href="/contact#quotation">Get a tailored quotation <UpRightArrow /></a></div>
+              {service.tagline && <p><strong>{service.tagline}</strong></p>}
+              <div className="hero-buttons"><a className="button button-accent" href="/contact#quotation">Enquire Now <UpRightArrow /></a></div>
               <div className="micro-trust"><span>✓ Expert checked</span><span>✓ Secure online process</span><span>✓ UK support team</span></div>
             </div>
             <aside className="service-summary reveal-up delay-one">
@@ -69,7 +70,7 @@ function ServicePage({ slug }: { slug: string }) {
               <div className="summary-price"><span>Service fee</span><strong>{service.price}</strong></div>
               <div className="summary-row"><span>Typical timing</span><strong>{service.time}</strong></div>
               <div className="summary-list"><span>What’s included</span>{service.includes.map((item) => <p key={item}><i>✓</i>{item}</p>)}</div>
-              <a className="button button-primary full-button" href="/contact#quotation">Include in my quotation <UpRightArrow /></a>
+              <a className="button button-primary full-button" href="/contact#quotation">Enquire Now <UpRightArrow /></a>
               <small>No obligation until you review the details.</small>
             </aside>
           </div>
@@ -113,7 +114,7 @@ function ServicePage({ slug }: { slug: string }) {
         <div className="page-shell">
           <div className="start-card">
             <div><div className="eyebrow light"><span /> Ready to move?</div><h2>Let’s shape the right support.</h2><p>Add {service.title.toLowerCase()} to a tailored quotation, or speak to a specialist first.</p></div>
-            <div><a className="button button-accent" href="/contact#quotation">Request a quotation <UpRightArrow /></a><a href="tel:01182077207" className="text-link light-link">Call 0118 207 7207 <span>→</span></a></div>
+            <div><a className="button button-accent" href="/contact#quotation">Enquire Now <UpRightArrow /></a><a href="tel:01182077207" className="text-link light-link">Call 0118 207 7207 <span>→</span></a></div>
           </div>
           <div className="related-head"><h2>You may also need</h2><a href="/additional-services">View all services →</a></div>
           <div className="related-grid">{related.map((item) => <a key={item.slug} href={`/${item.slug}`}><span>{item.category}</span><h3>{item.title}</h3><p>{item.short}</p><strong>Explore <UpRightArrow /></strong></a>)}</div>
@@ -128,7 +129,7 @@ function ServicesPage() {
     <>
       <section className="inner-hero directory-hero"><div className="inner-orb" /><div className="page-shell"><Breadcrumb current="Our services" /><div className="inner-hero-copy narrow reveal-up"><div className="eyebrow light"><span /> Focused support, tailored scope</div><h1>Services built around real business needs.</h1><p>Choose one area or combine several, then request a quotation shaped around your priorities.</p></div></div></section>
       <section className="directory section-space"><div className="page-shell">
-        {visibleCategories.map((category, index) => <div className="directory-group" id={category.name === "Grow" ? "additional-services" : category.name.toLowerCase()} key={category.name}><div className="directory-heading"><span>0{index + 1}</span><div><p>{category.eyebrow}</p><h2>{category.title}</h2></div></div><div className="directory-list">{visibleServices.filter((service) => service.category === category.name).map((service) => <a href={`/${service.slug}`} key={service.slug}><div><h3>{service.title}</h3><p>{service.short}</p></div><div><span>{service.price}</span><strong><UpRightArrow /></strong></div></a>)}</div></div>)}
+        {visibleCategories.map((category, index) => <div className="directory-group" id={category.name.toLowerCase()} key={category.name}><div className="directory-heading"><span>0{index + 1}</span><div><p>{category.eyebrow}</p><h2>{category.title}</h2></div></div><div className="directory-list">{visibleServices.filter((service) => service.category === category.name).map((service) => <a href={`/${service.slug}`} key={service.slug}><div><h3>{service.title}</h3><p>{service.short}</p></div><div><span>{service.price}</span><strong><UpRightArrow /></strong></div></a>)}</div></div>)}
       </div></section>
     </>
   );

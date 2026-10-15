@@ -42,10 +42,15 @@ test("server-renders the Accountant Services homepage", async () => {
   assert.match(html, /Stronger decisions\./i);
   assert.match(html, /class="credibility-marquee"/i);
   assert.match(html, /class="credibility-track"/i);
-  assert.match(html, /Business Plan/i);
-  assert.match(html, /Book Keeping/i);
+  assert.match(html, /Bookkeeping/i);
+  assert.match(html, /Payroll Services/i);
+  assert.match(html, /Year-End Accounts &amp; Corporation Tax/i);
+  assert.match(html, /Self-Assessment Tax Returns/i);
+  assert.doesNotMatch(html, /Business Plan/i);
+  assert.match(html, /Virtual Finance Director/i);
   assert.match(html, /Dormant Company Filing/i);
   assert.match(html, /Company Secretarial/i);
+  assert.match(html, /VAT Returns/i);
   assert.equal((html.match(/class="service-showcase-card"/g) ?? []).length, 2);
   assert.match(html, /More ways to support your business/i);
   assert.match(html, /See all services/i);
@@ -78,12 +83,13 @@ test("hides the company formation journey", async () => {
 });
 
 test("keeps the currently supported service pages", async () => {
-  const keptPaths = ["/business-plan", "/book-keeping", "/dormantcompany", "/company-secretarial"];
+  const keptPaths = ["/book-keeping", "/payroll-services", "/year-end-accounts-corporation-tax", "/self-assessment-tax-returns", "/virtual-finance-director", "/dormantcompany", "/company-secretarial", "/vat-returns"];
   for (const path of keptPaths) {
     const response = await render(path);
     assert.equal(response.status, 200);
     const html = await response.text();
     assert.match(html, /href="\/contact#quotation"/i);
+    assert.match(html, /Enquire Now/);
     assert.doesNotMatch(html, /Ask a question/i);
   }
 
@@ -110,9 +116,23 @@ test("combines contact and quotation on one professional page", async () => {
   assert.match(html, /Return home/i);
   assert.match(html, /info@accountantservices\.org\.uk/i);
   assert.match(html, /Something else \/ not sure yet/i);
+  for (const service of ["Bookkeeping", "Payroll Services", "Year-End Accounts &amp; Corporation Tax", "Self-Assessment Tax Returns", "Virtual Finance Director", "Dormant Company Filing", "Company Secretarial", "VAT Returns"]) {
+    assert.ok(html.includes(`value="${service}"`), `Quotation option missing: ${service}`);
+  }
   assert.match(html, /class="location-map"/i);
   assert.match(html, /google\.com\/maps\?q=Building\+220/i);
   assert.match(html, /Map showing Accountant Services in Wokingham/i);
+});
+
+test("shows the agreed pricing on the service directory", async () => {
+  const response = await render("/additional-services");
+  const html = await response.text();
+  assert.equal(response.status, 200);
+  assert.match(html, /Main services/);
+  assert.match(html, /Additional services/);
+  assert.match(html, /£6\.50 \+ VAT per payslip/);
+  assert.equal((html.match(/<span>Fixed fee<\/span>/g) ?? []).length, 3);
+  assert.equal((html.match(/<span>Tailored quote<\/span>/g) ?? []).length, 4);
 });
 
 test("does not expose a separate quotation route", async () => {

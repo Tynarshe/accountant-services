@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     template: "%s | Accountant Services",
   },
   description:
-    "Tailored business plans, book keeping, dormant company filing and company secretarial support for UK businesses.",
+    "Bookkeeping, payroll, year-end accounts, Corporation Tax and Self-Assessment tax returns for UK businesses and individuals.",
   openGraph: {
     title: "Accountant Services | Support shaped around your business",
     description:
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Accountant Services | Support shaped around your business",
     description:
-      "Tailored business plans, book keeping, dormant filing and company secretarial support.",
+      "Bookkeeping, payroll, year-end accounts, Corporation Tax and Self-Assessment tax returns.",
     images: ["/og.png"],
   },
 };

@@ -155,11 +155,11 @@ export function MobileNav() {
 
         <section className="mobile-menu-services" aria-labelledby="mobile-services-heading">
           <div className="mobile-menu-section-head">
-            <h2 id="mobile-services-heading">Services</h2>
+            <h2 id="mobile-services-heading">Main services</h2>
             <a href={sitePath("/additional-services")} onClick={closeMenu}>View all <span>→</span></a>
           </div>
           <div className="mobile-service-cards">
-            {visibleServices.slice(0, 4).map((service, index) => (
+            {visibleServices.filter((service) => service.category === "Main").map((service, index) => (
               <a href={sitePath(`/${service.slug}`)} key={service.slug} onClick={closeMenu}>
                 <span className="mobile-service-number">0{index + 1}</span>
                 <span><strong>{service.title}</strong><small>{service.category} support</small></span>

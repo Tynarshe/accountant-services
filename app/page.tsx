@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 const serviceGlyphs = ["01", "02", "03", "04"];
 const homepageServices = visibleServices.filter(
-  (service) => service.slug === "business-plan" || service.slug === "book-keeping",
+  (service) => service.slug === "book-keeping" || service.slug === "payroll-services",
 );
 
 export default function Home() {
@@ -24,7 +24,10 @@ export default function Home() {
           <div className="hero-copy reveal-up">
             <div className="eyebrow light"><span /> Practical support for UK businesses</div>
             <h1>Clearer numbers.<br /><em>Stronger decisions.</em></h1>
-            <p className="hero-lede">Accounting and company support tailored to the way you work—so you can stay organised, plan ahead and move forward with confidence.</p>
+            <div className="hero-lede">
+              <p>Managing your finances shouldn’t hold your business back. At Accountant Services, we provide straightforward, reliable and affordable accounting solutions to help you stay organised, meet your obligations and focus on what matters most — growing your business.</p>
+              <p>Whether you’re a sole trader, freelancer or limited company, we’re here to make managing your finances easier.</p>
+            </div>
             <div className="hero-buttons">
               <a className="button button-accent" href="/contact#quotation">Request your quotation <UpRightArrow /></a>
               <SectionLink className="text-link light-link" targetId="services">See how we can help <span>↓</span></SectionLink>
@@ -50,8 +53,8 @@ export default function Home() {
                 <small>Select only the support you need</small>
               </div>
               <div className="dashboard-list">
-                <div><span className="list-icon done">✓</span><p><strong>Book Keeping</strong><small>Reliable monthly records</small></p><span>01</span></div>
-                <div><span className="list-icon active">✓</span><p><strong>Business Plan</strong><small>Direction backed by numbers</small></p><span>02</span></div>
+                <div><span className="list-icon done">✓</span><p><strong>Bookkeeping</strong><small>Reliable monthly records</small></p><span>01</span></div>
+                <div><span className="list-icon active">✓</span><p><strong>Virtual Finance Director</strong><small>Financial insight and direction</small></p><span>02</span></div>
                 <div><span className="list-icon">+</span><p><strong>Add another service</strong><small>Build a joined-up package</small></p><UpRightArrow /></div>
               </div>
               <div className="expert-chip">

@@ -194,6 +194,8 @@ button { color: inherit; }
 .hero h1, .inner-hero h1 { margin: 24px 0 22px; font-family: var(--serif); font-size: clamp(58px, 6vw, 86px); font-weight: 400; line-height: .92; letter-spacing: -.055em; }
 .hero h1 em, .difference-copy h2 em { color: var(--mint); font-weight: 400; }
 .hero-lede { max-width: 590px; margin: 0; color: rgba(255,255,255,.74); font-size: clamp(17px, 1.5vw, 20px); line-height: 1.65; }
+.hero-lede p { margin: 0; }
+.hero-lede p + p { margin-top: 1em; }
 .hero-buttons { display: flex; align-items: center; gap: 30px; margin-top: 26px; }
 .trust-row { display: flex; align-items: center; gap: 0; margin-top: 38px; }
 .trust-row > div { min-width: 140px; padding-right: 26px; margin-right: 26px; display: grid; grid-template-columns: auto auto; align-items: center; gap: 0 7px; border-right: 1px solid rgba(255,255,255,.15); }

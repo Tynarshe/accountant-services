@@ -7,10 +7,14 @@ const outputRoot = join(projectRoot, "docs");
 const pagesBasePath = "/accountant-services";
 
 const serviceSlugs = [
+  "book-keeping",
+  "payroll-services",
+  "year-end-accounts-corporation-tax",
+  "self-assessment-tax-returns",
+  "virtual-finance-director",
   "dormantcompany",
   "company-secretarial",
-  "business-plan",
-  "book-keeping",
+  "vat-returns",
 ];
 
 const articleSlugs = [

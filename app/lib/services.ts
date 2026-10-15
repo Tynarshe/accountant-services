@@ -3,7 +3,8 @@ export type Service = {
   title: string;
   short: string;
   description: string;
-  category: "Start" | "Compliance" | "Change" | "Grow";
+  category: "Main" | "Additional";
+  tagline?: string;
   price: string;
   time: string;
   includes: string[];
@@ -11,59 +12,100 @@ export type Service = {
 
 export const services: Service[] = [
   {
+    slug: "book-keeping",
+    title: "Bookkeeping",
+    short: "Reliable, organised financial records for sole traders, freelancers and limited companies.",
+    description: "Keeping your financial records organised is essential to running a successful business. At Accountant Services, we provide reliable and efficient bookkeeping services to help you stay on top of your income, expenses and day-to-day transactions. Whether you’re a sole trader, freelancer or limited company, we take the hassle out of managing your books, ensuring your financial records are accurate, up to date and ready for tax reporting.",
+    tagline: "Stay organised, save time and manage your business finances with confidence.",
+    category: "Main",
+    price: "Tailored quote",
+    time: "Regular support",
+    includes: ["Income and expense records", "Day-to-day transactions", "Tax-ready financial records"],
+  },
+  {
+    slug: "payroll-services",
+    title: "Payroll Services",
+    short: "Accurate payroll, payslips and submissions for small businesses and limited companies.",
+    description: "Simplify payroll with our reliable UK payroll services for small businesses and limited companies. From employee payslips and PAYE calculations to HMRC RTI submissions and workplace pension contributions, we help you manage payroll accurately, efficiently and in line with your obligations.",
+    category: "Main",
+    price: "£6.50 + VAT per payslip",
+    time: "Each payroll cycle",
+    includes: ["Employee payslips and PAYE", "HMRC RTI submissions", "Workplace pension contributions"],
+  },
+  {
+    slug: "year-end-accounts-corporation-tax",
+    title: "Year-End Accounts & Corporation Tax",
+    short: "Annual accounts and Corporation Tax returns prepared and filed for your limited company.",
+    description: "Keep your limited company compliant with our professional year-end accounts preparation and filing services. We help prepare and submit statutory annual accounts to Companies House and Corporation Tax returns (CT600) to HMRC, ensuring your business meets its financial reporting obligations accurately and on time.",
+    category: "Main",
+    price: "Tailored quote",
+    time: "Annual support",
+    includes: ["Year-end accounts preparation", "Companies House accounts filing", "Corporation Tax returns (CT600)"],
+  },
+  {
+    slug: "self-assessment-tax-returns",
+    title: "Self-Assessment Tax Returns",
+    short: "Personal tax returns for sole traders, freelancers, landlords, company directors and individuals.",
+    description: "Take the hassle out of filing your Self-Assessment tax return with our professional UK tax return services. We help sole traders, freelancers, landlords, company directors and individuals prepare and submit accurate personal tax returns to HMRC, claim eligible expenses and meet important tax deadlines.",
+    category: "Main",
+    price: "Fixed fee",
+    time: "Annual support",
+    includes: ["Personal tax return preparation", "Eligible expense claims", "HMRC return submission"],
+  },
+  {
+    slug: "virtual-finance-director",
+    title: "Virtual Finance Director",
+    short: "Financial direction and practical insight to help you plan your business’s next steps.",
+    description: "Get experienced financial support tailored to your business without a full-time finance director. We help you understand performance, plan cash flow and build forecasts so you can make informed decisions about the future.",
+    category: "Additional",
+    price: "Tailored quote",
+    time: "Support agreed with you",
+    includes: ["Financial performance reviews", "Cash-flow planning", "Budgets and forecasts"],
+  },
+  {
     slug: "dormantcompany",
     title: "Dormant Company Filing",
-    short: "Keep an inactive company compliant, without carrying the admin yourself.",
-    description: "We prepare and submit the annual accounts required for an eligible dormant company, with clear guidance throughout.",
-    category: "Compliance",
-    price: "Fixed-fee service",
-    time: "Expert reviewed",
-    includes: ["Dormant accounts preparation", "Companies House filing", "Deadline tracking"],
+    short: "Keep an inactive company’s annual accounts and filing requirements in order.",
+    description: "We help eligible dormant companies prepare and submit their annual accounts to Companies House. We’ll confirm the information needed and agree the scope and fixed fee before work begins.",
+    category: "Additional",
+    price: "Fixed fee",
+    time: "Annual support",
+    includes: ["Dormant accounts preparation", "Companies House filing", "Filing deadline guidance"],
   },
   {
     slug: "company-secretarial",
     title: "Company Secretarial",
-    short: "Reliable company administration that keeps your records and filings in order.",
-    description: "Flexible company secretarial support for statutory records, routine Companies House filings and the changes that happen as your business evolves.",
-    category: "Compliance",
-    price: "Tailored quote",
-    time: "Ongoing or one-off support",
-    includes: ["Statutory record support", "Confirmation statement coordination", "Director and shareholder updates"],
+    short: "Practical support with company records, routine filings and company changes.",
+    description: "Keep your company administration organised with support for statutory records, confirmation statements and director or shareholder changes. We agree the work required and a fixed fee so you know what to expect.",
+    category: "Additional",
+    price: "Fixed fee",
+    time: "As needed",
+    includes: ["Statutory record support", "Confirmation statement support", "Director and shareholder updates"],
   },
   {
-    slug: "business-plan",
-    title: "Business Plan",
-    short: "Turn a strong idea into a credible, numbers-backed plan.",
-    description: "A practical business plan shaped for decision-making, finance conversations and confident growth.",
-    category: "Grow",
+    slug: "vat-returns",
+    title: "VAT Returns",
+    short: "Support with preparing and submitting your business’s VAT returns.",
+    description: "We help you bring your VAT records together, prepare your return and submit it to HMRC. Our support is tailored to your business, with the scope, timing and fee agreed before work begins.",
+    category: "Additional",
     price: "Tailored quote",
-    time: "Collaborative process",
-    includes: ["Business narrative", "Financial forecasts", "Funding-ready presentation"],
-  },
-  {
-    slug: "book-keeping",
-    title: "Book Keeping",
-    short: "Reliable books that make better decisions possible.",
-    description: "Consistent transaction processing and reconciliations, giving you a cleaner view of your finances.",
-    category: "Grow",
-    price: "Monthly support",
-    time: "Always up to date",
-    includes: ["Transaction processing", "Bank reconciliation", "Management-ready records"],
+    time: "Each VAT return period",
+    includes: ["VAT record review", "VAT return preparation", "HMRC return submission"],
   },
 ];
 
 export const categories = [
   {
-    name: "Compliance",
-    eyebrow: "01 — Stay compliant",
-    title: "Keep the company record under control",
-    description: "Dormant filings and company secretarial support, handled carefully and explained clearly.",
+    name: "Main",
+    eyebrow: "01 — Main services",
+    title: "The essentials, expertly handled",
+    description: "Bookkeeping, payroll, year-end accounts and Self-Assessment tax returns.",
   },
   {
-    name: "Grow",
-    eyebrow: "02 — Build confidently",
-    title: "Put stronger numbers behind the plan",
-    description: "Book keeping and business planning tailored to the way your organisation works.",
+    name: "Additional",
+    eyebrow: "02 — Additional services",
+    title: "More support as your needs evolve",
+    description: "Virtual finance director, dormant company filing, company secretarial and VAT return support.",
   },
 ] as const;
 

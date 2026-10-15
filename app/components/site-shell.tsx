@@ -1,5 +1,6 @@
 import { MobileNav, QuotationLink, ServicesMenu } from "./interactive";
 import { UpRightArrow } from "./arrow";
+import { visibleServices } from "../lib/services";
 
 export function Logo() {
   return (
@@ -53,10 +54,7 @@ export function Footer() {
         <div className="footer-links">
           <div>
             <h3>Services</h3>
-            <a href="/business-plan">Business Plan</a>
-            <a href="/book-keeping">Book Keeping</a>
-            <a href="/dormantcompany">Dormant Company Filing</a>
-            <a href="/company-secretarial">Company Secretarial</a>
+            {visibleServices.map((service) => <a key={service.slug} href={`/${service.slug}`}>{service.title}</a>)}
           </div>
           <div>
             <h3>Company</h3>
