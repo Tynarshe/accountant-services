@@ -4,11 +4,16 @@ import { UpRightArrow } from "../components/arrow";
 import { QuotationForm, SectionLink } from "../components/interactive";
 import { SiteShell } from "../components/site-shell";
 import { VirtualFinanceDirectorPage } from "../components/virtual-finance-director";
+import { WhoWeHelpPage } from "../components/who-we-help";
 import { articles, visibleCategories, visibleServiceBySlug, visibleServices } from "../lib/services";
 
 type PageProps = { params: Promise<{ slug: string }> };
 
 const utilityPages: Record<string, { title: string; description: string }> = {
+  "who-we-help": {
+    title: "Who We Help",
+    description: "Accounting solutions tailored to individuals, entrepreneurs and businesses across the UK, from start-ups and sole traders to limited companies and landlords.",
+  },
   "additional-services": {
     title: "Focused services, tailored to your business",
     description: "Explore our main accounting services, plus virtual finance director, dormant company filing, company secretarial and VAT return support.",
@@ -227,6 +232,7 @@ export default async function DynamicPage({ params }: PageProps) {
   let content: React.ReactNode;
 
   if (slug === "virtual-finance-director") content = <VirtualFinanceDirectorPage />;
+  else if (slug === "who-we-help") content = <WhoWeHelpPage />;
   else if (visibleServiceBySlug[slug]) content = <ServicePage slug={slug} />;
   else if (articles.some((item) => item.slug === slug)) content = <ArticlePage slug={slug} />;
   else if (slug === "additional-services") content = <ServicesPage />;

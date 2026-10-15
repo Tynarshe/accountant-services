@@ -169,7 +169,8 @@ export function MobileNav() {
           </div>
         </section>
 
-        <div className="mobile-menu-links mobile-menu-links-single">
+        <div className="mobile-menu-links">
+          <a href={sitePath("/who-we-help")} onClick={closeMenu}><span>Support for your business</span><strong>Who We Help</strong><UpRightArrow /></a>
           <a href={sitePath("/blog")} onClick={closeMenu}><span>Ideas &amp; guidance</span><strong>Blog</strong><UpRightArrow /></a>
         </div>
 

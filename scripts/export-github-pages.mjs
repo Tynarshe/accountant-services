@@ -40,6 +40,7 @@ const routes = [
   ...serviceSlugs.map((slug) => `/${slug}`),
   ...articleSlugs.map((slug) => `/${slug}`),
   "/additional-services",
+  "/who-we-help",
   "/blog",
   "/contact",
   "/privacy-policy",

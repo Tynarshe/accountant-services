@@ -131,8 +131,25 @@ test("shows the agreed pricing on the service directory", async () => {
   assert.match(html, /Main services/);
   assert.match(html, /Additional services/);
   assert.match(html, /£6\.50 \+ VAT per payslip/);
-  assert.equal((html.match(/<span>Fixed fee<\/span>/g) ?? []).length, 3);
+  assert.equal((html.match(/<span>Fixed fee<\/span>/g) ?? []).length, 2);
+  assert.match(html, /Fixed fee from £150 \+ VAT/);
   assert.equal((html.match(/<span>Tailored quote<\/span>/g) ?? []).length, 4);
+});
+
+test("renders Who We Help with audience sections and service destinations", async () => {
+  const response = await render("/who-we-help");
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  for (const id of ["small-businesses", "limited-companies", "sole-traders", "freelancers", "start-ups", "growing-businesses", "landlords"]) {
+    assert.ok(html.includes(`id="${id}"`));
+    assert.ok(html.includes(`href="#${id}"`));
+  }
+  assert.match(html, /href="\/virtual-finance-director"/);
+  assert.match(html, /href="\/self-assessment-tax-returns"/);
+  assert.match(html, /Starting price from £150 plus VAT/);
+  assert.match(html, /<h1>Accounting Solutions Tailored to You and Your Business<\/h1>/);
+  const home = await render("/");
+  assert.match(await home.text(), /href="\/who-we-help"/);
 });
 
 test("does not expose a separate quotation route", async () => {

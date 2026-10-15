@@ -21,7 +21,6 @@ export function Header() {
           </div>
           <div className="utility-social" aria-label="Social media">
             <a href="https://www.instagram.com/accountantservices_/" target="_blank" rel="noreferrer">Instagram</a>
-            <a href="https://www.youtube.com/channel/UCahMS5YdXwK6caq8oL1s8Cw" target="_blank" rel="noreferrer">YouTube</a>
             <a href="https://www.tiktok.com/@accountantservices" target="_blank" rel="noreferrer">TikTok</a>
           </div>
         </div>
@@ -31,6 +30,7 @@ export function Header() {
           <Logo />
           <nav className="desktop-nav" aria-label="Main navigation">
             <ServicesMenu />
+            <a href="/who-we-help">Who We Help</a>
             <a href="/blog">Blog</a>
             <QuotationLink className="header-quote-link">Get a quotation <UpRightArrow /></QuotationLink>
           </nav>
@@ -58,6 +58,7 @@ export function Footer() {
           </div>
           <div>
             <h3>Company</h3>
+            <a href="/who-we-help">Who We Help</a>
             <a href="/additional-services">All services</a>
             <a href="/blog">Blog</a>
             <a href="/privacy-policy">Privacy</a>

@@ -48,7 +48,7 @@ export const services: Service[] = [
     short: "Personal tax returns for sole traders, freelancers, landlords, company directors and individuals.",
     description: "Take the hassle out of filing your Self-Assessment tax return with our professional UK tax return services. We help sole traders, freelancers, landlords, company directors and individuals prepare and submit accurate personal tax returns to HMRC, claim eligible expenses and meet important tax deadlines.",
     category: "Main",
-    price: "Fixed fee",
+    price: "Fixed fee from £150 + VAT",
     time: "Annual support",
     includes: ["Personal tax return preparation", "Eligible expense claims", "HMRC return submission"],
   },
