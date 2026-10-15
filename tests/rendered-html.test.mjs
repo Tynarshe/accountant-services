@@ -51,7 +51,7 @@ test("server-renders the Accountant Services homepage", async () => {
   assert.match(html, /Dormant Company Filing/i);
   assert.match(html, /Company Secretarial/i);
   assert.match(html, /VAT Returns/i);
-  assert.equal((html.match(/class="service-showcase-card"/g) ?? []).length, 2);
+  assert.equal((html.match(/class="service-showcase-card"/g) ?? []).length, 3);
   assert.match(html, /More ways to support your business/i);
   assert.match(html, /See all services/i);
   assert.match(html, /class="service-discovery" href="\/additional-services"/i);
@@ -89,7 +89,7 @@ test("keeps the currently supported service pages", async () => {
     assert.equal(response.status, 200);
     const html = await response.text();
     assert.match(html, /href="\/contact#quotation"/i);
-    assert.match(html, /Enquire Now/);
+    assert.match(html, path === "/virtual-finance-director" ? /Book a free 15-minute consultation/ : /Enquire Now/);
     assert.doesNotMatch(html, /Ask a question/i);
   }
 
@@ -116,7 +116,7 @@ test("combines contact and quotation on one professional page", async () => {
   assert.match(html, /Return home/i);
   assert.match(html, /info@accountantservices\.org\.uk/i);
   assert.match(html, /Something else \/ not sure yet/i);
-  for (const service of ["Bookkeeping", "Payroll Services", "Year-End Accounts &amp; Corporation Tax", "Self-Assessment Tax Returns", "Virtual Finance Director", "Dormant Company Filing", "Company Secretarial", "VAT Returns"]) {
+  for (const service of ["Bookkeeping", "Payroll Services", "Year-End Accounts &amp; Corporation Tax", "Self-Assessment Tax Returns", "Virtual Finance Director", "Dormant Company Filing", "Company Secretarial Services", "VAT Returns &amp; HMRC Filing"]) {
     assert.ok(html.includes(`value="${service}"`), `Quotation option missing: ${service}`);
   }
   assert.match(html, /class="location-map"/i);

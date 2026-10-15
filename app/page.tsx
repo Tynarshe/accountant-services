@@ -10,9 +10,8 @@ export const metadata: Metadata = {
 };
 
 const serviceGlyphs = ["01", "02", "03", "04"];
-const homepageServices = visibleServices.filter(
-  (service) => service.slug === "book-keeping" || service.slug === "payroll-services",
-);
+const homepageServices = ["virtual-finance-director", "book-keeping", "payroll-services"]
+  .map((slug) => visibleServices.find((service) => service.slug === slug)!);
 
 export default function Home() {
   return (
@@ -93,7 +92,7 @@ export default function Home() {
           <div className="service-showcase-grid">
             {homepageServices.map((service, index) => (
               <a className="service-showcase-card" href={`/${service.slug}`} key={service.slug}>
-                <div className="service-card-top"><span>{serviceGlyphs[index]}</span><i>{service.category}</i></div>
+                <div className="service-card-top"><span>{serviceGlyphs[index]}</span><i>{service.slug === "virtual-finance-director" ? "Advisory" : service.category}</i></div>
                 <h3>{service.title}</h3>
                 <p>{service.short}</p>
                 <ul>{service.includes.map((item) => <li key={item}>✓ {item}</li>)}</ul>
@@ -105,7 +104,7 @@ export default function Home() {
             <span className="service-discovery-mark">+</span>
             <span className="service-discovery-copy">
               <small>More ways to support your business</small>
-              <strong>Your needs may not fit into two boxes.</strong>
+              <strong>Find the support that fits your business.</strong>
               <em>Explore our current services, or tell us what you need and we’ll point you in the right direction.</em>
             </span>
             <span className="service-discovery-action">See all services <UpRightArrow /></span>

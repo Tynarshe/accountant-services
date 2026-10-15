@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { UpRightArrow } from "../components/arrow";
 import { QuotationForm, SectionLink } from "../components/interactive";
 import { SiteShell } from "../components/site-shell";
+import { VirtualFinanceDirectorPage } from "../components/virtual-finance-director";
 import { articles, visibleCategories, visibleServiceBySlug, visibleServices } from "../lib/services";
 
 type PageProps = { params: Promise<{ slug: string }> };
@@ -225,7 +226,8 @@ export default async function DynamicPage({ params }: PageProps) {
   const { slug } = await params;
   let content: React.ReactNode;
 
-  if (visibleServiceBySlug[slug]) content = <ServicePage slug={slug} />;
+  if (slug === "virtual-finance-director") content = <VirtualFinanceDirectorPage />;
+  else if (visibleServiceBySlug[slug]) content = <ServicePage slug={slug} />;
   else if (articles.some((item) => item.slug === slug)) content = <ArticlePage slug={slug} />;
   else if (slug === "additional-services") content = <ServicesPage />;
   else if (slug === "contact") content = <ContactPage />;
