@@ -21,10 +21,10 @@ export default function Home() {
         <div className="hero-glow hero-glow-two" />
         <div className="page-shell hero-grid">
           <div className="hero-copy reveal-up">
-            <div className="eyebrow light"><span /> Practical support for UK businesses</div>
             <h1>Clearer numbers.<br /><em>Stronger decisions.</em></h1>
             <div className="hero-lede">
               <p>Managing your finances shouldn’t hold your business back. At Accountant Services, we provide straightforward, reliable and affordable accounting solutions to help you stay organised, meet your obligations and focus on what matters most — growing your business.</p>
+              <p className="hero-supporting-copy">Whether you’re a sole trader, freelancer or limited company, we’re here to make managing your finances easier.</p>
             </div>
             <div className="hero-buttons">
               <a className="button button-accent" href="/contact#quotation">Request your quotation <UpRightArrow /></a>
@@ -73,8 +73,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      <section className="hero-follow-on"><div className="page-shell"><p>Whether you’re a sole trader, freelancer or limited company, we’re here to make managing your finances easier.</p></div></section>
 
       <section className="credibility-strip">
         <div className="page-shell credibility-inner">
