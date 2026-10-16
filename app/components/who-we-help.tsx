@@ -48,7 +48,7 @@ export function WhoWeHelpPage() {
         <div className="breadcrumb"><a href="/">Home</a><span>→</span><span>Who We Help</span></div>
         <div className="who-hero-grid">
           <div><div className="eyebrow light"><span /> Who We Help</div><h1>Accounting Solutions Tailored to You and Your Business</h1></div>
-          <div className="who-hero-copy"><p>Every business is different, and so are its financial needs. At Accountant Services, we provide professional accounting, bookkeeping, tax and financial advisory services tailored to individuals, entrepreneurs and businesses across the UK.</p><p>Whether you're just starting out, managing an established company or planning your next stage of growth, we're here to simplify your financial responsibilities and provide the support you need to move forward with confidence.</p><p className="who-hero-note">From everyday accounting to strategic financial guidance, we're here to support your business at every stage.</p></div>
+          <div className="who-hero-copy"><p>Every business is different, and so are its financial needs. At Accountant Services, we provide professional accounting, bookkeeping, tax and financial advisory services tailored to individuals, entrepreneurs and businesses across the UK.</p><p>Whether you&apos;re just starting out, managing an established company or planning your next stage of growth, we&apos;re here to simplify your financial responsibilities and provide the support you need to move forward with confidence.</p><p className="who-hero-note">From everyday accounting to strategic financial guidance, we&apos;re here to support your business at every stage.</p></div>
         </div>
       </div>
     </section>
@@ -62,6 +62,6 @@ export function WhoWeHelpPage() {
         <a className={`button ${audience.id === "growing-businesses" ? "button-accent" : "button-primary"}`} href={audience.href}>{audience.cta} <UpRightArrow /></a>
       </section>)}</div>
     </div></section>
-    <section className="who-close section-space"><div className="page-shell"><div className="eyebrow"><span /> Accounting Support at Every Stage of Your Journey</div><h2>Let's Find the Right Solution for You</h2><a className="button button-primary" href="/contact#quotation">Request a Quote <UpRightArrow /></a></div></section>
+    <section className="who-close section-space"><div className="page-shell"><div className="eyebrow"><span /> Accounting Support at Every Stage of Your Journey</div><h2>Let&apos;s Find the Right Solution for You</h2><a className="button button-primary" href="/contact#quotation">Request a Quote <UpRightArrow /></a></div></section>
   </>;
 }
