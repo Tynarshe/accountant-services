@@ -21,7 +21,12 @@
   .hero-refined .hero-lede { max-width: 540px; margin-inline: 0; }
   .hero-refined .hero-buttons { align-items: flex-start; }
   .hero-refined .hero-visual { width: 100%; max-width: 420px; margin-inline: auto; transform: none; }
-  .hero-refined .trust-row > div { padding: 14px 10px; margin: 0; }
+  .hero-refined .trust-row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: stretch; width: 100%; gap: 0; }
+  .hero-refined .trust-row > div { display: flex; flex-direction: column; align-items: center; justify-content: flex-start; gap: 6px; padding: 8px 8px; margin: 0; grid-column: auto; border: 0; border-right: 1px solid rgba(255,255,255,.15); text-align: center; }
+  .hero-refined .trust-row > div:last-child { border: 0; }
+  .hero-refined .trust-row strong { font-size: clamp(20px, 4vw, 24px); line-height: 1.2; }
+  .hero-refined .trust-row .stars { font-size: 10px; line-height: 1; letter-spacing: 1px; }
+  .hero-refined .trust-row small { font-size: 11px; line-height: 1.5; white-space: normal; text-align: center; }
 }
 @media (max-width: 540px) {
   .hero-refined h1 { font-size: clamp(37px, 10vw, 54px); }
