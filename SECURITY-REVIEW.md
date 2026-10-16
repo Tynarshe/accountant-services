@@ -3,7 +3,7 @@
 ## Completed
 
 - Mobile hero calls to action share a row at 320–540px with at least 48px target height.
-- Removed the site-wide motion control and its footer strip. Decorative motion automatically pauses after 4.5 seconds; OS reduced-motion preferences remain supported.
+- Restored the bottom-of-page pause/resume motion control at the user's request. Decorative motion no longer stops on a timer; OS reduced-motion preferences remain supported.
 - Added a keyboard skip link, visible navigation focus outlines, and focus on the service selector when service selection is missing.
 - Limited contact-field lengths and stripped newlines from email subjects. Quotation details remain URL-encoded and are not inserted as HTML. Requests still open an email draft; they are not sent automatically.
 - Added a strict-origin-when-cross-origin referrer policy.

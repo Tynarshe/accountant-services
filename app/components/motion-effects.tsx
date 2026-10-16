@@ -7,16 +7,10 @@ export function MotionEffects() {
 
   useEffect(() => {
     const preference = window.matchMedia("(prefers-reduced-motion: reduce)");
-    let timer: ReturnType<typeof setTimeout> | undefined;
-    const update = () => {
-      clearTimeout(timer);
-      setPaused(preference.matches);
-      // Without a pause control, decorative motion must settle automatically.
-      if (!preference.matches) timer = setTimeout(() => setPaused(true), 4500);
-    };
+    const update = () => setPaused(preference.matches);
     update();
     preference.addEventListener("change", update);
-    return () => { clearTimeout(timer); preference.removeEventListener("change", update); };
+    return () => preference.removeEventListener("change", update);
   }, []);
 
   useEffect(() => {
@@ -37,5 +31,11 @@ export function MotionEffects() {
     return () => observer.disconnect();
   }, []);
 
-  return null;
+  return (
+    <div className="motion-controls">
+      <button className="motion-control" type="button" aria-pressed={paused} onClick={() => setPaused((value) => !value)}>
+        {paused ? "Resume motion" : "Pause motion"}
+      </button>
+    </div>
+  );
 }
