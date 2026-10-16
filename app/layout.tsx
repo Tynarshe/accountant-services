@@ -6,6 +6,7 @@ import "./home-hero.css";
 import "./motion.css";
 
 export const metadata: Metadata = {
+  referrer: "strict-origin-when-cross-origin",
   metadataBase: new URL("https://accountantservices.org.uk"),
   title: {
     default: "Accountant Services | Support shaped around your business",

@@ -1,6 +1,16 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
+test("shared shell has keyboard access without a visible motion control", async () => {
+  for (const route of ["/", "/contact", "/virtual-finance-director", "/who-we-help"]) {
+    const html = await (await render(route)).text();
+    assert.match(html, /href="#main-content"/);
+    assert.match(html, /id="main-content"/);
+    assert.doesNotMatch(html, /class="motion-control"|>Pause motion<|>Enable motion</);
+    assert.match(html, /name="referrer" content="strict-origin-when-cross-origin"/);
+  }
+});
+
 test("legal pages do not expose internal design notes", async () => {
   for (const route of ["/privacy-policy", "/terms-conditions"]) {
     const response = await render(route);

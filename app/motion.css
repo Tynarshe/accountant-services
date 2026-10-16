@@ -2,9 +2,6 @@
 .hero-flow-grid { fill: none; stroke: #ffffff; stroke-opacity: .12; stroke-width: 1; }
 .hero-flow-line { fill: none; stroke: #d5aa72; stroke-width: 2; stroke-linecap: round; stroke-dasharray: 1; stroke-dashoffset: 0; }
 .hero-flow-node { fill: #d5aa72; }
-.motion-control { display: block; margin: 0 auto; padding: 10px 18px; color: var(--ink-soft); background: transparent; border: 1px solid var(--line); border-radius: 30px; font-size: 12px; cursor: pointer; }
-.motion-control:hover { background: var(--mint-bright); }
-.motion-control:focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; }
 @media (prefers-reduced-motion: no-preference) {
   .hero-visual .dashboard-card { animation: supportCardDrift 7s ease-in-out infinite; }
   .hero-visual:hover .dashboard-card { animation-play-state: paused; }

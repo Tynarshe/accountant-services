@@ -26,4 +26,7 @@
 @media (max-width: 540px) {
   .hero-refined h1 { font-size: clamp(37px, 10vw, 54px); }
   .hero-refined .hero-lede { font-size: 15px; line-height: 1.8; }
+  .hero-refined .hero-buttons { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); align-items: stretch; gap: 12px; }
+  .hero-refined .hero-buttons .button, .hero-refined .hero-buttons .text-link { width: auto; min-width: 0; min-height: 48px; padding: 12px 10px; gap: 8px; font-size: 12px; line-height: 1.45; text-align: center; justify-content: center; }
+  .hero-refined .hero-buttons .line-arrow, .hero-refined .hero-buttons .text-link > span { flex-shrink: 0; }
 }

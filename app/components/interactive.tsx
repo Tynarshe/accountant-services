@@ -333,6 +333,7 @@ export function QuotationForm({ compact = false }: { compact?: boolean }) {
     if (selectedServices.length === 0) {
       setFormError("Please choose at least one service.");
       event.currentTarget.querySelector<HTMLDetailsElement>(".quote-service-picker")?.setAttribute("open", "");
+      event.currentTarget.querySelector<HTMLElement>(".quote-service-picker summary")?.focus();
       return;
     }
 
@@ -344,7 +345,7 @@ export function QuotationForm({ compact = false }: { compact?: boolean }) {
     const businessStage = String(data.get("businessStage") ?? "Not specified");
     const preferredContact = String(data.get("preferredContact") ?? "Email");
     const details = String(data.get("details") ?? "").trim() || "No additional details provided.";
-    const subject = `Quotation request from ${businessName || name}`;
+    const subject = `Quotation request from ${businessName || name}`.replace(/[\r\n]/g, " ");
     const body = [
       "Hello Accountant Services,",
       "",
@@ -412,10 +413,10 @@ export function QuotationForm({ compact = false }: { compact?: boolean }) {
       <section className="quote-form-block">
         <div className="quote-form-block-head"><span>02</span><div><strong>How should we reach you?</strong><small>Only the essentials—no marketing lists.</small></div></div>
         <div className="quote-field-grid quote-contact-grid">
-          <label>Your name<input required name="name" autoComplete="name" placeholder="Your full name" /></label>
-          <label>Business name <em>Optional</em><input name="businessName" autoComplete="organization" placeholder="Business or organisation" /></label>
-          <label>Email address<input required type="email" name="email" autoComplete="email" placeholder="you@business.co.uk" /></label>
-          <label>Phone number <em>Optional</em><input type="tel" name="phone" autoComplete="tel" placeholder="Your best contact number" /></label>
+          <label>Your name<input required name="name" maxLength={100} autoComplete="name" placeholder="Your full name" /></label>
+          <label>Business name <em>Optional</em><input name="businessName" maxLength={160} autoComplete="organization" placeholder="Business or organisation" /></label>
+          <label>Email address<input required type="email" name="email" maxLength={254} autoComplete="email" placeholder="you@business.co.uk" /></label>
+          <label>Phone number <em>Optional</em><input type="tel" name="phone" maxLength={40} autoComplete="tel" placeholder="Your best contact number" /></label>
         </div>
       </section>
 
