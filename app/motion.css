@@ -1,0 +1,54 @@
+.hero-flow { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; opacity: .3; }
+.hero-flow-grid { fill: none; stroke: #ffffff; stroke-opacity: .12; stroke-width: 1; }
+.hero-flow-line { fill: none; stroke: #d5aa72; stroke-width: 2; stroke-linecap: round; stroke-dasharray: 1; stroke-dashoffset: 0; }
+.hero-flow-node { fill: #d5aa72; }
+.motion-control { display: block; margin: 0 auto; padding: 10px 18px; color: var(--ink-soft); background: transparent; border: 1px solid var(--line); border-radius: 30px; font-size: 12px; cursor: pointer; }
+.motion-control:hover { background: var(--mint-bright); }
+.motion-control:focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; }
+@media (prefers-reduced-motion: no-preference) {
+  .hero-visual .dashboard-card { animation: supportCardDrift 7s ease-in-out infinite; }
+  .hero-visual:hover .dashboard-card { animation-play-state: paused; }
+  .hero-visual .orbit-one { animation: spin 32s linear infinite reverse; }
+  .hero-visual .orbit-one::before, .hero-visual .orbit-two::before { content: ""; position: absolute; top: 14%; left: 14%; width: 9px; height: 9px; border-radius: 50%; background: #d5aa72; box-shadow: 0 0 18px #d5aa7280; }
+  .hero-visual .orbit-two::before { width: 6px; height: 6px; background: #b6d7e5; }
+  .hero-glow-two { animation: lightDrift 14s ease-in-out infinite alternate; }
+  .hero .status-dot { animation: statusHalo 3.2s ease-in-out infinite; }
+  .dashboard-list .list-icon { animation: iconWelcome .6s ease both; }
+  .dashboard-list > div:nth-child(2) .list-icon { animation-delay: .2s; }
+  .dashboard-list > div:nth-child(3) .list-icon { animation-delay: .4s; }
+  .hero-flow { opacity: .5; }
+  .hero-flow-line { animation: financeTrace 3s ease both, financeBreathe 6s 3s ease-in-out infinite; }
+  .service-discovery-mark { animation: discoveryTurn 8s ease-in-out infinite; }
+  .motion-arrived .process-icon { animation: processGreeting 1.2s .25s ease both; }
+  .service-card-top > span { transition: rotate .4s ease, border-radius .4s ease; }
+  .service-showcase-card:hover .service-card-top > span, .service-showcase-card:focus-visible .service-card-top > span { rotate: -12deg; border-radius: 50%; }
+  .vfd-pillar, .who-card, .included-card { transition: box-shadow .3s ease, transform .3s ease; }
+  .vfd-pillar:hover, .who-card:hover, .included-card:hover { transform: translateY(-4px); box-shadow: 0 18px 40px #0e496712; }
+  .vfd-brief { animation: supportCardDrift 8s ease-in-out infinite; }
+  .vfd-live-dot { animation: statusHalo 3.2s ease-in-out infinite; }
+  .hero .text-link > span:not(.line-arrow) { animation: invitationNudge 2.8s ease-in-out infinite; }
+  .hero-flow-node { animation: financeNode 1s 2s ease both; transform-box: fill-box; transform-origin: center; }
+  .hero-glow-one { animation: ambientLight 5s ease-in-out both; }
+  .motion-arrived { animation: contentArrival .65s cubic-bezier(.2,.7,.2,1) both; }
+  .service-showcase-card:nth-child(2).motion-arrived, .vfd-pillar:nth-child(2).motion-arrived { animation-delay: .08s; }
+  .service-showcase-card:nth-child(3).motion-arrived { animation-delay: .16s; }
+  .button .line-arrow, .text-link .line-arrow { transition: transform .22s ease; }
+  .button:hover .line-arrow, .button:focus-visible .line-arrow, .text-link:hover .line-arrow { transform: translate(3px, -3px); }
+}
+@keyframes supportCardDrift { 0%, 100% { translate: 0 0; } 50% { translate: 0 -7px; } }
+@keyframes lightDrift { from { translate: -30px 0; opacity: .6; } to { translate: 35px -25px; opacity: 1; } }
+@keyframes statusHalo { 0%, 100% { box-shadow: 0 0 0 4px #38b27c18; } 50% { box-shadow: 0 0 0 9px #38b27c08; } }
+@keyframes iconWelcome { from { scale: .75; opacity: .4; } to { scale: 1; opacity: 1; } }
+@keyframes financeBreathe { 0%, 100% { opacity: .6; } 50% { opacity: 1; } }
+@keyframes discoveryTurn { 0%, 80%, 100% { rotate: 0deg; } 90% { rotate: 90deg; } }
+@keyframes processGreeting { 0%, 100% { scale: 1; } 40% { scale: 1.12; } 70% { scale: .97; } }
+@keyframes invitationNudge { 0%, 65%, 100% { translate: 0 0; } 80% { translate: 0 4px; } }
+@keyframes financeTrace { from { stroke-dashoffset: 1; opacity: 0; } to { stroke-dashoffset: 0; opacity: 1; } }
+@keyframes financeNode { from { opacity: 0; transform: scale(.3); } to { opacity: 1; transform: scale(1); } }
+@keyframes ambientLight { 0% { transform: translate(-30px, 20px); opacity: .4; } 100% { transform: translate(0, 0); opacity: 1; } }
+@keyframes contentArrival { from { opacity: .5; translate: 0 14px; } to { opacity: 1; translate: 0 0; } }
+html[data-motion="paused"] *, html[data-motion="paused"] *::before, html[data-motion="paused"] *::after { animation-play-state: paused !important; transition: none !important; scroll-behavior: auto !important; }
+html[data-motion="paused"] .motion-arrived, html[data-motion="paused"] .reveal-up, html[data-motion="paused"] .hero-flow-line, html[data-motion="paused"] .hero-flow-node { animation: none !important; }
+@media (prefers-reduced-motion: reduce) {
+  .hero-flow-line, .hero-flow-node, .motion-arrived { animation: none !important; }
+}

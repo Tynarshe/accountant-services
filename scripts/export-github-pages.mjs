@@ -49,6 +49,7 @@ const routes = [
 
 function addPagesBasePath(html) {
   return html
+    .replace("<head>", `<head><meta name="site-base-path" content="${pagesBasePath}">`)
     .replaceAll('href="/', `href="${pagesBasePath}/`)
     .replaceAll('src="/', `src="${pagesBasePath}/`)
     .replaceAll('action="/', `action="${pagesBasePath}/`)

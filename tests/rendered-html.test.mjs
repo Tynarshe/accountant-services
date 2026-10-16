@@ -1,6 +1,20 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
+test("legal pages do not expose internal design notes", async () => {
+  for (const route of ["/privacy-policy", "/terms-conditions"]) {
+    const response = await render(route);
+    assert.equal(response.status, 200);
+    assert.doesNotMatch(await response.text(), /Design note|solicitor-reviewed|before production launch/i);
+  }
+});
+
+test("article navigation keeps root-relative local destinations", async () => {
+  const html = await (await render("/accountant-services")).text();
+  assert.match(html, /href="\/additional-services"/);
+  assert.doesNotMatch(html, /href="\/accountant-services\/(?:additional-services|book-keeping|contact)/);
+});
+
 async function render(pathname = "/") {
   const workerUrl = new URL("../dist/server/index.js", import.meta.url);
   workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}`);

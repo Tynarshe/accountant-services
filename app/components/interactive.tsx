@@ -4,15 +4,11 @@ import { FormEvent, MouseEvent as ReactMouseEvent, ReactNode, useRef, useState }
 import { visibleCategories, visibleServices } from "../lib/services";
 import { UpRightArrow } from "./arrow";
 
-const githubPagesBasePath = "/accountant-services";
-
 function sitePath(path: string) {
   if (typeof window === "undefined") return path;
-
-  const isGitHubPagesBuild = window.location.pathname === githubPagesBasePath
-    || window.location.pathname.startsWith(`${githubPagesBasePath}/`);
-
-  return isGitHubPagesBuild ? `${githubPagesBasePath}${path}` : path;
+  // The export declares its deployment prefix; article slugs are not prefixes.
+  const basePath = document.querySelector<HTMLMetaElement>('meta[name="site-base-path"]')?.content ?? "";
+  return `${basePath}${path}`;
 }
 
 type QuotationLinkProps = {
@@ -70,8 +66,6 @@ export function ServicesMenu() {
   return (
     <div
       className="header-dropdown services-dropdown"
-      onMouseEnter={() => setOpen(true)}
-      onMouseLeave={() => setOpen(false)}
       onBlur={(event) => {
         if (!event.currentTarget.contains(event.relatedTarget)) setOpen(false);
       }}
@@ -83,12 +77,13 @@ export function ServicesMenu() {
         className="header-dropdown-trigger"
         type="button"
         aria-expanded={open}
+        aria-controls="desktop-services-menu"
         onClick={() => setOpen((value) => !value)}
       >
         Services <span aria-hidden="true">⌄</span>
       </button>
       {open && (
-        <div className="services-mega-menu">
+        <div className="services-mega-menu" id="desktop-services-menu">
           <div className="mega-menu-head">
             <div>
               <p>Focused support, tailored to you</p>

@@ -16,7 +16,7 @@ const homepageServices = ["virtual-finance-director", "book-keeping", "payroll-s
 export default function Home() {
   return (
     <SiteShell>
-      <section className="hero">
+      <section className="hero hero-refined">
         <div className="hero-glow hero-glow-one" />
         <div className="hero-glow hero-glow-two" />
         <div className="page-shell hero-grid">
@@ -25,7 +25,6 @@ export default function Home() {
             <h1>Clearer numbers.<br /><em>Stronger decisions.</em></h1>
             <div className="hero-lede">
               <p>Managing your finances shouldn’t hold your business back. At Accountant Services, we provide straightforward, reliable and affordable accounting solutions to help you stay organised, meet your obligations and focus on what matters most — growing your business.</p>
-              <p>Whether you’re a sole trader, freelancer or limited company, we’re here to make managing your finances easier.</p>
             </div>
             <div className="hero-buttons">
               <a className="button button-accent" href="/contact#quotation">Request your quotation <UpRightArrow /></a>
@@ -39,6 +38,12 @@ export default function Home() {
           </div>
 
           <div className="hero-visual reveal-up delay-one" aria-label="Tailored Accountant Services quotation preview">
+            <svg className="hero-flow" viewBox="0 0 500 540" aria-hidden="true" focusable="false">
+              <path className="hero-flow-grid" d="M20 140H480 M20 270H480 M20 400H480 M100 60V480 M250 60V480 M400 60V480" />
+              <path className="hero-flow-line" pathLength="1" d="M15 450C70 450 65 370 120 370S180 320 230 320S280 220 340 220S400 100 485 85" />
+              <circle className="hero-flow-node" cx="485" cy="85" r="5" />
+              <circle className="hero-flow-node" cx="120" cy="370" r="4" />
+            </svg>
             <div className="visual-orbit orbit-one" />
             <div className="visual-orbit orbit-two" />
             <div className="dashboard-card quote-preview-card">
@@ -61,11 +66,15 @@ export default function Home() {
                 <p><strong>Reviewed by our team</strong><small>Practical advice, clearly explained</small></p>
               </div>
             </div>
-            <div className="floating-badge badge-one"><span>+</span><p><strong>Room to grow</strong><small>Support that scales with you</small></p></div>
-            <div className="floating-badge badge-two"><span>✓</span><p><strong>Clear from day one</strong><small>No-obligation quotation</small></p></div>
+            <div className="hero-badges">
+              <div className="floating-badge badge-one"><span>+</span><p><strong>Room to grow</strong><small>Support that scales with you</small></p></div>
+              <div className="floating-badge badge-two"><span>✓</span><p><strong>Clear from day one</strong><small>No-obligation quotation</small></p></div>
+            </div>
           </div>
         </div>
       </section>
+
+      <section className="hero-follow-on"><div className="page-shell"><p>Whether you’re a sole trader, freelancer or limited company, we’re here to make managing your finances easier.</p></div></section>
 
       <section className="credibility-strip">
         <div className="page-shell credibility-inner">

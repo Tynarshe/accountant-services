@@ -1,6 +1,7 @@
 import { MobileNav, QuotationLink, ServicesMenu } from "./interactive";
 import { UpRightArrow } from "./arrow";
 import { visibleServices } from "../lib/services";
+import { MotionEffects } from "./motion-effects";
 
 export function Logo() {
   return (
@@ -85,6 +86,7 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
       <Header />
       <main>{children}</main>
       <Footer />
+      <div className="page-shell" style={{ paddingBlock: 20 }}><MotionEffects /></div>
     </>
   );
 }
