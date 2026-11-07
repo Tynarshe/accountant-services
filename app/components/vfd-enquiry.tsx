@@ -9,7 +9,7 @@ export function VfdEnquiry() {
     const data = new FormData(event.currentTarget);
     const fields = [["name", "Name"], ["surname", "Surname"], ["email", "Email address"], ["phone", "Phone number"], ["company", "Company name"]];
     const body = ["I would like to discuss Virtual Finance Director support.", "", ...fields.map(([key, label]) => `${label}: ${String(data.get(key) ?? "").trim()}`)].join("\n");
-    window.location.href = `mailto:info@accountantservices.org.uk?subject=${encodeURIComponent("Virtual Finance Director enquiry")}&body=${encodeURIComponent(body)}`;
+    window.location.href = `mailto:office@accountantservices.org.uk?subject=${encodeURIComponent("Virtual Finance Director enquiry")}&body=${encodeURIComponent(body)}`;
     setPrepared(true);
   }
   return <section id="vfd-enquiry" className="vfd-enquiry section-space" aria-labelledby="vfd-enquiry-title">
@@ -25,8 +25,8 @@ export function VfdEnquiry() {
           <label className="vfd-enquiry-wide" htmlFor="vfd-company">Company name<input id="vfd-company" name="company" autoComplete="organization" maxLength={160} required /></label>
         </div>
         <button className="button button-primary" type="submit">Let’s start a conversation</button>
-        <p className="vfd-enquiry-note">Opens your email app with your enquiry ready to send to <a href="mailto:info@accountantservices.org.uk">info@accountantservices.org.uk</a>. We’ll use your details to respond to your enquiry. <a href="/privacy-policy">Privacy policy</a>.</p>
-        {prepared && <p role="status">Your email draft is ready in your email app. Please send it to complete your enquiry. If no app opened, email info@accountantservices.org.uk or call 0118 207 7207.</p>}
+        <p className="vfd-enquiry-note">Opens your email app with your enquiry ready to send to <a href="mailto:office@accountantservices.org.uk">office@accountantservices.org.uk</a>. We’ll use your details to respond to your enquiry. <a href="/privacy-policy">Privacy policy</a>.</p>
+        {prepared && <p role="status">Your email draft is ready in your email app. Please send it to complete your enquiry. If no app opened, email office@accountantservices.org.uk or call 0118 207 7207.</p>}
       </form>
     </div>
   </section>;

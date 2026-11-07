@@ -1,6 +1,16 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
+test("navigation uses service lists and the office email", async () => {
+  for (const route of ["/", "/contact", "/virtual-finance-director"]) {
+    const html = await (await render(route)).text();
+    assert.doesNotMatch(html, /info@accountantservices/);
+    assert.match(html, /mailto:office@accountantservices\.org\.uk/);
+    assert.match(html, /class="mobile-service-list"/);
+    assert.doesNotMatch(html, /class="mobile-service-cards"|View all services|View all <span>/);
+  }
+});
+
 test("VFD enquiries stay on the page with five simple contact fields", async () => {
   const html = await (await render("/virtual-finance-director")).text();
   assert.match(html, /id="vfd-enquiry"/);
@@ -153,7 +163,7 @@ test("combines contact and quotation on one professional page", async () => {
   assert.match(html, /class="quotation-form/i);
   assert.match(html, /class="quote-exit-link" href="\/"/i);
   assert.match(html, /Return home/i);
-  assert.match(html, /info@accountantservices\.org\.uk/i);
+  assert.match(html, /office@accountantservices\.org\.uk/i);
   assert.match(html, /Something else \/ not sure yet/i);
   for (const service of ["Bookkeeping", "Payroll Services", "Year-End Accounts &amp; Corporation Tax", "Self-Assessment Tax Returns", "Virtual Finance Director", "Dormant Company Filing", "Company Secretarial Services", "VAT Returns &amp; HMRC Filing"]) {
     assert.ok(html.includes(`value="${service}"`), `Quotation option missing: ${service}`);

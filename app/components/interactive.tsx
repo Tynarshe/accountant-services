@@ -89,9 +89,6 @@ export function ServicesMenu() {
               <p>Focused support, tailored to you</p>
               <h2>Focused services. One experienced team.</h2>
             </div>
-            <a href={sitePath("/additional-services")} onClick={() => setOpen(false)}>
-              View all services <span>→</span>
-            </a>
           </div>
           <div className="mega-menu-grid">
             {visibleCategories.map((category, index) => (
@@ -148,31 +145,24 @@ export function MobileNav() {
           <p>Practical support, shaped around your business.</p>
         </div>
 
-        <section className="mobile-menu-services" aria-labelledby="mobile-services-heading">
-          <div className="mobile-menu-section-head">
-            <h2 id="mobile-services-heading">Main services</h2>
-            <a href={sitePath("/additional-services")} onClick={closeMenu}>View all <span>→</span></a>
-          </div>
-          <div className="mobile-service-cards">
-            {visibleServices.filter((service) => service.category === "Main").map((service, index) => (
-              <a href={sitePath(`/${service.slug}`)} key={service.slug} onClick={closeMenu}>
-                <span className="mobile-service-number">0{index + 1}</span>
-                <span><strong>{service.title}</strong><small>{service.category} support</small></span>
-                <UpRightArrow />
-              </a>
-            ))}
-          </div>
-        </section>
+        {visibleCategories.map(category => <section className="mobile-menu-services" key={category.name} aria-label={`${category.name} services`}>
+          <div className="mobile-menu-section-head"><h2>{category.name} services</h2></div>
+          <ul className="mobile-service-list">
+            {visibleServices.filter(service => service.category === category.name).map(service => <li key={service.slug}>
+              <a href={sitePath(`/${service.slug}`)} onClick={closeMenu}><span>{service.title}</span><UpRightArrow /></a>
+            </li>)}
+          </ul>
+        </section>)}
 
         <div className="mobile-menu-links">
-          <a href={sitePath("/who-we-help")} onClick={closeMenu}><span>Support for your business</span><strong>Who We Help</strong><UpRightArrow /></a>
-          <a href={sitePath("/blog")} onClick={closeMenu}><span>Ideas &amp; guidance</span><strong>Blog</strong><UpRightArrow /></a>
+          <a href={sitePath("/who-we-help")} onClick={closeMenu}><strong>Who We Help</strong><UpRightArrow /></a>
+          <a href={sitePath("/blog")} onClick={closeMenu}><strong>Blog</strong><UpRightArrow /></a>
         </div>
 
         <div className="mobile-menu-footer">
           <div className="mobile-menu-contact">
             <a href="tel:01182077207"><span>Call</span><strong>0118 207 7207</strong></a>
-            <a href="mailto:info@accountantservices.org.uk"><span>Email</span><strong>info@accountantservices.org.uk</strong></a>
+            <a href="mailto:office@accountantservices.org.uk"><span>Email</span><strong>office@accountantservices.org.uk</strong></a>
           </div>
           <QuotationLink className="button button-accent" onNavigate={closeMenu}>Request a tailored quotation <UpRightArrow /></QuotationLink>
           <small><i /> Clear scope · Secure contact</small>
@@ -364,7 +354,7 @@ export function QuotationForm({ compact = false }: { compact?: boolean }) {
     ].join("\n");
 
     setPrepared(true);
-    window.location.href = `mailto:info@accountantservices.org.uk?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = `mailto:office@accountantservices.org.uk?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   }
 
   return (
@@ -442,7 +432,7 @@ export function QuotationForm({ compact = false }: { compact?: boolean }) {
       {prepared && <p className="quote-ready" role="status">Your quotation request has been prepared in your email app. Review it, then press send.</p>}
       <div className="quote-submit-row">
         <button className="button button-accent" type="submit">Build my quotation request <UpRightArrow /></button>
-        <p><span className="quote-secure-dot" /> Opens a private email to <strong>info@accountantservices.org.uk</strong>. No obligation.</p>
+        <p><span className="quote-secure-dot" /> Opens a private email to <strong>office@accountantservices.org.uk</strong>. No obligation.</p>
       </div>
     </form>
   );

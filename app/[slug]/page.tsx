@@ -155,7 +155,7 @@ function ContactPage() {
               <p>Ask a question, talk something through or give us the details for a tailored quotation—all in one place.</p>
               <div className="contact-options">
                 <a href="tel:01182077207"><span>Call us</span><strong>0118 207 7207 <UpRightArrow /></strong><small>Mon–Fri, 9am–5pm</small></a>
-                <a href="mailto:info@accountantservices.org.uk"><span>Email us</span><strong>info@accountantservices.org.uk <UpRightArrow /></strong><small>Questions and service enquiries</small></a>
+                <a href="mailto:office@accountantservices.org.uk"><span>Email us</span><strong>office@accountantservices.org.uk <UpRightArrow /></strong><small>Questions and service enquiries</small></a>
               </div>
             </div>
             <aside className="contact-card contact-intro-card reveal-up delay-one">
@@ -168,7 +168,7 @@ function ContactPage() {
               </div>
               <SectionLink className="button button-primary full-button" targetId="quotation">Start your quotation <span>↓</span></SectionLink>
               <div className="contact-intro-proof" aria-label="Quotation service commitments">
-                <span><strong>Direct to our team</strong><small>Sent to info@accountantservices.org.uk</small></span>
+                <span><strong>Direct to our team</strong><small>Sent to office@accountantservices.org.uk</small></span>
                 <span><strong>Human reviewed</strong><small>No instant generic pricing</small></span>
               </div>
             </aside>
