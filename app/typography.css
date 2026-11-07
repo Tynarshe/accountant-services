@@ -1,6 +1,16 @@
 /* Shared, responsive type scale. Semantic rules override legacy component sizes. */
 :root { --type-h1: clamp(2.5rem, 5vw, 4.5rem); --type-h2: clamp(2rem, 3.4vw, 3rem); --type-h3: 1.5rem; --type-h4: 1.25rem; --type-body: 1.0625rem; }
 body { font-size: var(--type-body); }
+.mobile-quick-links { display: none; }
+@media (max-width: 1240px) {
+  .mobile-quick-links { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); background: #f6f3ed; border-top: 1px solid var(--line); }
+  .mobile-quick-links a { min-height: 48px; padding: 10px 16px; display: flex; justify-content: center; align-items: center; gap: 12px; color: var(--ink); font-size: 16px; font-weight: 700; }
+  .mobile-quick-links a + a { border-left: 1px solid var(--line); }
+  .mobile-quick-links .line-arrow { color: #996c32; }
+  .mobile-quick-links a:hover, .mobile-quick-links a:focus-visible { background: #eee4d5; }
+  .mobile-panel { min-height: 0; max-height: calc(100dvh - 160px); }
+  section[id] { scroll-margin-top: 140px; }
+}
 .mobile-service-list { margin: 0; padding: 0; list-style: none; }
 .mobile-service-list li { border-bottom: 1px solid #ffffff30; }
 .mobile-service-list a { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 56px; padding: 14px 0; font-size: 17px; line-height: 1.5; color: white; }

@@ -37,6 +37,10 @@ export function Header() {
           </nav>
           <MobileNav />
         </div>
+        <nav className="mobile-quick-links" aria-label="Explore Accountant Services">
+          <a href="/who-we-help">Who We Help <UpRightArrow /></a>
+          <a href="/blog">Blog <UpRightArrow /></a>
+        </nav>
       </header>
     </>
   );

@@ -7,6 +7,12 @@ test("navigation uses service lists and the office email", async () => {
     assert.doesNotMatch(html, /info@accountantservices/);
     assert.match(html, /mailto:office@accountantservices\.org\.uk/);
     assert.match(html, /class="mobile-service-list"/);
+    assert.match(html, /class="mobile-quick-links"/);
+    const quickLinks = html.match(/<nav class="mobile-quick-links"[\s\S]*?<\/nav>/)?.[0];
+    assert.match(quickLinks ?? "", /href="\/who-we-help"/);
+    assert.match(quickLinks ?? "", /href="\/blog"/);
+    const mobilePanel = html.match(/<nav class="mobile-panel"[\s\S]*?<\/nav>/)?.[0];
+    assert.doesNotMatch(mobilePanel ?? "", /href="\/(?:who-we-help|blog)"/);
     assert.doesNotMatch(html, /class="mobile-service-cards"|View all services|View all <span>/);
   }
 });

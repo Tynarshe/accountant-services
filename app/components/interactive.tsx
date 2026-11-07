@@ -154,11 +154,6 @@ export function MobileNav() {
           </ul>
         </section>)}
 
-        <div className="mobile-menu-links">
-          <a href={sitePath("/who-we-help")} onClick={closeMenu}><strong>Who We Help</strong><UpRightArrow /></a>
-          <a href={sitePath("/blog")} onClick={closeMenu}><strong>Blog</strong><UpRightArrow /></a>
-        </div>
-
         <div className="mobile-menu-footer">
           <div className="mobile-menu-contact">
             <a href="tel:01182077207"><span>Call</span><strong>0118 207 7207</strong></a>
