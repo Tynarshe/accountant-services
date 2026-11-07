@@ -1,14 +1,16 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-test("VFD enquiries stay on the page with four simple contact fields", async () => {
+test("VFD enquiries stay on the page with five simple contact fields", async () => {
   const html = await (await render("/virtual-finance-director")).text();
   assert.match(html, /id="vfd-enquiry"/);
   assert.equal((html.match(/href="#vfd-enquiry"/g) ?? []).length, 5);
   const form = html.match(/<form class="vfd-enquiry-form"[\s\S]*?<\/form>/)?.[0];
   assert.ok(form);
-  for (const name of ["name", "email", "phone", "company"]) assert.match(form, new RegExp(`name="${name}"`));
-  assert.equal((form.match(/<input\b/g) ?? []).length, 4);
+  for (const name of ["name", "surname", "email", "phone", "company"]) assert.match(form, new RegExp(`name="${name}"`));
+  assert.equal((form.match(/<input\b/g) ?? []).length, 5);
+  assert.match(form, /autoComplete="given-name"/i);
+  assert.match(form, /autoComplete="family-name"/i);
   assert.doesNotMatch(form, /<textarea|<select/);
   assert.match(form, /Opens your email app/);
 });

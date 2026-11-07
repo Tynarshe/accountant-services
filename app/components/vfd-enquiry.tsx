@@ -7,7 +7,8 @@ export function VfdEnquiry() {
   function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    const body = ["I would like to discuss Virtual Finance Director support.", "", ...["Name", "Email", "Phone", "Company"].map(label => `${label}: ${String(data.get(label.toLowerCase()) ?? "").trim()}`)].join("\n");
+    const fields = [["name", "Name"], ["surname", "Surname"], ["email", "Email address"], ["phone", "Phone number"], ["company", "Company name"]];
+    const body = ["I would like to discuss Virtual Finance Director support.", "", ...fields.map(([key, label]) => `${label}: ${String(data.get(key) ?? "").trim()}`)].join("\n");
     window.location.href = `mailto:info@accountantservices.org.uk?subject=${encodeURIComponent("Virtual Finance Director enquiry")}&body=${encodeURIComponent(body)}`;
     setPrepared(true);
   }
@@ -17,10 +18,11 @@ export function VfdEnquiry() {
       <form className="vfd-enquiry-form" onSubmit={submit}>
         <h3>Your contact details</h3>
         <div className="vfd-enquiry-fields">
-          <label htmlFor="vfd-name">Your name<input id="vfd-name" name="name" autoComplete="name" maxLength={100} required /></label>
+          <label htmlFor="vfd-name">Name<input id="vfd-name" name="name" autoComplete="given-name" maxLength={100} required /></label>
+          <label htmlFor="vfd-surname">Surname<input id="vfd-surname" name="surname" autoComplete="family-name" maxLength={100} required /></label>
           <label htmlFor="vfd-email">Email address<input id="vfd-email" name="email" type="email" autoComplete="email" maxLength={254} required /></label>
           <label htmlFor="vfd-phone">Phone number<input id="vfd-phone" name="phone" type="tel" autoComplete="tel" maxLength={40} required /></label>
-          <label htmlFor="vfd-company">Company name<input id="vfd-company" name="company" autoComplete="organization" maxLength={160} required /></label>
+          <label className="vfd-enquiry-wide" htmlFor="vfd-company">Company name<input id="vfd-company" name="company" autoComplete="organization" maxLength={160} required /></label>
         </div>
         <button className="button button-primary" type="submit">Let’s start a conversation</button>
         <p className="vfd-enquiry-note">Opens your email app with your enquiry ready to send to <a href="mailto:info@accountantservices.org.uk">info@accountantservices.org.uk</a>. We’ll use your details to respond to your enquiry. <a href="/privacy-policy">Privacy policy</a>.</p>
