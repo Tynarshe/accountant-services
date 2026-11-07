@@ -1,4 +1,5 @@
 import { UpRightArrow } from "./arrow";
+import { VfdEnquiry } from "./vfd-enquiry";
 
 const pillars = [
   { number: "01", title: "Strategic financial leadership", intro: "A clearer view of today. A considered plan for tomorrow.", items: ["Cash flow planning & forecasting", "Business growth advice & financial strategy", "Management accounts with clear, actionable insights"] },
@@ -38,11 +39,11 @@ export function VirtualFinanceDirectorPage() {
 
     <section className="vfd-offer section-space">
       <div className="page-shell">
-        <div className="vfd-section-intro"><div><div className="eyebrow"><span /> More than the numbers</div><h2>A finance team by your side.<br /><em>A bigger picture in view.</em></h2></div><div><p>From daily bookkeeping to board-level insight, get a complete finance team by your side—fully online, fully flexible and ready to grow with you.</p><a className="text-link" href="/contact#quotation">Build your advisory package <UpRightArrow /></a></div></div>
+        <div className="vfd-section-intro"><div><div className="eyebrow"><span /> More than the numbers</div><h2>A finance team by your side.<br /><em>A bigger picture in view.</em></h2></div><div><p>From daily bookkeeping to board-level insight, get a complete finance team by your side—fully online, fully flexible and ready to grow with you.</p><a className="text-link" href="#vfd-enquiry">Let’s explore your priorities <UpRightArrow /></a></div></div>
         <div className="vfd-pillars">{pillars.map((pillar) => <article className="vfd-pillar" key={pillar.number}>
           <span className="vfd-pillar-number">{pillar.number} /</span><h3>{pillar.title}</h3><p>{pillar.intro}</p>
           <ul>{pillar.items.map((item) => <li key={item}><span aria-hidden="true">✓</span>{item}</li>)}</ul>
-          <a className="text-link" href="/contact#quotation">Let’s talk about your needs <UpRightArrow /></a>
+          <a className="text-link" href="#vfd-enquiry">Let’s talk about your needs <UpRightArrow /></a>
         </article>)}</div>
       </div>
     </section>
@@ -52,6 +53,7 @@ export function VirtualFinanceDirectorPage() {
       <div className="vfd-package-steps"><div><span>01</span><h3>Start with a conversation</h3><p>Tell us about your business, challenges and the decisions ahead.</p></div><div><span>02</span><h3>Shape your support</h3><p>Bring together the day-to-day services and financial guidance you need.</p></div><div><span>03</span><h3>Move forward with clarity</h3><p>Work with a finance partner who helps you see the detail and the direction.</p></div></div>
     </div></section>
 
+    <VfdEnquiry />
     <section className="vfd-close section-space"><div className="page-shell"><div className="eyebrow"><span /> Let’s talk</div><h2>Your next chapter starts<br />with a clearer financial picture.</h2><p>Take 15 minutes to talk through what your business needs. We’ll help you find a practical starting point.</p><ConsultationLink /><a className="vfd-phone" href="tel:01182077207">Prefer to call? 0118 207 7207</a></div></section>
   </div>;
 }

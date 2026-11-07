@@ -4,6 +4,7 @@ import "./vfd.css";
 import "./who-we-help.css";
 import "./home-hero.css";
 import "./motion.css";
+import "./typography.css";
 
 export const metadata: Metadata = {
   referrer: "strict-origin-when-cross-origin",

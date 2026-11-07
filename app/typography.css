@@ -1,0 +1,49 @@
+/* Shared, responsive type scale. Semantic rules override legacy component sizes. */
+:root { --type-h1: clamp(2.5rem, 5vw, 4.5rem); --type-h2: clamp(2rem, 3.4vw, 3rem); --type-h3: 1.5rem; --type-h4: 1.25rem; --type-body: 1.0625rem; }
+body { font-size: var(--type-body); }
+.mobile-nav:not([open]) .mobile-panel { display: none; }
+.mobile-panel { grid-template-columns: minmax(0, 1fr); }
+.mobile-panel > *, .mobile-service-cards > a, .mobile-service-cards > a > span { min-width: 0; }
+.mobile-service-cards strong { line-height: 1.35; overflow-wrap: anywhere; }
+h1 { font-size: var(--type-h1) !important; line-height: 1.12 !important; }
+h2 { font-size: var(--type-h2) !important; line-height: 1.2 !important; }
+h3 { font-size: var(--type-h3) !important; line-height: 1.3 !important; }
+h4 { font-size: var(--type-h4) !important; line-height: 1.35 !important; }
+p { font-size: var(--type-body) !important; line-height: 1.7 !important; }
+input, select, textarea { font-size: 1rem !important; line-height: 1.5 !important; }
+.button, .text-link, .desktop-nav > a, .header-dropdown-trigger, .mega-service-links a, .mega-menu-head > a { font-size: 1rem !important; line-height: 1.5; }
+.button { padding-block: 12px; white-space: normal; }
+.services-mega-menu { max-height: calc(100dvh - 130px); overflow-y: auto; }
+.mega-menu-head h2, .mobile-menu-section-head h2 { font-size: 1.75rem !important; }
+.mega-category-title h3 { font-size: 1.375rem !important; }
+.mega-service-links a { min-height: 48px; }
+.mega-menu-category > p { min-height: 0; }
+.mega-menu-head { align-items: flex-start; }
+.mega-menu-head > a { white-space: normal; flex-shrink: 0; max-width: 180px; }
+.quote-field-grid label, .quote-details, .quote-service-options span, .quote-service-picker summary strong { font-size: 1rem; letter-spacing: normal; text-transform: none; }
+.quote-field-grid label > em { margin-top: 0; justify-self: start; }
+.quote-field-grid input, .quote-field-grid select { min-height: 48px; }
+.service-showcase-card li, .vfd-pillar li, .footer-links a { font-size: 1rem; line-height: 1.6; }
+.hero-refined .trust-row small { font-size: .875rem; line-height: 1.5; }
+.hero-refined .trust-row strong { font-size: 1.5rem; }
+.hero-refined .trust-row .stars { font-size: .75rem; letter-spacing: 0; }
+.dashboard-list strong, .expert-chip strong, .floating-badge strong { font-size: 1rem; line-height: 1.4; }
+.dashboard-list p, .floating-badge p { min-width: 0; }
+.hero-badges { align-items: stretch; }
+.footer-links, .footer-links > div { min-width: 0; }
+.footer-links a, .footer-links p { overflow-wrap: anywhere; }
+.vfd-enquiry-grid > div > p + p { margin-top: 20px; }
+.hero-refined .floating-badge { align-items: flex-start; }
+@media (max-width: 540px) {
+  .hero-refined .hero-buttons { gap: 10px; }
+  .hero-refined .hero-buttons .button, .hero-refined .hero-buttons .text-link { font-size: 1rem; padding-inline: 8px; }
+  .hero-badges { grid-template-columns: 1fr; }
+  .hero-refined .trust-row > div { padding-inline: 5px; }
+  .quote-progress-meta, .quotation-card-head, .quote-form-block-head { flex-wrap: wrap; }
+  .mobile-panel-intro { grid-template-columns: 1fr; }
+  .mobile-panel-intro > p { max-width: none; text-align: left; justify-self: start; }
+  .mobile-service-cards { grid-template-columns: 1fr; }
+  .mobile-service-cards > a { min-height: 88px; grid-template-columns: auto minmax(0, 1fr) auto; grid-template-rows: auto; gap: 12px; align-items: center; }
+  .mobile-service-cards > a > span:nth-child(2) { grid-column: auto; align-self: center; }
+  .mobile-menu-section-head { flex-wrap: wrap; }
+}
