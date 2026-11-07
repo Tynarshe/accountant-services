@@ -121,10 +121,15 @@ export default function Home() {
 
       <section className="difference-section section-space">
         <div className="page-shell difference-grid">
-          <div className="difference-visual">
+          <div className="difference-visual testimonial-card">
             <div className="quote-mark">“</div>
-            <blockquote>It felt less like filling in forms and more like having someone capable quietly take care of everything.</blockquote>
-            <div className="quote-author"><span>ND</span><p><strong>Natalie D.</strong><small>Founder, Reading</small></p></div>
+            <blockquote className="client-testimonial">
+              <p>We’ve had a fantastic experience working with our accountant. Running a recruitment business comes with its own financial challenges, but their support has made everything so much easier.</p>
+              <p>From managing our accounts and payroll to keeping us on top of tax obligations and providing valuable financial advice, they’ve taken a huge amount of pressure off our shoulders.</p>
+              <p>They’re always professional, approachable, responsive and willing to go the extra mile. Having someone we can trust with our finances has allowed us to focus on what matters most — growing our recruitment business.</p>
+              <p>We would highly recommend their accounting services to any business looking for a reliable, knowledgeable and supportive accountant.</p>
+            </blockquote>
+            <div className="quote-author"><span>SR</span><p><strong>Spring Raise Ltd</strong><small>Recruitment Agency</small></p></div>
           </div>
           <div className="difference-copy">
             <div className="eyebrow"><span /> Why businesses choose us</div>

@@ -114,8 +114,11 @@ test("server-renders the Accountant Services homepage", async () => {
   assert.match(html, /4\.9/i);
   assert.match(html, /Client rating/i);
   assert.match(html, /<strong>Tailored<\/strong><small>Built around your priorities<\/small>/i);
-  assert.match(html, /Natalie D\./i);
-  assert.match(html, /having someone capable quietly take care of everything/i);
+  assert.match(html, /Spring Raise Ltd/i);
+  assert.match(html, /Recruitment Agency/i);
+  assert.match(html, /We’ve had a fantastic experience working with our accountant\./);
+  assert.match(html, /reliable, knowledgeable and supportive accountant\./);
+  assert.doesNotMatch(html, /Natalie D\.|quietly take care of everything/);
   assert.doesNotMatch(html, /class="quotation-form/i);
   assert.match(html, /href="\/contact#quotation"/i);
   assert.match(html, />Blog<\/a>/i);

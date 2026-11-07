@@ -1,6 +1,13 @@
 /* Shared, responsive type scale. Semantic rules override legacy component sizes. */
 :root { --type-h1: clamp(2.5rem, 5vw, 4.5rem); --type-h2: clamp(2rem, 3.4vw, 3rem); --type-h3: 1.5rem; --type-h4: 1.25rem; --type-body: 1.0625rem; }
 body { font-size: var(--type-body); }
+.difference-visual .client-testimonial { margin: 24px 0 30px; letter-spacing: normal; }
+.difference-visual.testimonial-card { min-height: 0; padding: clamp(28px, 3vw, 44px); border-radius: 48px 12px 12px; overflow: hidden; }
+.testimonial-card::before { opacity: .12; right: -70px; top: -70px; }
+.testimonial-card .quote-mark { padding-top: 24px; }
+.testimonial-card .quote-author > span { flex-shrink: 0; }
+.client-testimonial p { margin: 0 0 20px; font-family: var(--sans); }
+.client-testimonial p:last-child { margin-bottom: 0; }
 .mobile-quick-links { display: none; }
 @media (max-width: 1240px) {
   .mobile-quick-links { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); background: #f6f3ed; border-top: 1px solid var(--line); }
